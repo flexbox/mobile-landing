@@ -53,11 +53,11 @@ export const appConfig = {
   // Theme
   theme: {
     colors: {
-      primary: '#007AFF',      // iOS blue
-      secondary: '#000000',    // Black
-      accent: '#FF3B30',       // iOS red
-      text: '#000000',
-      background: '#FFFFFF'
+      primary: '#1DB954',      // Vibrant green
+      secondary: '#191414',    // Dark grey
+      accent: '#B3B3B3',       // Light grey
+      text: '#000000',         // Black text
+      background: '#FFFFFF'     // White background
     } as ThemeColors,
     fonts: {
       primary: 'SpaceMono',
@@ -66,23 +66,23 @@ export const appConfig = {
 
   // App Info
   app: {
-    name: "AppName",
-    tagline: "A beautiful iOS app for your needs",
-    description: "Write a short description of your app. Make it compelling and interesting. Talk about the main features and benefits.",
-    price: "Free",
-    category: "Productivity",
-    version: "1.0.0",
+    name: "Melodify",
+    tagline: "Votre musique. Votre moment. Votre monde.",
+    description: "Découvrez des millions de titres, créez vos playlists personnalisées et profitez d'une expérience musicale unique. Avec Melodify, votre musique vous suit partout, en ligne comme hors ligne.",
+    price: "Gratuit - Abonnement Premium disponible",
+    category: "Musique & Audio",
+    version: "2.1.0",
   },
 
   // Store Info
   store: {
     ios: {
-      id: "1234793120",
-      url: "https://apps.apple.com/app/id{ios_app_id}",
+      id: "1523467890",
+      url: "https://apps.apple.com/app/melodify/id1523467890",
     },
     android: {
-      id: "com.example.app",
-      url: "https://play.google.com/store/apps/details?id={play_store_id}",
+      id: "com.melodify.app",
+      url: "https://play.google.com/store/apps/details?id=com.melodify.app",
     }
   },
 
@@ -93,15 +93,19 @@ export const appConfig = {
     screenshots: [
       {
         image: require("@/assets/images/screenshot.png"),
-        title: "Beautiful Interface"
+        title: "Bibliothèque Personnalisée"
       },
       {
         image: require("@/assets/images/screenshot.png"),
-        title: "Dark Mode"
+        title: "Découvertes Hebdomadaires"
       },
       {
         image: require("@/assets/images/screenshot.png"),
-        title: "Quick Actions"
+        title: "Mode Hors-ligne"
+      },
+      {
+        image: require("@/assets/images/screenshot.png"),
+        title: "Lyrics en temps réel"
       }
     ]
   } as AppAssets,
@@ -109,62 +113,62 @@ export const appConfig = {
   // Features
   features: [
     {
-      title: "Design Élégant",
-      description: "Interface soignée et moderne avec des animations fluides",
+      title: "Bibliothèque Illimitée",
+      description: "Des millions de titres disponibles en streaming haute qualité",
       icon: "paint-brush"
     },
     {
-      title: "Performance",
-      description: "Réactivité exceptionnelle sur tous les appareils",
+      title: "Mode Hors-ligne",
+      description: "Téléchargez vos favoris pour les écouter partout",
       icon: "mobile"
     },
     {
-      title: "Synchronisation",
-      description: "Sauvegarde automatique dans le cloud",
+      title: "Smart Sync",
+      description: "Synchronisation transparente entre tous vos appareils",
       icon: "refresh"
     },
     {
-      title: "Mode Sombre",
-      description: "Interface adaptative pour le jour et la nuit",
+      title: "Mode Nuit",
+      description: "Interface adaptée pour vos sessions nocturnes",
       icon: "moon-o"
     },
     {
       title: "Notifications",
-      description: "Restez informé en temps réel",
+      description: "Soyez alerté des nouveautés de vos artistes préférés",
       icon: "bell"
     },
     {
-      title: "Sécurité",
-      description: "Protection de vos données avec cryptage",
+      title: "Écoute Privée",
+      description: "Mode privé et historique d'écoute sécurisé",
       icon: "shield"
     }
   ] as Feature[],
 
-  // Social Links (only shown if URL is provided)
+  // Social Links
   socialLinks: [
     {
       platform: 'twitter',
-      url: 'https://twitter.com/yourapp',
+      url: 'https://twitter.com/melodify',
       icon: 'twitter',
-      label: 'Suivez-nous sur Twitter'
-    },
-    {
-      platform: 'github',
-      url: 'https://github.com/yourapp',
-      icon: 'github',
-      label: 'Code source sur GitHub'
+      label: 'Suivez notre actualité musicale'
     },
     {
       platform: 'instagram',
-      url: 'https://instagram.com/yourapp',
+      url: 'https://instagram.com/melodify.app',
       icon: 'instagram',
-      label: 'Suivez-nous sur Instagram'
+      label: 'Découvrez nos stories exclusives'
+    },
+    {
+      platform: 'facebook',
+      url: 'https://facebook.com/melodifyapp',
+      icon: 'facebook',
+      label: 'Rejoignez notre communauté'
     }
   ] as SocialLink[],
 
   // Press Kit
   pressKit: {
     enabled: true,
-    url: "https://your-link-to-presskit.zip"
+    url: "https://melodify.com/press"
   }
 } as const; 
