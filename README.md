@@ -2,49 +2,154 @@
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
+## Configuration de la Landing Page
+
+Pour configurer votre landing page, suivez ces étapes :
+
+1. Configurez le fichier `app.json`
+   ```json
+   {
+     "expo": {
+       "name": "Votre Nom d'App",
+       "slug": "votre-app-slug",
+       "web": {
+         "bundler": "metro",
+         "output": "static",
+         "favicon": "./assets/images/favicon.png"
+       }
+     }
+   }
+   ```
+
+2. Configurez le fichier `app/config/app.config.ts`
+   ```typescript
+   export const appConfig = {
+     // Informations de l'application
+     app: {
+       name: "Votre App",
+       tagline: "Votre slogan accrocheur",
+       description: "Description détaillée de votre application",
+       price: "Gratuit", // ou votre prix
+       category: "Votre catégorie",
+       version: "1.0.0",
+     },
+
+     // Thème et couleurs
+     theme: {
+       colors: {
+         primary: '#007AFF',
+         secondary: '#000000',
+         accent: '#FF3B30',
+         text: '#000000',
+         background: '#FFFFFF'
+       }
+     },
+
+     // Liens vers les stores
+     store: {
+       ios: {
+         id: "votre-id-app-store",
+         url: "https://apps.apple.com/app/id{ios_app_id}",
+       },
+       android: {
+         id: "votre.package.id",
+         url: "https://play.google.com/store/apps/details?id={play_store_id}",
+       }
+     },
+
+     // Screenshots et assets
+     assets: {
+       icon: require("@/assets/images/icon.png"),
+       logo: require("@/assets/images/icon.png"),
+       screenshots: [
+         {
+           image: require("@/assets/images/screenshot.png"),
+           title: "Titre de la capture"
+         }
+       ]
+     },
+
+     // Fonctionnalités mises en avant
+     features: [
+       {
+         title: "Titre de la fonctionnalité",
+         description: "Description de la fonctionnalité",
+         icon: "paint-brush" // Nom de l'icône FontAwesome
+       }
+     ],
+
+     // Réseaux sociaux
+     socialLinks: [
+       {
+         platform: 'twitter',
+         url: 'https://twitter.com/votreapp',
+         icon: 'twitter',
+         label: 'Suivez-nous sur Twitter'
+       }
+     ]
+   };
+   ```
+
+3. Personnalisez les assets
+   - Placez votre favicon dans `./assets/images/favicon.png`
+   - Ajoutez vos images dans le dossier `./assets/images/`
+   - Ajoutez vos captures d'écran dans le même dossier
+   - Assurez-vous que tous les assets référencés dans `app.config.ts` existent
+
+4. Configuration du déploiement web
+   ```bash
+   # Construire la version web
+   npx expo export -p web
+   ```
+   
+   Les fichiers statiques seront générés dans le dossier `dist/`.
+
 ## Get started
 
 1. Install dependencies
 
    ```bash
    npm install
+   # or
+   yarn install
    ```
 
-2. Start the app
+2. Start the development server
 
    ```bash
-    npx expo start
+   npm start
+   # or
+   yarn start
    ```
 
-In the output, you'll find options to open the app in a
+3. Run on specific platforms
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   ```bash
+   # Web
+   npm run web
+   # or
+   yarn web
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+   # iOS
+   npm run ios
+   # or
+   yarn ios
 
-## Get a fresh project
+   # Android
+   npm run android
+   # or
+   yarn android
+   ```
 
-When you're ready, run:
+## Development
 
-```bash
-npm run reset-project
-```
+This project uses several technologies:
+- [Expo](https://expo.dev) - React Native framework
+- [NativeWind](https://www.nativewind.dev) - Tailwind CSS for React Native
+- [Expo Router](https://expo.github.io/router/docs) - File-based routing
+- TypeScript for type safety
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## License
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+This project is licensed under the MIT License.
+   
