@@ -36,6 +36,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "8ca124dd-2321-47cd-bc07-7f3c36796c0f"
+      }
+    },
+    "owner": "weshipit"
   }
 }
