@@ -1,4 +1,4 @@
-import { Image, Text, Linking, ScrollView, View } from 'react-native';
+import { Image, Text, Linking, ScrollView, View, useWindowDimensions } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FontAwesome } from '@expo/vector-icons';
 import { appInfo, features, screenshots, socials, pressKit } from '@/constants/landing';
@@ -8,6 +8,10 @@ import React from 'react';
 
 export default function HomeScreen() {
   const scrollViewRef = React.useRef<ScrollView>(null);
+  const { width } = useWindowDimensions();
+
+  const isMobile = width < 768;
+  const isTablet = width >= 768 && width < 1024;
 
   const handlePressKit = () => {
     if (pressKit.enabled) {
@@ -23,8 +27,8 @@ export default function HomeScreen() {
   return (
     <View style={{ flex: 1 }}>
       <ScrollView ref={scrollViewRef} className="flex-1 bg-white" showsVerticalScrollIndicator={false}>
-        <View className="w-full bg-white border-b border-gray-100 px-8 py-4 flex-row justify-between items-center">
-          <View className="flex-row items-center space-x-3">
+        <View className="w-full bg-white border-b border-gray-100 px-4 md:px-8 py-4 flex-col md:flex-row justify-between items-center">
+          <View className="flex-row items-center space-x-3 mb-4 md:mb-0">
             <View className="shadow-md rounded-lg">
               <Image
                 source={require('@/assets/images/icon.png')}
@@ -35,7 +39,7 @@ export default function HomeScreen() {
               {appInfo.name}
             </Text>
           </View>
-          <View className="flex-row space-x-8">
+          <View className="flex-row space-x-4 md:space-x-8">
             <TouchableOpacity onPress={() => scrollToSection('features')}>
               <Text style={{ color: theme.colors.secondary }} className="text-sm font-medium">Features</Text>
             </TouchableOpacity>
@@ -53,10 +57,10 @@ export default function HomeScreen() {
           </View>
         </View>
 
-        <View className="min-h-[500px] bg-white px-8 py-12">
-          <View className="flex-row items-center justify-between max-w-6xl mx-auto">
-            <View className="flex-1 items-center">
-              <View className="relative w-[320px] h-[640px]">
+        <View className="min-h-[500px] bg-white px-4 md:px-8 py-8 md:py-12">
+          <View className="flex-col md:flex-row items-center justify-between max-w-6xl mx-auto">
+            <View className={`${isMobile ? 'w-full' : 'flex-1'} items-center mb-8 md:mb-0`}>
+              <View className={`relative ${isMobile ? 'w-[280px] h-[560px]' : 'w-[320px] h-[640px]'}`}>
                 <View
                   className="absolute"
                   style={{
@@ -76,44 +80,47 @@ export default function HomeScreen() {
                 </View>
                 <Image
                   source={require('@/assets/images/landing/iPhone.png')}
-                  style={{ width: 320, height: 640, position: 'absolute' }}
+                  style={{ width: '100%', height: '100%', position: 'absolute' }}
                   resizeMode="contain"
                 />
               </View>
             </View>
 
-            <View className="flex-1 pl-12 space-y-8">
-              <View className="flex-row items-center space-x-6">
+            <View className={`${isMobile ? 'w-full' : 'flex-1'} ${!isMobile ? 'pl-8 lg:pl-12' : ''} space-y-6 md:space-y-8`}>
+              <View className="flex-row items-center space-x-4 md:space-x-6">
                 <View className="bg-gray-50 rounded-2xl shadow-md">
                   <Image
                     source={require('@/assets/images/icon.png')}
-                    style={{ width: 90, height: 90, borderRadius: 16 }}
+                    style={{
+                      width: isMobile ? 64 : 90,
+                      height: isMobile ? 64 : 90,
+                      borderRadius: 16
+                    }}
                   />
                 </View>
                 <View>
-                  <Text className="text-3xl font-bold mb-2" style={{ color: theme.colors.text }}>
+                  <Text className="text-2xl md:text-3xl font-bold mb-2" style={{ color: theme.colors.text }}>
                     {appInfo.name}
                   </Text>
-                  <Text className="text-xl text-gray-500">
+                  <Text className="text-lg md:text-xl text-gray-500">
                     {appInfo.price}
                   </Text>
                 </View>
               </View>
 
-              <Text className="text-lg leading-relaxed" style={{ color: theme.colors.text }}>
+              <Text className="text-base md:text-lg leading-relaxed" style={{ color: theme.colors.text }}>
                 {appInfo.description}
               </Text>
 
-              <View className="flex-row space-x-4">
+              <View className="flex-row flex-wrap gap-4">
                 {appInfo.store.ios.url && (
                   <TouchableOpacity
                     style={{ backgroundColor: 'transparent' }}
-                    className="w-[200px]"
+                    className="w-[160px] md:w-[200px]"
                     onPress={() => Linking.openURL(appInfo.store.ios.url)}>
                     <Image
                       source={require('@/assets/images/landing/app-store.png')}
-                      alt='App Store logo'
-                      style={{ width: 200, height: 60 }}
+                      style={{ width: '100%', height: isMobile ? 48 : 60 }}
                       resizeMode="contain"
                     />
                   </TouchableOpacity>
@@ -121,12 +128,11 @@ export default function HomeScreen() {
                 {appInfo.store.android.url && (
                   <TouchableOpacity
                     style={{ backgroundColor: 'transparent' }}
-                    className="w-[200px]"
+                    className="w-[160px] md:w-[200px]"
                     onPress={() => Linking.openURL(appInfo.store.android.url)}>
                     <Image
                       source={require('@/assets/images/landing/google-play.png')}
-                      alt='Google Play logo'
-                      style={{ width: 200, height: 60 }}
+                      style={{ width: '100%', height: isMobile ? 48 : 60 }}
                       resizeMode="contain"
                     />
                   </TouchableOpacity>
@@ -136,13 +142,21 @@ export default function HomeScreen() {
           </View>
         </View>
 
-        <View className="py-12 px-4 bg-gray-50">
-          <Text className="text-2xl font-bold mb-12 text-center" style={{ color: theme.colors.text }}>
+        <View className="py-8 md:py-12 px-4 bg-gray-50">
+          <Text className="text-xl md:text-2xl font-bold mb-8 md:mb-12 text-center" style={{ color: theme.colors.text }}>
             Features
           </Text>
-          <View className="flex-row flex-wrap justify-between gap-6 max-w-6xl mx-auto">
+          <View className="flex-row flex-wrap justify-center md:justify-between gap-4 md:gap-6 max-w-6xl mx-auto">
             {features.map((feature, index) => (
-              <View key={index} className="w-[calc(33.33%-16px)] p-6 rounded-xl bg-white shadow-sm">
+              <View
+                key={index}
+                className={`${isMobile
+                  ? 'w-full'
+                  : isTablet
+                    ? 'w-[calc(50%-12px)]'
+                    : 'w-[calc(33.33%-16px)]'
+                  } p-6 rounded-xl bg-white shadow-sm`}
+              >
                 <View
                   style={{ backgroundColor: theme.colors.primary + '20' }}
                   className="w-12 h-12 rounded-full items-center justify-center mb-4">
@@ -163,17 +177,24 @@ export default function HomeScreen() {
           </View>
         </View>
 
-        <View className="py-16 px-4 bg-white">
-          <Text className="text-2xl font-bold mb-12 text-center" style={{ color: theme.colors.text }}>
+        <View className="py-12 md:py-16 px-4 bg-white">
+          <Text className="text-xl md:text-2xl font-bold mb-8 md:mb-12 text-center" style={{ color: theme.colors.text }}>
             Screenshots
           </Text>
-          <View className="flex-row justify-center gap-8">
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            className="flex-row"
+            contentContainerStyle={{
+              paddingHorizontal: 16,
+              gap: isMobile ? 24 : 32,
+              justifyContent: 'center'
+            }}>
             {screenshots.assets.screenshots.map((screenshot, index) => (
-              <View key={index} className="relative w-[280px] h-[560px]">
+              <View key={index} className={`relative ${isMobile ? 'w-[240px] h-[480px]' : 'w-[280px] h-[560px]'}`}>
                 <Image
                   source={require('@/assets/images/landing/iPhone.png')}
-                  alt='iPhone frame'
-                  style={{ width: 280, height: 560, position: 'absolute' }}
+                  style={{ width: '100%', height: '100%', position: 'absolute' }}
                   resizeMode="contain"
                 />
                 <View
@@ -189,7 +210,6 @@ export default function HomeScreen() {
                   }}>
                   <Image
                     source={screenshot.image}
-                    alt={screenshot.title}
                     style={{ width: '100%', height: '100%' }}
                     resizeMode="cover"
                   />
@@ -199,20 +219,19 @@ export default function HomeScreen() {
                 </Text>
               </View>
             ))}
-          </View>
+          </ScrollView>
         </View>
 
-        <View className="py-12 px-4 bg-gray-50">
-          <View className="flex-row justify-center space-x-6">
+        <View className="py-8 md:py-12 px-4 bg-gray-50">
+          <View className="flex-row flex-wrap justify-center gap-4 md:gap-6">
             {appInfo.store.ios.url && (
               <TouchableOpacity
                 style={{ backgroundColor: 'transparent' }}
-                className="w-[180px]"
+                className="w-[160px] md:w-[180px]"
                 onPress={() => Linking.openURL(appInfo.store.ios.url)}>
                 <Image
                   source={require('@/assets/images/landing/app-store.png')}
-                  alt='App Store logo'
-                  style={{ width: 180, height: 54 }}
+                  style={{ width: '100%', height: isMobile ? 48 : 54 }}
                   resizeMode="contain"
                 />
               </TouchableOpacity>
@@ -220,11 +239,11 @@ export default function HomeScreen() {
             {appInfo.store.android.url && (
               <TouchableOpacity
                 style={{ backgroundColor: 'transparent' }}
-                className="w-[180px]"
+                className="w-[160px] md:w-[180px]"
                 onPress={() => Linking.openURL(appInfo.store.android.url)}>
                 <Image
                   source={require('@/assets/images/landing/google-play.png')}
-                  style={{ width: 180, height: 54 }}
+                  style={{ width: '100%', height: isMobile ? 48 : 54 }}
                   resizeMode="contain"
                 />
               </TouchableOpacity>
@@ -232,32 +251,35 @@ export default function HomeScreen() {
           </View>
         </View>
 
-        {socials.length > 0 && (
-          <View className="py-12 px-4 bg-white">
-            <View className="flex-row justify-center space-x-8">
-              {socials.map((social, index) => (
-                <TouchableOpacity
-                  key={index}
-                  onPress={() => Linking.openURL(social.url)}
-                  className="items-center">
-                  <FontAwesome
-                    name={social.icon}
-                    size={28}
-                    color="#000000"
-                  />
-                </TouchableOpacity>
-              ))}
+        {
+          socials.length > 0 && (
+            <View className="py-8 md:py-12 px-4 bg-white">
+              <View className="flex-row flex-wrap justify-center gap-6 md:gap-8">
+                {socials.map((social, index) => (
+                  <TouchableOpacity
+                    key={index}
+                    onPress={() => Linking.openURL(social.url)}
+                    className="items-center">
+                    <FontAwesome
+                      name={social.icon}
+                      size={isMobile ? 24 : 28}
+                      color="#000000"
+                    />
+                  </TouchableOpacity>
+                ))}
+              </View>
             </View>
-          </View>
-        )}
-      </ScrollView>
+          )
+        }
+        <View className="h-16 md:h-0" />
+      </ScrollView >
 
       <TouchableOpacity
         onPress={() => Linking.openURL('https://github.com/flexbox/expo-app-landing-page')}
         style={{
           position: 'fixed',
-          bottom: 24,
-          left: 24,
+          bottom: isMobile ? 16 : 24,
+          left: isMobile ? 16 : 24,
           backgroundColor: theme.colors.primary,
           paddingHorizontal: 16,
           paddingVertical: 8,
@@ -279,6 +301,6 @@ export default function HomeScreen() {
           Build your own landing page
         </Text>
       </TouchableOpacity>
-    </View>
+    </View >
   );
 } 
