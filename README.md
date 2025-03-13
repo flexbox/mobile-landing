@@ -6,7 +6,7 @@
 
 ```bash
 npm install # or yarn install
-npm install # or yarn install
+npm start # or yarn start
 ```
 
 ## Configure your app
