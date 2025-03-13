@@ -165,3 +165,31 @@ yarn web
 ## License
 
 This project is licensed under the MIT License.
+
+## Changelog
+
+The app includes a changelog page that can be enabled or disabled. To manage the changelog:
+
+1. Open `constants/landing.ts`
+2. Find the `changelog` configuration object
+3. Set `enabled: true` to show the changelog page, or `enabled: false` to hide it
+4. Add your versions and changes in the following format:
+
+```typescript
+{
+  version: "2.0.0",
+  date: "2024-03-15",
+  changes: [
+    {
+      type: "feature", // Can be: feature, improvement, fix
+      description: "Description of the change"
+    }
+  ]
+}
+```
+
+The changelog page will automatically show your changes with appropriate styling for each type of change:
+- 🟣 Feature: New features
+- 🔵 Improvement: Enhancements to existing features
+- 🔴 Fix: Bug fixes and corrections
+   

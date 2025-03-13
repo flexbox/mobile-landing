@@ -126,3 +126,51 @@ export const pressKit = {
   enabled: true,
   url: "https://yourapp.com/press"
 };
+
+export const changelog = {
+  enabled: true,
+  versions: [
+    {
+      version: "2.0.0",
+      date: "2024-03-15",
+      changes: [
+        {
+          type: "feature",
+          description: "Added dark mode support across the entire app"
+        },
+        {
+          type: "improvement",
+          description: "Enhanced performance for image loading"
+        }
+      ]
+    },
+    {
+      version: "1.9.0",
+      date: "2024-02-28",
+      changes: [
+        {
+          type: "feature",
+          description: "New dashboard layout with customizable widgets"
+        },
+        {
+          type: "fix",
+          description: "Fixed notification sync issues on iOS devices"
+        }
+      ]
+    },
+    {
+      version: "1.8.5",
+      date: "2024-02-10",
+      changes: [
+        {
+          type: "improvement",
+          description: "Optimized app startup time by 40%"
+        },
+        {
+          type: "fix",
+          description: "Resolved authentication token refresh bug"
+        }
+      ]
+    }
+  ]
+};
