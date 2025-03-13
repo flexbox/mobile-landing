@@ -13,6 +13,9 @@ const PACKAGE_NAME = "com.company.appname";
 const ICON = "./assets/images/icon.png";
 const ADAPTIVE_ICON = "./assets/images/adaptive-icon.png";
 const FAVICON = "./assets/images/favicon.png";
+const APP_STORE_APP_ID = "1523467890";
+const APP_STORE_URL = `https://apps.apple.com/app/${APP_NAME}/id${APP_STORE_APP_ID}`;
+const GOOGLE_PLAYSTORE_URL = `https://play.google.com/store/apps/details?id=${PACKAGE_NAME}`;
 
 const config: ExpoConfig = {
   name: APP_NAME,
@@ -26,6 +29,7 @@ const config: ExpoConfig = {
   ios: {
     supportsTablet: true,
     bundleIdentifier: BUNDLE_IDENTIFIER,
+    appStoreUrl: APP_STORE_URL,
   },
   android: {
     adaptiveIcon: {
@@ -33,6 +37,7 @@ const config: ExpoConfig = {
       backgroundColor: "#ffffff"
     },
     package: PACKAGE_NAME,
+    playStoreUrl: GOOGLE_PLAYSTORE_URL,
   },
   web: {
     bundler: "metro",
@@ -60,7 +65,8 @@ const config: ExpoConfig = {
     },
     eas: {
       projectId: EAS_PROJECT_ID,
-    }
+      ascAppId: APP_STORE_APP_ID, // this is normally defined in eas.json
+    },
   },
   owner: OWNER,
 };

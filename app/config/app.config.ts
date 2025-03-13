@@ -40,6 +40,8 @@ interface Feature {
   title: string;
   description: string;
   icon: FontAwesomeIconName;
+  // @todo replace with FontAwesomeIcon
+  // icon: keyof typeof Ionicons.glyphMap
 }
 
 interface SocialLink {
@@ -50,7 +52,8 @@ interface SocialLink {
 }
 
 export const appConfig = {
-  // Theme
+
+  // @deprecated use theme.ts
   theme: {
     colors: {
       primary: '#1DB954',      // Vibrant green
@@ -65,6 +68,7 @@ export const appConfig = {
   },
 
   // App Info
+  // @deprecated use landing.ts
   app: {
     name: "Melodify",
     tagline: "Votre musique. Votre moment. Votre monde.",
@@ -75,6 +79,7 @@ export const appConfig = {
   },
 
   // Store Info
+  // @deprecated use app.config.ts
   store: {
     ios: {
       id: "1523467890",
@@ -87,6 +92,7 @@ export const appConfig = {
   },
 
   // Assets
+  // @deprecated use landing.ts
   assets: {
     icon: require("@/assets/images/icon.png"),
     logo: require("@/assets/images/icon.png"),
@@ -111,6 +117,7 @@ export const appConfig = {
   } as AppAssets,
 
   // Features
+  // @deprecated use landing.ts
   features: [
     {
       title: "Bibliothèque Illimitée",
