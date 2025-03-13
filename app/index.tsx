@@ -187,8 +187,9 @@ export default function HomeScreen() {
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
-            className="flex-row"
+            className="flex-row w-full"
             contentContainerStyle={{
+              flexGrow: 1,
               paddingHorizontal: 16,
               gap: isMobile ? 24 : 32,
               justifyContent: 'center'
