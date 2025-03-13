@@ -132,7 +132,7 @@ export default function HomeScreen() {
 
       <View className="py-12 px-4 bg-gray-50">
         <Text className="text-2xl font-bold mb-12 text-center" style={{ color: appConfig.theme.colors.text }}>
-          Our features
+          Features
         </Text>
         <View className="flex-row flex-wrap justify-between gap-6 max-w-6xl mx-auto">
           {appConfig.features.map((feature, index) => (
