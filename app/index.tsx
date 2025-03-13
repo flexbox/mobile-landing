@@ -1,7 +1,7 @@
 import { Image, Text, Linking, ScrollView, View, useWindowDimensions } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FontAwesome } from '@expo/vector-icons';
-import { appInfo, features, screenshots, socials, pressKit } from '@/constants/landing';
+import { appInfo, features, screenshots, socials, pressKit, changelog } from '@/constants/landing';
 import { theme } from '@/constants/theme';
 import { router } from 'expo-router';
 import React from 'react';
@@ -49,6 +49,11 @@ export default function HomeScreen() {
             <TouchableOpacity onPress={() => router.push('/privacy')}>
               <Text style={{ color: theme.colors.secondary }} className="text-sm font-medium">Privacy</Text>
             </TouchableOpacity>
+            {changelog.enabled && (
+              <TouchableOpacity onPress={() => router.push('/changelog')}>
+                <Text style={{ color: theme.colors.secondary }} className="text-sm font-medium">Changelog</Text>
+              </TouchableOpacity>
+            )}
             {pressKit.enabled && (
               <TouchableOpacity onPress={handlePressKit}>
                 <Text style={{ color: theme.colors.secondary }} className="text-sm font-medium">Press Kit</Text>
