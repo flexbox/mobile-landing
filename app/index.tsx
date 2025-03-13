@@ -120,9 +120,8 @@ export default function HomeScreen() {
               <View className="flex-row flex-wrap gap-4">
                 {appInfo.store.ios.url && (
                   <TouchableOpacity
-                    style={{ backgroundColor: 'transparent' }}
-                    className="w-[160px] md:w-[200px]"
-                    onPress={() => Linking.openURL(appInfo.store.ios.url)}>
+                    onPress={() => Linking.openURL(appInfo.store.ios.url)}
+                    style={{ width: 160 }}>
                     <Image
                       source={require('@/assets/images/landing/app-store.png')}
                       style={{ width: '100%', height: isMobile ? 48 : 60 }}
@@ -132,9 +131,8 @@ export default function HomeScreen() {
                 )}
                 {appInfo.store.android.url && (
                   <TouchableOpacity
-                    style={{ backgroundColor: 'transparent' }}
-                    className="w-[160px] md:w-[200px]"
-                    onPress={() => Linking.openURL(appInfo.store.android.url)}>
+                    onPress={() => Linking.openURL(appInfo.store.android.url)}
+                    style={{ width: 160 }}>
                     <Image
                       source={require('@/assets/images/landing/google-play.png')}
                       style={{ width: '100%', height: isMobile ? 48 : 60 }}
@@ -231,9 +229,8 @@ export default function HomeScreen() {
           <View className="flex-row flex-wrap justify-center gap-4 md:gap-6">
             {appInfo.store.ios.url && (
               <TouchableOpacity
-                style={{ backgroundColor: 'transparent' }}
-                className="w-[160px] md:w-[180px]"
-                onPress={() => Linking.openURL(appInfo.store.ios.url)}>
+                onPress={() => Linking.openURL(appInfo.store.ios.url)}
+                style={{ width: 160 }}>
                 <Image
                   source={require('@/assets/images/landing/app-store.png')}
                   style={{ width: '100%', height: isMobile ? 48 : 54 }}
@@ -243,9 +240,8 @@ export default function HomeScreen() {
             )}
             {appInfo.store.android.url && (
               <TouchableOpacity
-                style={{ backgroundColor: 'transparent' }}
-                className="w-[160px] md:w-[180px]"
-                onPress={() => Linking.openURL(appInfo.store.android.url)}>
+                onPress={() => Linking.openURL(appInfo.store.android.url)}
+                style={{ width: 160 }}>
                 <Image
                   source={require('@/assets/images/landing/google-play.png')}
                   style={{ width: '100%', height: isMobile ? 48 : 54 }}
