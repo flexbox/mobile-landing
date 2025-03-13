@@ -8,11 +8,14 @@ const OWNER = "weshipit";
 
 // App production config
 const APP_NAME = "expo-app-landing-page";
-const BUNDLE_IDENTIFIER = "com.company.appname";
-const PACKAGE_NAME = "com.company.appname";
+const BUNDLE_IDENTIFIER = "today.weshipit.landing"; // use reverse domain name example: com.company.appname
+const PACKAGE_NAME = "today.weshipit.landing"; // use reverse domain name example: com.company.appname
 const ICON = "./assets/images/icon.png";
 const ADAPTIVE_ICON = "./assets/images/adaptive-icon.png";
 const FAVICON = "./assets/images/favicon.png";
+
+// Replace these with your app store URLs
+// You can find them at https://appstoreconnect.apple.com/apps/[app-id]/distribution/info
 const APP_STORE_APP_ID = "1523467890";
 const APP_STORE_URL = `https://apps.apple.com/app/${APP_NAME}/id${APP_STORE_APP_ID}`;
 const GOOGLE_PLAYSTORE_URL = `https://play.google.com/store/apps/details?id=${PACKAGE_NAME}`;
