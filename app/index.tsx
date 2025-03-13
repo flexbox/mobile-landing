@@ -104,7 +104,7 @@ export default function HomeScreen() {
             </Text>
 
             <View className="flex-row space-x-4">
-              {appInfo.store.ios.id && (
+              {appInfo.store.ios.url && (
                 <TouchableOpacity
                   style={{ backgroundColor: 'transparent' }}
                   className="w-[200px]"
@@ -117,7 +117,7 @@ export default function HomeScreen() {
                   />
                 </TouchableOpacity>
               )}
-              {appInfo.store.android.id && (
+              {appInfo.store.android.url && (
                 <TouchableOpacity
                   style={{ backgroundColor: 'transparent' }}
                   className="w-[200px]"
@@ -203,7 +203,7 @@ export default function HomeScreen() {
 
       <View className="py-12 px-4 bg-gray-50">
         <View className="flex-row justify-center space-x-6">
-          {appInfo.store.ios.id && (
+          {appInfo.store.ios.url && (
             <TouchableOpacity
               style={{ backgroundColor: 'transparent' }}
               className="w-[180px]"

@@ -1,3 +1,4 @@
+import { APP_NAME, APP_STORE_URL, GOOGLE_PLAYSTORE_URL } from '@/app.config';
 import { FontAwesome } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 
@@ -16,7 +17,7 @@ interface SocialLink {
 
 // App Info
 export const appInfo = {
-  name: Constants.expoConfig?.name,
+  name: APP_NAME,
   tagline: "The ultimate way to quicly create a delightfull landing page for your expo app.",
   description: "This is a powerful and flexible landing page template for your app. It's easy to customize and it looks great on any device, big or small.",
   price: "one time purchase",
@@ -24,12 +25,10 @@ export const appInfo = {
   version: Constants.expoConfig?.version,
   store: {
     ios: {
-      id: Constants.expoConfig?.ios?.bundleIdentifier,
-      url: Constants.expoConfig?.ios?.appStoreUrl,
+      url: APP_STORE_URL,
     },
     android: {
-      id: Constants.expoConfig?.android?.package,
-      url: Constants.expoConfig?.android?.playStoreUrl,
+      url: GOOGLE_PLAYSTORE_URL,
     }
   }
 };
