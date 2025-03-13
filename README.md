@@ -5,6 +5,7 @@ This is a customizable landing page for your Expo application, built with Expo a
 ## Quick Start
 
 1. Install dependencies
+
 ```bash
 npm install
 # or
@@ -14,6 +15,7 @@ yarn install
 2. Configure your app by updating the following files:
 
 ### App Configuration (`app.config.ts`)
+
 All app configuration is centralized in `app.config.ts`. Update the `APP_CONFIG` object with your app's information:
 
 ```typescript
@@ -44,6 +46,7 @@ export const APP_CONFIG = {
 ```
 
 ### Theme Configuration (`constants/theme.ts`)
+
 ```typescript
 export const theme = {
   colors: {
@@ -143,6 +146,7 @@ jobs:
 ## Development
 
 Start the development server:
+
 ```bash
 npm start
 # or
@@ -150,6 +154,7 @@ yarn start
 ```
 
 Run on specific platforms:
+
 ```bash
 # Web
 npm run web
@@ -160,4 +165,3 @@ yarn web
 ## License
 
 This project is licensed under the MIT License.
-   
