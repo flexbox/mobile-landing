@@ -1,7 +1,8 @@
 import { Image, Text, Linking, ScrollView, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FontAwesome } from '@expo/vector-icons';
-import { appConfig } from './config/app.config';
+import { appInfo, features, screenshots, socials, pressKit } from '@/constants/landing';
+import { theme } from '@/constants/theme';
 import { router } from 'expo-router';
 import React from 'react';
 
@@ -9,8 +10,8 @@ export default function HomeScreen() {
   const scrollViewRef = React.useRef<ScrollView>(null);
 
   const handlePressKit = () => {
-    if (appConfig.pressKit.enabled) {
-      Linking.openURL(appConfig.pressKit.url);
+    if (pressKit.enabled) {
+      Linking.openURL(pressKit.url);
     }
   };
 
@@ -29,23 +30,23 @@ export default function HomeScreen() {
               style={{ width: 32, height: 32, borderRadius: 8 }}
             />
           </View>
-          <Text className="text-lg font-bold" style={{ color: appConfig.theme.colors.text }}>
-            {appConfig.app.name}
+          <Text className="text-lg font-bold" style={{ color: theme.colors.text }}>
+            {appInfo.name}
           </Text>
         </View>
         <View className="flex-row space-x-8">
           <TouchableOpacity onPress={() => scrollToSection('features')}>
-            <Text style={{ color: appConfig.theme.colors.secondary }} className="text-sm font-medium">Features</Text>
+            <Text style={{ color: theme.colors.secondary }} className="text-sm font-medium">Features</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => scrollToSection('screenshots')}>
-            <Text style={{ color: appConfig.theme.colors.secondary }} className="text-sm font-medium">Screenshots</Text>
+            <Text style={{ color: theme.colors.secondary }} className="text-sm font-medium">Screenshots</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => router.push('/privacy')}>
-            <Text style={{ color: appConfig.theme.colors.secondary }} className="text-sm font-medium">Privacy</Text>
+            <Text style={{ color: theme.colors.secondary }} className="text-sm font-medium">Privacy</Text>
           </TouchableOpacity>
-          {appConfig.pressKit.enabled && (
+          {pressKit.enabled && (
             <TouchableOpacity onPress={handlePressKit}>
-              <Text style={{ color: appConfig.theme.colors.secondary }} className="text-sm font-medium">Press Kit</Text>
+              <Text style={{ color: theme.colors.secondary }} className="text-sm font-medium">Press Kit</Text>
             </TouchableOpacity>
           )}
         </View>
@@ -89,25 +90,25 @@ export default function HomeScreen() {
                 />
               </View>
               <View>
-                <Text className="text-3xl font-bold mb-2" style={{ color: appConfig.theme.colors.text }}>
-                  {appConfig.app.name}
+                <Text className="text-3xl font-bold mb-2" style={{ color: theme.colors.text }}>
+                  {appInfo.name}
                 </Text>
                 <Text className="text-xl text-gray-500">
-                  {appConfig.app.price}
+                  {appInfo.price}
                 </Text>
               </View>
             </View>
 
-            <Text className="text-lg leading-relaxed" style={{ color: appConfig.theme.colors.text }}>
-              {appConfig.app.description}
+            <Text className="text-lg leading-relaxed" style={{ color: theme.colors.text }}>
+              {appInfo.description}
             </Text>
 
             <View className="flex-row space-x-4">
-              {appConfig.store.ios.id && (
+              {appInfo.store.ios.id && (
                 <TouchableOpacity
                   style={{ backgroundColor: 'transparent' }}
                   className="w-[200px]"
-                  onPress={() => Linking.openURL(appConfig.store.ios.url.replace('{ios_app_id}', appConfig.store.ios.id))}>
+                  onPress={() => Linking.openURL(appInfo.store.ios.url)}>
                   <Image
                     source={require('@/assets/images/landing/app-store.png')}
                     alt='App Store logo'
@@ -116,11 +117,11 @@ export default function HomeScreen() {
                   />
                 </TouchableOpacity>
               )}
-              {appConfig.store.android.id && (
+              {appInfo.store.android.id && (
                 <TouchableOpacity
                   style={{ backgroundColor: 'transparent' }}
                   className="w-[200px]"
-                  onPress={() => Linking.openURL(appConfig.store.android.url.replace('{play_store_id}', appConfig.store.android.id))}>
+                  onPress={() => Linking.openURL(appInfo.store.android.url)}>
                   <Image
                     source={require('@/assets/images/landing/google-play.png')}
                     alt='Google Play logo'
@@ -135,22 +136,22 @@ export default function HomeScreen() {
       </View>
 
       <View className="py-12 px-4 bg-gray-50">
-        <Text className="text-2xl font-bold mb-12 text-center" style={{ color: appConfig.theme.colors.text }}>
+        <Text className="text-2xl font-bold mb-12 text-center" style={{ color: theme.colors.text }}>
           Features
         </Text>
         <View className="flex-row flex-wrap justify-between gap-6 max-w-6xl mx-auto">
-          {appConfig.features.map((feature, index) => (
+          {features.map((feature, index) => (
             <View key={index} className="w-[calc(33.33%-16px)] p-6 rounded-xl bg-white shadow-sm">
               <View
-                style={{ backgroundColor: appConfig.theme.colors.primary + '20' }}
+                style={{ backgroundColor: theme.colors.primary + '20' }}
                 className="w-12 h-12 rounded-full items-center justify-center mb-4">
                 <FontAwesome
                   name={feature.icon}
                   size={24}
-                  color={appConfig.theme.colors.primary}
+                  color={theme.colors.primary}
                 />
               </View>
-              <Text className="text-lg font-semibold mb-2" style={{ color: appConfig.theme.colors.text }}>
+              <Text className="text-lg font-semibold mb-2" style={{ color: theme.colors.text }}>
                 {feature.title}
               </Text>
               <Text className="text-sm text-gray-600">
@@ -162,11 +163,11 @@ export default function HomeScreen() {
       </View>
 
       <View className="py-16 px-4 bg-white">
-        <Text className="text-2xl font-bold mb-12 text-center" style={{ color: appConfig.theme.colors.text }}>
+        <Text className="text-2xl font-bold mb-12 text-center" style={{ color: theme.colors.text }}>
           Screenshots
         </Text>
         <View className="flex-row justify-center gap-8">
-          {appConfig.assets.screenshots.map((screenshot, index) => (
+          {screenshots.assets.screenshots.map((screenshot, index) => (
             <View key={index} className="relative w-[280px] h-[560px]">
               <Image
                 source={require('@/assets/images/landing/iPhone.png')}
@@ -187,8 +188,7 @@ export default function HomeScreen() {
                 }}>
                 <Image
                   source={screenshot.image}
-                  // @todo: add alt text
-                  alt='dynamic screenshot app name'
+                  alt={screenshot.title}
                   style={{ width: '100%', height: '100%' }}
                   resizeMode="cover"
                 />
@@ -203,11 +203,11 @@ export default function HomeScreen() {
 
       <View className="py-12 px-4 bg-gray-50">
         <View className="flex-row justify-center space-x-6">
-          {appConfig.store.ios.id && (
+          {appInfo.store.ios.id && (
             <TouchableOpacity
               style={{ backgroundColor: 'transparent' }}
               className="w-[180px]"
-              onPress={() => Linking.openURL(appConfig.store.ios.url.replace('{ios_app_id}', appConfig.store.ios.id))}>
+              onPress={() => Linking.openURL(appInfo.store.ios.url)}>
               <Image
                 source={require('@/assets/images/landing/app-store.png')}
                 alt='App Store logo'
@@ -216,11 +216,11 @@ export default function HomeScreen() {
               />
             </TouchableOpacity>
           )}
-          {appConfig.store.android.id && (
+          {appInfo.store.android.id && (
             <TouchableOpacity
               style={{ backgroundColor: 'transparent' }}
               className="w-[180px]"
-              onPress={() => Linking.openURL(appConfig.store.android.url.replace('{play_store_id}', appConfig.store.android.id))}>
+              onPress={() => Linking.openURL(appInfo.store.android.url)}>
               <Image
                 source={require('@/assets/images/landing/google-play.png')}
                 style={{ width: 180, height: 54 }}
@@ -231,10 +231,10 @@ export default function HomeScreen() {
         </View>
       </View>
 
-      {appConfig.socialLinks.length > 0 && (
+      {socials.length > 0 && (
         <View className="py-12 px-4 bg-white">
           <View className="flex-row justify-center space-x-8">
-            {appConfig.socialLinks.map((social, index) => (
+            {socials.map((social, index) => (
               <TouchableOpacity
                 key={index}
                 onPress={() => Linking.openURL(social.url)}

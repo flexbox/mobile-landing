@@ -8,13 +8,13 @@ interface ThemeColors {
 
 export const theme = {
   colors: {
-    primary: '#1DB954',      // Vibrant green
-    secondary: '#191414',    // Dark grey
-    accent: '#B3B3B3',       // Light grey
-    text: '#000000',         // Black text
-    background: '#FFFFFF'     // White background
+    primary: '#0070F3',    // Modern blue - your brand color
+    secondary: '#171717',   // Near black - for contrast
+    accent: '#FF4081',     // Pink accent - for CTAs
+    text: '#2D3748',       // Dark gray - for better readability
+    background: '#FFFFFF'   // White - clean background
   } as ThemeColors,
   fonts: {
-    primary: 'SpaceMono',
+    primary: 'Inter',      // Modern, clean font
   }
 }
