@@ -17,10 +17,10 @@ interface SocialLink {
 // App Info
 export const appInfo = {
   name: Constants.expoConfig?.name,
-  tagline: "APP_CONFIG.tagline",
-  description: "APP_CONFIG.description",
-  price: "APP_CONFIG.price",
-  category: "APP_CONFIG.category",
+  tagline: "The ultimate way to quicly create a delightfull landing page for your expo app.",
+  description: "This is a powerful and flexible landing page template for your app. It's easy to customize and it looks great on any device, big or small.",
+  price: "one time purchase",
+  category: "Productivity",
   version: Constants.expoConfig?.version,
   store: {
     ios: {
