@@ -2,6 +2,7 @@ import { Image, Text, Linking, ScrollView, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FontAwesome } from '@expo/vector-icons';
 import { appConfig } from './config/app.config';
+import { router } from 'expo-router';
 import React from 'react';
 
 export default function HomeScreen() {
@@ -38,6 +39,9 @@ export default function HomeScreen() {
           </TouchableOpacity>
           <TouchableOpacity onPress={() => scrollToSection('screenshots')}>
             <Text style={{ color: appConfig.theme.colors.secondary }} className="text-sm font-medium">Screenshots</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => router.push('/privacy')}>
+            <Text style={{ color: appConfig.theme.colors.secondary }} className="text-sm font-medium">Privacy</Text>
           </TouchableOpacity>
           {appConfig.pressKit.enabled && (
             <TouchableOpacity onPress={handlePressKit}>
