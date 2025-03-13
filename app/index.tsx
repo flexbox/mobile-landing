@@ -252,7 +252,6 @@ export default function HomeScreen() {
             )}
           </View>
         </View>
-
         {
           socials.length > 0 && (
             <View className="py-8 md:py-12 px-4 bg-white">
@@ -274,8 +273,7 @@ export default function HomeScreen() {
           )
         }
         <View className="h-16 md:h-0" />
-      </ScrollView >
-
+      </ScrollView>
       <TouchableOpacity
         onPress={() => Linking.openURL('https://github.com/flexbox/expo-app-landing-page')}
         style={{
