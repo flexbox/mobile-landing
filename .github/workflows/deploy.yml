@@ -32,6 +32,7 @@ jobs:
       - name: 🚀 Export web
         run: npx expo export --platform web
         
+      # I don't think this will work needs more investigation
       - name: 🚀 Deploy to Expo
         run: eas deploy
         env:

@@ -2,7 +2,6 @@ import { APP_NAME, APP_STORE_URL, GOOGLE_PLAYSTORE_URL } from '@/app.config';
 import { FontAwesome } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 
-
 interface Feature {
   title: string;
   description: string;
