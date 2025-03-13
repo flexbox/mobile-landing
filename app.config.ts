@@ -10,17 +10,17 @@ const OWNER = "weshipit";
 const APP_NAME = "expo-app-landing-page";
 const BUNDLE_IDENTIFIER = "com.company.appname";
 const PACKAGE_NAME = "com.company.appname";
-const ICON = "./assets/images/icons/iOS-Prod.png";
-const ADAPTIVE_ICON = "./assets/images/icons/Android-Prod.png";
-const SCHEME = "app-scheme";
+const ICON = "./assets/images/icon.png";
+const ADAPTIVE_ICON = "./assets/images/adaptive-icon.png";
+const FAVICON = "./assets/images/favicon.png";
 
 const config: ExpoConfig = {
   name: APP_NAME,
   slug: PROJECT_SLUG,
   version: "1.0.0",
   orientation: "portrait",
-  icon: "./assets/images/icon.png",
-  scheme: "myapp",
+  icon: ICON,
+  scheme: PROJECT_SLUG,
   userInterfaceStyle: "automatic",
   newArchEnabled: true,
   ios: {
@@ -29,7 +29,7 @@ const config: ExpoConfig = {
   },
   android: {
     adaptiveIcon: {
-      foregroundImage: "./assets/images/adaptive-icon.png",
+      foregroundImage: ADAPTIVE_ICON,
       backgroundColor: "#ffffff"
     },
     package: PACKAGE_NAME,
@@ -37,7 +37,7 @@ const config: ExpoConfig = {
   web: {
     bundler: "metro",
     output: "static",
-    favicon: "./assets/images/favicon.png"
+    favicon: FAVICON
   },
   plugins: [
     "expo-router",
