@@ -1,10 +1,8 @@
-import { Image, Platform, Text, Dimensions, Linking, ScrollView, View } from 'react-native';
+import { Image, Text, Linking, ScrollView, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FontAwesome } from '@expo/vector-icons';
 import { appConfig } from './config/app.config';
 import React from 'react';
-
-const { width } = Dimensions.get('window');
 
 export default function HomeScreen() {
   const scrollViewRef = React.useRef<ScrollView>(null);
@@ -24,7 +22,7 @@ export default function HomeScreen() {
     <ScrollView ref={scrollViewRef} className="flex-1 bg-white" showsVerticalScrollIndicator={false}>
       <View className="w-full bg-white border-b border-gray-100 px-8 py-4 flex-row justify-between items-center">
         <View className="flex-row items-center space-x-3">
-          <View className="shadow-lg rounded-lg">
+          <View className="shadow-md rounded-lg">
             <Image
               source={require('@/assets/images/icon.png')}
               style={{ width: 32, height: 32, borderRadius: 8 }}
@@ -53,11 +51,6 @@ export default function HomeScreen() {
         <View className="flex-row items-center justify-between max-w-6xl mx-auto">
           <View className="flex-1 items-center">
             <View className="relative w-[320px] h-[640px]">
-              <Image
-                source={require('@/assets/images/iPhone.png')}
-                style={{ width: 320, height: 640, position: 'absolute' }}
-                resizeMode="contain"
-              />
               <View
                 className="absolute"
                 style={{
@@ -67,7 +60,7 @@ export default function HomeScreen() {
                   bottom: '1.8%',
                   borderRadius: 38,
                   overflow: 'hidden',
-                  backgroundColor: '#000'
+                  backgroundColor: '#000',
                 }}>
                 <Image
                   source={require('@/assets/images/screenshot.png')}
@@ -75,12 +68,17 @@ export default function HomeScreen() {
                   resizeMode="cover"
                 />
               </View>
+              <Image
+                source={require('@/assets/images/landing/iPhone.png')}
+                style={{ width: 320, height: 640, position: 'absolute' }}
+                resizeMode="contain"
+              />
             </View>
           </View>
 
           <View className="flex-1 pl-12 space-y-8">
             <View className="flex-row items-center space-x-6">
-              <View className="bg-gray-50 rounded-2xl shadow-lg">
+              <View className="bg-gray-50 rounded-2xl shadow-md">
                 <Image
                   source={require('@/assets/images/icon.png')}
                   style={{ width: 90, height: 90, borderRadius: 16 }}
@@ -107,7 +105,8 @@ export default function HomeScreen() {
                   className="w-[200px]"
                   onPress={() => Linking.openURL(appConfig.store.ios.url.replace('{ios_app_id}', appConfig.store.ios.id))}>
                   <Image
-                    source={require('@/assets/images/appStore.png')}
+                    source={require('@/assets/images/landing/app-store.png')}
+                    alt='App Store logo'
                     style={{ width: 200, height: 60 }}
                     resizeMode="contain"
                   />
@@ -119,7 +118,8 @@ export default function HomeScreen() {
                   className="w-[200px]"
                   onPress={() => Linking.openURL(appConfig.store.android.url.replace('{play_store_id}', appConfig.store.android.id))}>
                   <Image
-                    source={require('@/assets/images/playStore.png')}
+                    source={require('@/assets/images/landing/google-play.png')}
+                    alt='Google Play logo'
                     style={{ width: 200, height: 60 }}
                     resizeMode="contain"
                   />
@@ -132,11 +132,11 @@ export default function HomeScreen() {
 
       <View className="py-12 px-4 bg-gray-50">
         <Text className="text-2xl font-bold mb-12 text-center" style={{ color: appConfig.theme.colors.text }}>
-          Fonctionnalités
+          Features
         </Text>
         <View className="flex-row flex-wrap justify-between gap-6 max-w-6xl mx-auto">
           {appConfig.features.map((feature, index) => (
-            <View key={index} className="w-[calc(33.33%-16px)] p-6 rounded-xl bg-white shadow-md">
+            <View key={index} className="w-[calc(33.33%-16px)] p-6 rounded-xl bg-white shadow-sm">
               <View
                 style={{ backgroundColor: appConfig.theme.colors.primary + '20' }}
                 className="w-12 h-12 rounded-full items-center justify-center mb-4">
@@ -165,7 +165,8 @@ export default function HomeScreen() {
           {appConfig.assets.screenshots.map((screenshot, index) => (
             <View key={index} className="relative w-[280px] h-[560px]">
               <Image
-                source={require('@/assets/images/iPhone.png')}
+                source={require('@/assets/images/landing/iPhone.png')}
+                alt='iPhone frame'
                 style={{ width: 280, height: 560, position: 'absolute' }}
                 resizeMode="contain"
               />
@@ -182,6 +183,8 @@ export default function HomeScreen() {
                 }}>
                 <Image
                   source={screenshot.image}
+                  // @todo: add alt text
+                  alt='dynamic screenshot app name'
                   style={{ width: '100%', height: '100%' }}
                   resizeMode="cover"
                 />
@@ -202,7 +205,8 @@ export default function HomeScreen() {
               className="w-[180px]"
               onPress={() => Linking.openURL(appConfig.store.ios.url.replace('{ios_app_id}', appConfig.store.ios.id))}>
               <Image
-                source={require('@/assets/images/appStore.png')}
+                source={require('@/assets/images/landing/app-store.png')}
+                alt='App Store logo'
                 style={{ width: 180, height: 54 }}
                 resizeMode="contain"
               />
@@ -214,7 +218,7 @@ export default function HomeScreen() {
               className="w-[180px]"
               onPress={() => Linking.openURL(appConfig.store.android.url.replace('{play_store_id}', appConfig.store.android.id))}>
               <Image
-                source={require('@/assets/images/playStore.png')}
+                source={require('@/assets/images/landing/google-play.png')}
                 style={{ width: 180, height: 54 }}
                 resizeMode="contain"
               />
