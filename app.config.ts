@@ -1,61 +1,46 @@
 import { ExpoConfig } from 'expo/config';
 
-// App configuration that can be shared across the application
-export const APP_CONFIG = {
-  name: "Your App Name",
-  version: "1.0.0",
-  description: "A powerful mobile application that transforms the way you interact with your digital world. Experience seamless integration, stunning design, and unparalleled performance.",
-  tagline: "Your Vision. Your App. Your Success.",
-  price: "Free - Premium Available",
-  category: "Productivity",
-  bundleId: "com.yourcompany.appname",
-  packageName: "com.yourcompany.appname",
-  store: {
-    ios: {
-      id: "your-app-store-id",
-      get url() {
-        return `https://apps.apple.com/app/${APP_CONFIG.name}/id${this.id}`;
-      },
-    },
-    android: {
-      get url() {
-        return `https://play.google.com/store/apps/details?id=${APP_CONFIG.packageName}`;
-      },
-    },
-  },
-  expo: {
-    projectId: "your-eas-project-id",
-    projectSlug: "your-project-slug",
-    owner: "your-expo-username",
-  }
-} as const;
+// Replace these with your EAS project ID and project slug.
+// You can find them at https://expo.dev/accounts/[account]/projects/[project].
+const EAS_PROJECT_ID = "8ca124dd-2321-47cd-bc07-7f3c36796c0f";
+const PROJECT_SLUG = "expo-app-landing-page";
+const OWNER = "weshipit";
 
-// Asset paths
+// App production config
+export const APP_NAME = "expo-app-landing-page";
+const BUNDLE_IDENTIFIER = "today.weshipit.landing"; // use reverse domain name example: com.company.appname
+const PACKAGE_NAME = "today.weshipit.landing"; // use reverse domain name example: com.company.appname
 const ICON = "./assets/images/icon.png";
 const ADAPTIVE_ICON = "./assets/images/adaptive-icon.png";
 const FAVICON = "./assets/images/favicon.png";
 
+// Replace these with your app store URLs
+// You can find them at https://appstoreconnect.apple.com/apps/[app-id]/distribution/info
+const APP_STORE_APP_ID = "1523467890";
+export const APP_STORE_URL = `https://apps.apple.com/app/${APP_NAME}/id${APP_STORE_APP_ID}`;
+export const GOOGLE_PLAYSTORE_URL = `https://play.google.com/store/apps/details?id=${PACKAGE_NAME}`;
+
 const config: ExpoConfig = {
-  name: APP_CONFIG.name,
-  slug: APP_CONFIG.expo.projectSlug,
-  version: APP_CONFIG.version,
+  name: APP_NAME,
+  slug: PROJECT_SLUG,
+  version: "1.0.0",
   orientation: "portrait",
   icon: ICON,
-  scheme: APP_CONFIG.expo.projectSlug,
+  scheme: PROJECT_SLUG,
   userInterfaceStyle: "automatic",
   newArchEnabled: true,
   ios: {
     supportsTablet: true,
-    bundleIdentifier: APP_CONFIG.bundleId,
-    appStoreUrl: APP_CONFIG.store.ios.url,
+    bundleIdentifier: BUNDLE_IDENTIFIER,
+    appStoreUrl: APP_STORE_URL,
   },
   android: {
     adaptiveIcon: {
       foregroundImage: ADAPTIVE_ICON,
       backgroundColor: "#ffffff"
     },
-    package: APP_CONFIG.packageName,
-    playStoreUrl: APP_CONFIG.store.android.url,
+    package: PACKAGE_NAME,
+    playStoreUrl: GOOGLE_PLAYSTORE_URL,
   },
   web: {
     bundler: "metro",
@@ -82,11 +67,11 @@ const config: ExpoConfig = {
       origin: false
     },
     eas: {
-      projectId: APP_CONFIG.expo.projectId,
-      ascAppId: APP_CONFIG.store.ios.id,
+      projectId: EAS_PROJECT_ID,
+      ascAppId: APP_STORE_APP_ID, // this is normally defined in eas.json
     },
   },
-  owner: APP_CONFIG.expo.owner,
+  owner: OWNER,
 };
 
 export default config;

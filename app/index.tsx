@@ -118,11 +118,10 @@ export default function HomeScreen() {
               </Text>
 
               <View className="flex-row flex-wrap gap-4">
-                {appInfo.store.ios.id && (
+                {appInfo.store.ios.url && (
                   <TouchableOpacity
-                    style={{ backgroundColor: 'transparent' }}
-                    className="w-[160px] md:w-[200px]"
-                    onPress={() => Linking.openURL(appInfo.store.ios.url)}>
+                    onPress={() => Linking.openURL(appInfo.store.ios.url)}
+                    style={{ width: 160 }}>
                     <Image
                       source={require('@/assets/images/landing/app-store.png')}
                       style={{ width: '100%', height: isMobile ? 48 : 60 }}
@@ -130,11 +129,10 @@ export default function HomeScreen() {
                     />
                   </TouchableOpacity>
                 )}
-                {appInfo.store.android.id && (
+                {appInfo.store.android.url && (
                   <TouchableOpacity
-                    style={{ backgroundColor: 'transparent' }}
-                    className="w-[160px] md:w-[200px]"
-                    onPress={() => Linking.openURL(appInfo.store.android.url)}>
+                    onPress={() => Linking.openURL(appInfo.store.android.url)}
+                    style={{ width: 160 }}>
                     <Image
                       source={require('@/assets/images/landing/google-play.png')}
                       style={{ width: '100%', height: isMobile ? 48 : 60 }}
@@ -189,8 +187,9 @@ export default function HomeScreen() {
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
-            className="flex-row"
+            className="flex-row w-full"
             contentContainerStyle={{
+              flexGrow: 1,
               paddingHorizontal: 16,
               gap: isMobile ? 24 : 32,
               justifyContent: 'center'
@@ -229,11 +228,10 @@ export default function HomeScreen() {
 
         <View className="py-8 md:py-12 px-4 bg-gray-50">
           <View className="flex-row flex-wrap justify-center gap-4 md:gap-6">
-            {appInfo.store.ios.id && (
+            {appInfo.store.ios.url && (
               <TouchableOpacity
-                style={{ backgroundColor: 'transparent' }}
-                className="w-[160px] md:w-[180px]"
-                onPress={() => Linking.openURL(appInfo.store.ios.url)}>
+                onPress={() => Linking.openURL(appInfo.store.ios.url)}
+                style={{ width: 160 }}>
                 <Image
                   source={require('@/assets/images/landing/app-store.png')}
                   style={{ width: '100%', height: isMobile ? 48 : 54 }}
@@ -241,11 +239,10 @@ export default function HomeScreen() {
                 />
               </TouchableOpacity>
             )}
-            {appInfo.store.android.id && (
+            {appInfo.store.android.url && (
               <TouchableOpacity
-                style={{ backgroundColor: 'transparent' }}
-                className="w-[160px] md:w-[180px]"
-                onPress={() => Linking.openURL(appInfo.store.android.url)}>
+                onPress={() => Linking.openURL(appInfo.store.android.url)}
+                style={{ width: 160 }}>
                 <Image
                   source={require('@/assets/images/landing/google-play.png')}
                   style={{ width: '100%', height: isMobile ? 48 : 54 }}
@@ -255,28 +252,28 @@ export default function HomeScreen() {
             )}
           </View>
         </View>
-
-        {socials.length > 0 && (
-          <View className="py-8 md:py-12 px-4 bg-white">
-            <View className="flex-row flex-wrap justify-center gap-6 md:gap-8">
-              {socials.map((social, index) => (
-                <TouchableOpacity
-                  key={index}
-                  onPress={() => Linking.openURL(social.url)}
-                  className="items-center">
-                  <FontAwesome
-                    name={social.icon}
-                    size={isMobile ? 24 : 28}
-                    color="#000000"
-                  />
-                </TouchableOpacity>
-              ))}
+        {
+          socials.length > 0 && (
+            <View className="py-8 md:py-12 px-4 bg-white">
+              <View className="flex-row flex-wrap justify-center gap-6 md:gap-8">
+                {socials.map((social, index) => (
+                  <TouchableOpacity
+                    key={index}
+                    onPress={() => Linking.openURL(social.url)}
+                    className="items-center">
+                    <FontAwesome
+                      name={social.icon}
+                      size={isMobile ? 24 : 28}
+                      color="#000000"
+                    />
+                  </TouchableOpacity>
+                ))}
+              </View>
             </View>
-          </View>
-        )}
+          )
+        }
         <View className="h-16 md:h-0" />
       </ScrollView>
-
       <TouchableOpacity
         onPress={() => Linking.openURL('https://github.com/flexbox/expo-app-landing-page')}
         style={{
@@ -304,6 +301,6 @@ export default function HomeScreen() {
           Build your own landing page
         </Text>
       </TouchableOpacity>
-    </View>
+    </View >
   );
 } 
