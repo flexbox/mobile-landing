@@ -4,16 +4,19 @@ import { theme } from '@/constants/theme';
 import { router } from 'expo-router';
 import { FontAwesome } from '@expo/vector-icons';
 import React from 'react';
-import { useLanguage } from '@/constants/translations';
+import { useLanguage } from '@/i18n/translate';
 
 type ChangeType = 'feature' | 'improvement' | 'fix';
 
 interface Change {
   type: ChangeType;
-  translations: {
-    en: { description: string };
-    fr: { description: string };
-  };
+  id: string;
+}
+
+interface Version {
+  version: string;
+  date: string;
+  changes: Change[];
 }
 
 interface ChangeTypeStyle {
@@ -23,7 +26,7 @@ interface ChangeTypeStyle {
 }
 
 export default function ChangelogScreen() {
-  const { currentLanguage } = useLanguage();
+  const { t } = useLanguage();
 
   if (!changelog.enabled) {
     router.replace('/');
@@ -36,25 +39,25 @@ export default function ChangelogScreen() {
         return {
           color: theme.colors.primary,
           icon: 'star',
-          label: 'Features'
+          label: t('changelog.labels.features')
         };
       case 'improvement':
         return {
           color: theme.colors.secondary,
           icon: 'arrow-up',
-          label: 'Improvements'
+          label: t('changelog.labels.improvements')
         };
       case 'fix':
         return {
           color: theme.colors.text,
           icon: 'wrench',
-          label: 'Bug Fixes'
+          label: t('changelog.labels.fixes')
         };
       default:
         return {
           color: theme.colors.secondary,
           icon: 'info-circle',
-          label: 'Updates'
+          label: t('changelog.labels.updates')
         };
     }
   };
@@ -68,6 +71,8 @@ export default function ChangelogScreen() {
       return acc;
     }, {} as Record<ChangeType, Change[]>);
   };
+
+  const versions = changelog.versions as Version[];
 
   return (
     <ScrollView className="flex-1 bg-gray-50">
@@ -87,7 +92,7 @@ export default function ChangelogScreen() {
                   {appInfo.name}
                 </Text>
                 <Text className="text-sm text-gray-500">
-                  {currentLanguage === 'fr' ? 'Notes de version' : 'Release Notes'}
+                  {t('changelog.title')}
                 </Text>
               </View>
             </View>
@@ -95,8 +100,8 @@ export default function ChangelogScreen() {
 
           {/* Versions List */}
           <View className="space-y-6">
-            {changelog.versions.map((version, index) => {
-              const groupedChanges = groupChangesByType(version.changes as Change[]);
+            {versions.map((version, index) => {
+              const groupedChanges = groupChangesByType(version.changes);
               const changeTypes: ChangeType[] = ['feature', 'improvement', 'fix'];
 
               return (
@@ -106,7 +111,7 @@ export default function ChangelogScreen() {
                     <View className="border-b border-gray-100 pb-4">
                       <View className="flex-row items-baseline justify-between">
                         <Text className="text-xl font-semibold" style={{ color: theme.colors.text }}>
-                          Version {version.version}
+                          {t('changelog.version', { version: version.version })}
                         </Text>
                         <Text className="text-sm text-gray-500">
                           {version.date}
@@ -135,10 +140,10 @@ export default function ChangelogScreen() {
                             </View>
 
                             <View className="space-y-3 pl-10">
-                              {groupedChanges[type].map((change, changeIndex: number) => (
+                              {groupedChanges[type].map((change, changeIndex) => (
                                 <View key={changeIndex} className="flex-row items-start">
                                   <Text className="text-sm leading-relaxed" style={{ color: theme.colors.text }}>
-                                    • {change.translations[currentLanguage].description}
+                                    • {t(`changelog.${change.id}`)}
                                   </Text>
                                 </View>
                               ))}

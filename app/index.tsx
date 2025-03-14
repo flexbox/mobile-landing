@@ -5,13 +5,13 @@ import { appInfo, features, screenshots, socials, pressKit, changelog } from '@/
 import { theme } from '@/constants/theme';
 import { router } from 'expo-router';
 import React from 'react';
-import { useLanguage } from '@/constants/translations';
-import '../constants/translations';
+import { useLanguage } from '@/i18n/translate';
+import '../i18n/i18n';
 
 export default function HomeScreen() {
   const scrollViewRef = React.useRef<ScrollView>(null);
   const { width } = useWindowDimensions();
-  const { t, currentLanguage } = useLanguage();
+  const { t } = useLanguage();
 
   const isMobile = width < 768;
   const isTablet = width >= 768 && width < 1024;
@@ -44,22 +44,22 @@ export default function HomeScreen() {
           </View>
           <View className="flex-row space-x-4 md:space-x-8">
             <TouchableOpacity onPress={() => scrollToSection('features')}>
-              <Text style={{ color: theme.colors.secondary }} className="text-sm font-medium">{t('features')}</Text>
+              <Text style={{ color: theme.colors.secondary }} className="text-sm font-medium">{t('nav.features')}</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => scrollToSection('screenshots')}>
-              <Text style={{ color: theme.colors.secondary }} className="text-sm font-medium">{t('screenshots')}</Text>
+              <Text style={{ color: theme.colors.secondary }} className="text-sm font-medium">{t('nav.screenshots')}</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => router.push('/privacy')}>
-              <Text style={{ color: theme.colors.secondary }} className="text-sm font-medium">{t('privacy')}</Text>
+              <Text style={{ color: theme.colors.secondary }} className="text-sm font-medium">{t('nav.privacy')}</Text>
             </TouchableOpacity>
             {changelog.enabled && (
               <TouchableOpacity onPress={() => router.push('/changelog')}>
-                <Text style={{ color: theme.colors.secondary }} className="text-sm font-medium">{t('changelog')}</Text>
+                <Text style={{ color: theme.colors.secondary }} className="text-sm font-medium">{t('nav.changelog')}</Text>
               </TouchableOpacity>
             )}
             {pressKit.enabled && (
               <TouchableOpacity onPress={handlePressKit}>
-                <Text style={{ color: theme.colors.secondary }} className="text-sm font-medium">{t('pressKit')}</Text>
+                <Text style={{ color: theme.colors.secondary }} className="text-sm font-medium">{t('nav.pressKit')}</Text>
               </TouchableOpacity>
             )}
           </View>
@@ -111,13 +111,13 @@ export default function HomeScreen() {
                     {appInfo.name}
                   </Text>
                   <Text className="text-lg md:text-xl text-gray-500">
-                    {appInfo.translations[currentLanguage].price}
+                    {t('app.price')}
                   </Text>
                 </View>
               </View>
 
               <Text className="text-base md:text-lg leading-relaxed" style={{ color: theme.colors.text }}>
-                {appInfo.translations[currentLanguage].description}
+                {t('app.description')}
               </Text>
 
               <View className="flex-row flex-wrap gap-4">
@@ -150,7 +150,7 @@ export default function HomeScreen() {
 
         <View className="py-8 md:py-12 px-4 bg-gray-50">
           <Text className="text-xl md:text-2xl font-bold mb-8 md:mb-12 text-center" style={{ color: theme.colors.text }}>
-            {t('featuresTitle')}
+            {t('sections.features.title')}
           </Text>
           <View className="flex-row flex-wrap justify-center md:justify-between gap-4 md:gap-6 max-w-6xl mx-auto">
             {features.map((feature, index) => (
@@ -173,10 +173,10 @@ export default function HomeScreen() {
                   />
                 </View>
                 <Text className="text-lg font-semibold mb-2" style={{ color: theme.colors.text }}>
-                  {feature.translations[currentLanguage].title}
+                  {t(`sections.features.items.${feature.id}.title`)}
                 </Text>
                 <Text className="text-sm text-gray-600">
-                  {feature.translations[currentLanguage].description}
+                  {t(`sections.features.items.${feature.id}.description`)}
                 </Text>
               </View>
             ))}
@@ -185,7 +185,7 @@ export default function HomeScreen() {
 
         <View className="py-12 md:py-16 px-4 bg-white">
           <Text className="text-xl md:text-2xl font-bold mb-8 md:mb-12 text-center" style={{ color: theme.colors.text }}>
-            {t('screenshotsTitle')}
+            {t('sections.screenshots.title')}
           </Text>
           <ScrollView
             horizontal
@@ -222,7 +222,7 @@ export default function HomeScreen() {
                   />
                 </View>
                 <Text className="text-center text-sm text-gray-600 mt-4 font-medium absolute -bottom-8 left-0 right-0">
-                  {t('screenshotTitle', { title: screenshot.title })}
+                  {t(`sections.screenshots.items.${screenshot.id}`)}
                 </Text>
               </View>
             ))}
@@ -301,9 +301,9 @@ export default function HomeScreen() {
         }}>
         <FontAwesome name="github" size={16} color="white" style={{ marginRight: 6 }} />
         <Text style={{ color: 'white', fontWeight: '600', fontSize: 14 }}>
-          {t('buildYourOwn')}
+          {t('cta.buildYourOwn')}
         </Text>
       </TouchableOpacity>
-    </View >
+    </View>
   );
 } 
