@@ -4,6 +4,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { appInfo, features, screenshots, socials, pressKit, changelog } from '@/constants/landing';
 import { theme } from '@/constants/theme';
 import { router } from 'expo-router';
+import Head from 'expo-router/head';
 import React from 'react';
 import { useLanguage } from '@/i18n/translate';
 import { Text as CustomText } from '@/components/Text';
@@ -30,6 +31,11 @@ export default function HomeScreen() {
 
   return (
     <View style={{ flex: 1 }}>
+      <Head>
+        <title>{appInfo.name}</title>
+        <meta name="description" content={t('app.description')} />
+        <meta name="apple-itunes-app" content="app-id=932493382" />
+      </Head>
       <ScrollView ref={scrollViewRef} className="flex-1 bg-white" showsVerticalScrollIndicator={false}>
         <View className="w-full bg-white border-b border-gray-100 px-4 md:px-8 py-4 flex-col md:flex-row justify-between items-center">
           <View className="flex-row items-center space-x-3 mb-4 md:mb-0">
