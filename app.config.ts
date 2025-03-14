@@ -46,9 +46,12 @@ const config: ExpoConfig = {
     bundler: "metro",
     output: "static",
     favicon: FAVICON,
-    meta: {
-      "apple-itunes-app": `app-id=${APP_STORE_APP_ID}`,
-    }
+    meta: [
+      {
+        name: "apple-itunes-app",
+        content: `app-id=${APP_STORE_APP_ID}}`
+      }
+    ]
   },
   plugins: [
     "expo-router",
