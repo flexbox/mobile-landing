@@ -2,18 +2,39 @@ import { Text as RNText, TextProps as RNTextProps } from 'react-native';
 import { theme } from '@/constants/theme';
 import { useLanguage } from '@/i18n/translate';
 
+type TextVariant = 'body' | 'title' | 'subtitle' | 'caption' | 'button' | 'label' | 'heading1' | 'heading2';
+
 interface TextProps extends RNTextProps {
   tx?: string;
   className?: string;
   color?: keyof typeof theme.colors;
+  variant?: TextVariant;
 }
 
-export const Text = ({ tx, className = '', color = 'secondary', style, ...props }: TextProps) => {
+export const Text = ({
+  tx,
+  className = '',
+  color = 'secondary',
+  variant = 'body',
+  style,
+  ...props
+}: TextProps) => {
   const { t } = useLanguage();
+
+  const variantStyles = {
+    body: 'text-sm font-normal',
+    title: 'text-xl font-bold',
+    subtitle: 'text-lg font-semibold',
+    caption: 'text-xs font-normal',
+    button: 'text-sm font-medium',
+    label: 'text-sm font-medium',
+    heading1: 'text-2xl md:text-3xl font-bold',
+    heading2: 'text-xl md:text-2xl font-bold',
+  };
 
   return (
     <RNText
-      className={`text-sm font-medium ${className}`}
+      className={`${variantStyles[variant]} ${className}`}
       style={[{ color: theme.colors[color] }, style]}
       {...props}
     >
