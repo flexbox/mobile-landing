@@ -57,10 +57,12 @@ const config: ExpoConfig = {
         resizeMode: "contain",
         backgroundColor: "#ffffff"
       }
-    ]
+    ],
+    "expo-localization"
   ],
   experiments: {
-    typedRoutes: true
+    typedRoutes: true,
+    tsconfigPaths: true
   },
   extra: {
     router: {

@@ -4,8 +4,17 @@ import { theme } from '@/constants/theme';
 import { router } from 'expo-router';
 import { FontAwesome } from '@expo/vector-icons';
 import React from 'react';
+import { useLanguage } from '@/constants/translations';
 
 type ChangeType = 'feature' | 'improvement' | 'fix';
+
+interface Change {
+  type: ChangeType;
+  translations: {
+    en: { description: string };
+    fr: { description: string };
+  };
+}
 
 interface ChangeTypeStyle {
   color: string;
@@ -14,13 +23,15 @@ interface ChangeTypeStyle {
 }
 
 export default function ChangelogScreen() {
+  const { currentLanguage } = useLanguage();
+
   if (!changelog.enabled) {
     router.replace('/');
     return null;
   }
 
-  const getChangeTypeStyle = (type: string): ChangeTypeStyle => {
-    switch (type as ChangeType) {
+  const getChangeTypeStyle = (type: ChangeType): ChangeTypeStyle => {
+    switch (type) {
       case 'feature':
         return {
           color: theme.colors.primary,
@@ -48,15 +59,14 @@ export default function ChangelogScreen() {
     }
   };
 
-  const groupChangesByType = (changes: any[]) => {
-    return changes.reduce((acc: any, change) => {
-      const type = change.type as ChangeType;
-      if (!acc[type]) {
-        acc[type] = [];
+  const groupChangesByType = (changes: Change[]) => {
+    return changes.reduce((acc: Record<ChangeType, Change[]>, change) => {
+      if (!acc[change.type]) {
+        acc[change.type] = [];
       }
-      acc[type].push(change);
+      acc[change.type].push(change);
       return acc;
-    }, {});
+    }, {} as Record<ChangeType, Change[]>);
   };
 
   return (
@@ -77,7 +87,7 @@ export default function ChangelogScreen() {
                   {appInfo.name}
                 </Text>
                 <Text className="text-sm text-gray-500">
-                  Release Notes
+                  {currentLanguage === 'fr' ? 'Notes de version' : 'Release Notes'}
                 </Text>
               </View>
             </View>
@@ -86,7 +96,7 @@ export default function ChangelogScreen() {
           {/* Versions List */}
           <View className="space-y-6">
             {changelog.versions.map((version, index) => {
-              const groupedChanges = groupChangesByType(version.changes);
+              const groupedChanges = groupChangesByType(version.changes as Change[]);
               const changeTypes: ChangeType[] = ['feature', 'improvement', 'fix'];
 
               return (
@@ -125,10 +135,10 @@ export default function ChangelogScreen() {
                             </View>
 
                             <View className="space-y-3 pl-10">
-                              {groupedChanges[type].map((change: any, changeIndex: number) => (
+                              {groupedChanges[type].map((change, changeIndex: number) => (
                                 <View key={changeIndex} className="flex-row items-start">
                                   <Text className="text-sm leading-relaxed" style={{ color: theme.colors.text }}>
-                                    • {change.description}
+                                    • {change.translations[currentLanguage].description}
                                   </Text>
                                 </View>
                               ))}
