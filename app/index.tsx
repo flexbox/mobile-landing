@@ -6,6 +6,7 @@ import { theme } from '@/constants/theme';
 import { router } from 'expo-router';
 import React from 'react';
 import { useLanguage } from '@/i18n/translate';
+import { Text as CustomText } from '@/components/Text';
 import '../i18n/i18n';
 
 export default function HomeScreen() {
@@ -38,28 +39,28 @@ export default function HomeScreen() {
                 style={{ width: 32, height: 32, borderRadius: 8 }}
               />
             </View>
-            <Text className="text-lg font-bold" style={{ color: theme.colors.text }}>
+            <CustomText className="text-lg font-bold" color="text">
               {appInfo.name}
-            </Text>
+            </CustomText>
           </View>
           <View className="flex-row space-x-4 md:space-x-8">
             <TouchableOpacity onPress={() => scrollToSection('features')}>
-              <Text style={{ color: theme.colors.secondary }} className="text-sm font-medium">{t('nav.features')}</Text>
+              <CustomText tx="features" />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => scrollToSection('screenshots')}>
-              <Text style={{ color: theme.colors.secondary }} className="text-sm font-medium">{t('nav.screenshots')}</Text>
+              <CustomText tx="screenshots" />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => router.push('/privacy')}>
-              <Text style={{ color: theme.colors.secondary }} className="text-sm font-medium">{t('nav.privacy')}</Text>
+              <CustomText tx="privacy" />
             </TouchableOpacity>
             {changelog.enabled && (
               <TouchableOpacity onPress={() => router.push('/changelog')}>
-                <Text style={{ color: theme.colors.secondary }} className="text-sm font-medium">{t('nav.changelog')}</Text>
+                <CustomText tx="changelog" />
               </TouchableOpacity>
             )}
             {pressKit.enabled && (
               <TouchableOpacity onPress={handlePressKit}>
-                <Text style={{ color: theme.colors.secondary }} className="text-sm font-medium">{t('nav.pressKit')}</Text>
+                <CustomText tx="pressKit" />
               </TouchableOpacity>
             )}
           </View>
