@@ -52,7 +52,10 @@ export default {
 
   // App Info
   app: {
-    tagline: "La meilleure façon de créer rapidement une superbe page de présentation pour votre application expo.",
+    tagline: {
+      main: "Votre Vision. Votre App. Votre Succès.",
+      sub: "La meilleure façon de créer rapidement une superbe page de présentation pour votre application expo."
+    },
     description: "Un modèle de page de présentation puissant et flexible pour votre application. Facile à personnaliser et superbe sur tous les appareils, grands ou petits.",
     price: "achat unique",
     category: "Productivité"

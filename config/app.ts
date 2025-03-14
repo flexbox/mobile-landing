@@ -2,7 +2,6 @@ export const APP_CONFIG = {
   name: "Your App Name",
   version: "1.0.0",
   description: "A powerful mobile application that transforms the way you interact with your digital world. Experience seamless integration, stunning design, and unparalleled performance.",
-  tagline: "Your Vision. Your App. Your Success.",
   price: "Free - Premium Available",
   category: "Productivity",
 

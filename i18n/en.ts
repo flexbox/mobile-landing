@@ -52,7 +52,10 @@ export default {
 
   // App Info
   app: {
-    tagline: "The ultimate way to quickly create a delightful landing page for your expo app.",
+    tagline: {
+      main: "Your Vision. Your App. Your Success.",
+      sub: "The ultimate way to quickly create a delightful landing page for your expo app."
+    },
     description: "This is a powerful and flexible landing page template for your app. It's easy to customize and it looks great on any device, big or small.",
     price: "one time purchase",
     category: "Productivity"
