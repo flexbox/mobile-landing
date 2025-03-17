@@ -3,6 +3,7 @@ import Head from 'expo-router/head';
 import React from 'react';
 import { translate } from '@/i18n/translate';
 import { appInfo } from '@/constants/landing';
+import { APP_STORE_APP_ID } from '@/app.config';
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
 import { Features } from '@/components/Features';
@@ -25,7 +26,7 @@ export default function HomeScreen() {
       <Head>
         <title>{appInfo.name}</title>
         <meta name="description" content={translate('app.description')} />
-        <meta name="apple-itunes-app" content="app-id=932493382" />
+        <meta name="apple-itunes-app" content={`app-id=${APP_STORE_APP_ID}`} />
       </Head>
       <ScrollView ref={scrollViewRef} className="flex-1 bg-white" showsVerticalScrollIndicator={false}>
         <Header scrollToSection={scrollToSection} />
