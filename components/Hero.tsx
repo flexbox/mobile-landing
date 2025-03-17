@@ -1,13 +1,21 @@
-import React from 'react';
-import { View, Image, Linking, useWindowDimensions } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, Image, Linking, useWindowDimensions, Animated } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { appInfo } from '@/constants/landing';
 import { Text } from './Text';
 
 export const Hero = () => {
   const { width } = useWindowDimensions();
-
+  const fadeAnim = React.useRef(new Animated.Value(0)).current;
   const isMobile = width < 768;
+
+  useEffect(() => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 1500,
+      useNativeDriver: true,
+    }).start();
+  }, []);
 
   return (
     <View className="min-h-[500px] bg-white px-4 md:px-8 py-8 md:py-12">
@@ -25,14 +33,19 @@ export const Hero = () => {
                 overflow: 'hidden',
                 backgroundColor: '#000',
               }}>
-              <Image
+              <Animated.Image
                 source={require('@/assets/images/screenshot.png')}
-                style={{ width: '100%', height: '100%' }}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  opacity: fadeAnim
+                }}
                 resizeMode="cover"
               />
             </View>
             <Image
               source={require('@/assets/images/landing/iPhone.png')}
+              defaultSource={require('@/assets/images/landing/iPhone.png')}
               style={{ width: '100%', height: '100%', position: 'absolute' }}
               resizeMode="contain"
             />
