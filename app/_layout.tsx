@@ -4,13 +4,19 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
 import "../global.css"
+import { Header } from '@/components/Header';
+import { View } from 'react-native';
+import { ScrollProvider, useScroll } from './context/ScrollContext';
+
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
+function LayoutContent() {
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
+
+  const { scrollToSection } = useScroll();
 
   useEffect(() => {
     if (loaded) {
@@ -23,8 +29,21 @@ export default function RootLayout() {
   }
 
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="index" />
-    </Stack>
+    <View style={{ flex: 1 }}>
+      <Header scrollToSection={scrollToSection} />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="index" />
+        <Stack.Screen name="changelog" />
+        <Stack.Screen name="brand" />
+      </Stack>
+    </View>
+  );
+}
+
+export default function RootLayout() {
+  return (
+    <ScrollProvider>
+      <LayoutContent />
+    </ScrollProvider>
   );
 }

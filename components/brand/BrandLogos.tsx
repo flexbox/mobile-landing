@@ -1,4 +1,4 @@
-import { View, Text, Image, ScrollView, Pressable } from 'react-native';
+import { View, Text, Image, Pressable } from 'react-native';
 
 const logos = [
   {
@@ -43,7 +43,7 @@ export function BrandLogos() {
 
   return (
     <View className="my-6">
-      <View className="flex-row justify-between items-center mb-4">
+      <View className="flex-row justify-between items-center mb-6">
         <Text className="text-2xl font-bold text-gray-900">Logos</Text>
         <Pressable
           onPress={handleDownloadAll}
@@ -52,30 +52,28 @@ export function BrandLogos() {
           <Text className="text-white font-medium">Download All Logos</Text>
         </Pressable>
       </View>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <View className="flex-row py-2">
-          {logos.map((logo) => (
-            <View key={logo.name} className="w-[200px] mr-6 items-center">
-              <View className="w-40 h-40 bg-gray-100 rounded-xl justify-center items-center mb-3">
-                <Image
-                  source={logo.image}
-                  className="w-32 h-32"
-                  resizeMode="contain"
-                  style={{ maxWidth: 128, maxHeight: 128 }}
-                />
-              </View>
-              <Text className="text-base font-semibold text-gray-900 mb-1">{logo.name}</Text>
-              <Text className="text-sm text-gray-500 text-center mb-2">{logo.description}</Text>
-              <Pressable
-                onPress={() => handleDownload(logo.downloadUrl)}
-                className="bg-blue-500 px-4 py-2 rounded-lg active:bg-blue-600"
-              >
-                <Text className="text-white font-medium text-sm">Download</Text>
-              </Pressable>
+      <View className="flex-row justify-center gap-8">
+        {logos.map((logo) => (
+          <View key={logo.name} className="w-[180px] items-center">
+            <View className="w-32 h-32 bg-gray-100 rounded-xl justify-center items-center mb-3">
+              <Image
+                source={logo.image}
+                className="w-28 h-28"
+                resizeMode="contain"
+                style={{ maxWidth: 112, maxHeight: 112 }}
+              />
             </View>
-          ))}
-        </View>
-      </ScrollView>
+            <Text className="text-base font-semibold text-gray-900 mb-1">{logo.name}</Text>
+            <Text className="text-sm text-gray-500 text-center mb-2">{logo.description}</Text>
+            <Pressable
+              onPress={() => handleDownload(logo.downloadUrl)}
+              className="bg-blue-500 px-4 py-2 rounded-lg active:bg-blue-600"
+            >
+              <Text className="text-white font-medium text-sm">Download</Text>
+            </Pressable>
+          </View>
+        ))}
+      </View>
     </View>
   );
 } 

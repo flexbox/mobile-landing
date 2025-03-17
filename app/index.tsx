@@ -4,7 +4,6 @@ import React from 'react';
 import { translate } from '@/i18n/translate';
 import { appInfo } from '@/constants/landing';
 import { APP_STORE_APP_ID } from '@/app.config';
-import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
 import { Features } from '@/components/Features';
 import { Screenshots } from '@/components/Screenshots';
@@ -12,14 +11,15 @@ import { StoreButtons } from '@/components/StoreButtons';
 import { SocialLinks } from '@/components/SocialLinks';
 import { FloatingButton } from '@/components/FloatingButton';
 import '../i18n/i18n';
+import { useScroll } from './context/ScrollContext';
 
 export default function HomeScreen() {
   const scrollViewRef = React.useRef<ScrollView>(null);
+  const { setScrollViewRef } = useScroll();
 
-  const scrollToSection = (sectionId: string) => {
-    const yOffset = sectionId === 'features' ? 600 : 1800;
-    scrollViewRef.current?.scrollTo({ y: yOffset, animated: true });
-  };
+  React.useEffect(() => {
+    setScrollViewRef(scrollViewRef.current);
+  }, []);
 
   return (
     <View style={{ flex: 1 }}>
@@ -29,7 +29,6 @@ export default function HomeScreen() {
         <meta name="apple-itunes-app" content={`app-id=${APP_STORE_APP_ID}`} />
       </Head>
       <ScrollView ref={scrollViewRef} className="flex-1 bg-white" showsVerticalScrollIndicator={false}>
-        <Header scrollToSection={scrollToSection} />
         <Hero />
         <Features />
         <Screenshots />

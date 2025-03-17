@@ -76,27 +76,6 @@ export default function ChangelogScreen() {
     <ScrollView className="flex-1 bg-gray-50">
       <View className="flex-1 items-center min-h-screen">
         <View className="w-full max-w-[50%] py-16">
-          {/* App Header */}
-          <View className="bg-white rounded-2xl shadow-sm px-8 py-6 mb-8">
-            <View className="flex-row items-center space-x-4 justify-center">
-              <View className="shadow-sm rounded-xl bg-gray-50 p-2">
-                <Image
-                  source={require('@/assets/images/icon.png')}
-                  style={{ width: 48, height: 48, borderRadius: 12 }}
-                />
-              </View>
-              <View>
-                <Text className="text-2xl font-bold" style={{ color: theme.colors.text }}>
-                  {appInfo.name}
-                </Text>
-                <Text className="text-sm text-gray-500">
-                  {translate('changelog.title')}
-                </Text>
-              </View>
-            </View>
-          </View>
-
-          {/* Versions List */}
           <View className="space-y-6">
             {versions.map((version, index) => {
               const groupedChanges = groupChangesByType(version.changes);
