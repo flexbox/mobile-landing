@@ -2,6 +2,8 @@
 
 > Customizable landing page for your Expo application, built with Expo and React Native Web.
 
+Demo: [expo-app-landing-page.expo.app](https://expo-app-landing-page.expo.app/)
+
 ## Getting Started
 
 ```bash
