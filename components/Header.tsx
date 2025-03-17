@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { View, Image, Animated, Easing, useWindowDimensions } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { router } from 'expo-router';
@@ -11,8 +11,8 @@ interface HeaderProps {
 
 export const Header = ({ scrollToSection }: HeaderProps) => {
   const { width } = useWindowDimensions();
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const menuAnimation = React.useRef(new Animated.Value(0)).current;
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuAnimation = useRef(new Animated.Value(0)).current;
 
   const isMobile = width < 768;
 

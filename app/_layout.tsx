@@ -35,6 +35,7 @@ function LayoutContent() {
         <Stack.Screen name="index" />
         <Stack.Screen name="changelog" />
         <Stack.Screen name="brand" />
+        <Stack.Screen name="privacy" />
       </Stack>
     </View>
   );

@@ -7,7 +7,7 @@ import { Text } from './Text';
 
 export const Features = () => {
   return (
-    <View className="py-8 md:py-12 px-4 bg-gray-50">
+    <View className="py-8 md:py-32 px-4 bg-gray-50">
       <Text variant="heading2" color="text" className="mb-8 md:mb-12 text-center" tx="sections.features.title" />
       <View className="flex-row flex-wrap justify-center md:justify-between gap-4 md:gap-6 max-w-6xl mx-auto">
         {features.map((feature, index) => (

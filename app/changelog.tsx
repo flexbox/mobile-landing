@@ -1,5 +1,5 @@
-import { View, Text, ScrollView, Image } from 'react-native';
-import { changelog, appInfo } from '@/constants/landing';
+import { View, Text, ScrollView } from 'react-native';
+import { changelog } from '@/constants/landing';
 import { theme } from '@/constants/theme';
 import { router } from 'expo-router';
 import { FontAwesome } from '@expo/vector-icons';

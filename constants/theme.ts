@@ -1,3 +1,5 @@
+import { TextStyle } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+
 interface ThemeColors {
   primary: string;
   secondary: string;
@@ -8,12 +10,6 @@ interface ThemeColors {
   error: string;
   warning: string;
   gray: string;
-}
-
-type TypographyStyle = {
-  size: number;
-  weight: '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900' | 'normal' | 'bold';
-  example: string;
 }
 
 export const theme = {
@@ -32,12 +28,13 @@ export const theme = {
     primary: 'Inter',      // Modern, clean font
   },
   typography: {
-    heading1: { size: 32, weight: 'bold', example: 'The quick brown fox' },
-    heading2: { size: 24, weight: 'bold', example: 'The quick brown fox' },
-    heading3: { size: 20, weight: '600', example: 'The quick brown fox' },
-    bodyLarge: { size: 18, weight: 'normal', example: 'The quick brown fox jumps over the lazy dog' },
-    body: { size: 16, weight: 'normal', example: 'The quick brown fox jumps over the lazy dog' },
-    bodySmall: { size: 14, weight: 'normal', example: 'The quick brown fox jumps over the lazy dog' },
-    caption: { size: 12, weight: 'normal', example: 'The quick brown fox' },
-  } as Record<string, TypographyStyle>
+    body: { fontSize: 16, color: '#000000' },
+    heading1: { fontSize: 24, fontWeight: 'bold', marginVertical: 16 },
+    heading2: { fontSize: 20, fontWeight: 'bold', marginVertical: 12 },
+    paragraph: { marginVertical: 8 },
+    link: { color: '#3B82F6', textDecorationLine: 'underline' },
+    list: { marginVertical: 8 },
+    listItem: { marginLeft: 16 },
+    hr: { marginVertical: 16, borderTopWidth: 1, borderColor: '#E5E7EB' }
+  } as Record<string, TextStyle>
 }

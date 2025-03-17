@@ -12,9 +12,9 @@ export function BrandTypography() {
             <Text tx={`brand.components.typography.items.${key}.name`} variant="body" className="mb-1" />
             <Text
               className="text-gray-900 mb-1"
-              style={{ fontSize: style.size, fontWeight: style.weight }}
+              style={{ fontSize: style.fontSize, fontWeight: style.fontWeight }}
             >
-              {style.example}
+              {`brand.components.typography.items.${key}.name`}
             </Text>
             <Text tx={`brand.components.typography.items.${key}.description`} variant="caption" />
           </View>

@@ -10,9 +10,9 @@ export default function BrandPage() {
       <View className="items-center w-full">
         <View className="p-6 max-w-[1200px] w-full md:w-1/2">
           <BrandLogos />
+          <BrandGuidelines />
           <BrandColors />
           <BrandTypography />
-          <BrandGuidelines />
         </View>
       </View>
     </ScrollView>
