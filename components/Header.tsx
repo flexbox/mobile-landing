@@ -91,50 +91,50 @@ export const Header = ({ scrollToSection }: HeaderProps) => {
             <TouchableOpacity
               onPress={() => { scrollToSection('features'); toggleMenu(); }}
               className="w-full flex-row justify-start">
-              <Text tx="features" style={{ textAlign: 'left' }} />
+              <Text tx="nav.features" style={{ textAlign: 'left' }} />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => { scrollToSection('screenshots'); toggleMenu(); }}
               className="w-full flex-row justify-start">
-              <Text tx="screenshots" style={{ textAlign: 'left' }} />
+              <Text tx="nav.screenshots" style={{ textAlign: 'left' }} />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => { router.push('/privacy'); toggleMenu(); }}
               className="w-full flex-row justify-start">
-              <Text tx="privacy" style={{ textAlign: 'left' }} />
+              <Text tx="nav.privacy" style={{ textAlign: 'left' }} />
             </TouchableOpacity>
             {changelog.enabled && (
               <TouchableOpacity
                 onPress={() => { router.push('/changelog'); toggleMenu(); }}
                 className="w-full flex-row justify-start">
-                <Text tx="changelog" style={{ textAlign: 'left' }} />
+                <Text tx="nav.changelog" style={{ textAlign: 'left' }} />
               </TouchableOpacity>
             )}
             <TouchableOpacity
               onPress={() => { router.push('/brand'); toggleMenu(); }}
               className="w-full flex-row justify-start">
-              <Text tx="pressKit" style={{ textAlign: 'left' }} />
+              <Text tx="nav.pressKit" style={{ textAlign: 'left' }} />
             </TouchableOpacity>
           </View>
         </Animated.View>
       ) : (
         <View className="flex-row space-x-4 md:space-x-8">
           <TouchableOpacity onPress={() => scrollToSection('features')}>
-            <Text tx="features" />
+            <Text tx="nav.features" />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => scrollToSection('screenshots')}>
-            <Text tx="screenshots" />
+            <Text tx="nav.screenshots" />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => router.push('/privacy')}>
-            <Text tx="privacy" />
+            <Text tx="nav.privacy" />
           </TouchableOpacity>
           {changelog.enabled && (
             <TouchableOpacity onPress={() => router.push('/changelog')}>
-              <Text tx="changelog" />
+              <Text tx="nav.changelog" />
             </TouchableOpacity>
           )}
           <TouchableOpacity onPress={() => router.push('/brand')}>
-            <Text tx="pressKit" />
+            <Text tx="nav.pressKit" />
           </TouchableOpacity>
         </View>
       )}

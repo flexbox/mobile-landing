@@ -36,7 +36,7 @@ export const Text = ({
       style={[{ color: theme.colors[color] }, style]}
       {...props}
     >
-      {tx ? translate(`nav.${tx}`) : props.children}
+      {tx ? translate(`${tx}`) : props.children}
     </RNText>
   );
 }; 
