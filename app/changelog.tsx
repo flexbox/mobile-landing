@@ -4,8 +4,20 @@ import { theme } from '@/constants/theme';
 import { router } from 'expo-router';
 import { FontAwesome } from '@expo/vector-icons';
 import React from 'react';
+import { translate } from '@/i18n/translate';
 
 type ChangeType = 'feature' | 'improvement' | 'fix';
+
+interface Change {
+  type: ChangeType;
+  id: string;
+}
+
+interface Version {
+  version: string;
+  date: string;
+  changes: Change[];
+}
 
 interface ChangeTypeStyle {
   color: string;
@@ -19,45 +31,46 @@ export default function ChangelogScreen() {
     return null;
   }
 
-  const getChangeTypeStyle = (type: string): ChangeTypeStyle => {
-    switch (type as ChangeType) {
+  const getChangeTypeStyle = (type: ChangeType): ChangeTypeStyle => {
+    switch (type) {
       case 'feature':
         return {
           color: theme.colors.primary,
           icon: 'star',
-          label: 'Features'
+          label: translate('changelog.labels.features')
         };
       case 'improvement':
         return {
           color: theme.colors.secondary,
           icon: 'arrow-up',
-          label: 'Improvements'
+          label: translate('changelog.labels.improvements')
         };
       case 'fix':
         return {
           color: theme.colors.text,
           icon: 'wrench',
-          label: 'Bug Fixes'
+          label: translate('changelog.labels.fixes')
         };
       default:
         return {
           color: theme.colors.secondary,
           icon: 'info-circle',
-          label: 'Updates'
+          label: translate('changelog.labels.updates')
         };
     }
   };
 
-  const groupChangesByType = (changes: any[]) => {
-    return changes.reduce((acc: any, change) => {
-      const type = change.type as ChangeType;
-      if (!acc[type]) {
-        acc[type] = [];
+  const groupChangesByType = (changes: Change[]) => {
+    return changes.reduce((acc: Record<ChangeType, Change[]>, change) => {
+      if (!acc[change.type]) {
+        acc[change.type] = [];
       }
-      acc[type].push(change);
+      acc[change.type].push(change);
       return acc;
-    }, {});
+    }, {} as Record<ChangeType, Change[]>);
   };
+
+  const versions = changelog.versions as Version[];
 
   return (
     <ScrollView className="flex-1 bg-gray-50">
@@ -77,7 +90,7 @@ export default function ChangelogScreen() {
                   {appInfo.name}
                 </Text>
                 <Text className="text-sm text-gray-500">
-                  Release Notes
+                  {translate('changelog.title')}
                 </Text>
               </View>
             </View>
@@ -85,7 +98,7 @@ export default function ChangelogScreen() {
 
           {/* Versions List */}
           <View className="space-y-6">
-            {changelog.versions.map((version, index) => {
+            {versions.map((version, index) => {
               const groupedChanges = groupChangesByType(version.changes);
               const changeTypes: ChangeType[] = ['feature', 'improvement', 'fix'];
 
@@ -96,7 +109,7 @@ export default function ChangelogScreen() {
                     <View className="border-b border-gray-100 pb-4">
                       <View className="flex-row items-baseline justify-between">
                         <Text className="text-xl font-semibold" style={{ color: theme.colors.text }}>
-                          Version {version.version}
+                          {translate('changelog.version', { version: version.version })}
                         </Text>
                         <Text className="text-sm text-gray-500">
                           {version.date}
@@ -125,10 +138,10 @@ export default function ChangelogScreen() {
                             </View>
 
                             <View className="space-y-3 pl-10">
-                              {groupedChanges[type].map((change: any, changeIndex: number) => (
+                              {groupedChanges[type].map((change, changeIndex) => (
                                 <View key={changeIndex} className="flex-row items-start">
                                   <Text className="text-sm leading-relaxed" style={{ color: theme.colors.text }}>
-                                    • {change.description}
+                                    • {translate(`changelog.${change.id}`)}
                                   </Text>
                                 </View>
                               ))}

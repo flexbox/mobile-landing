@@ -3,8 +3,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 
 interface Feature {
-  title: string;
-  description: string;
+  id: string;
   icon: keyof typeof FontAwesome.glyphMap;
 }
 
@@ -15,13 +14,18 @@ interface SocialLink {
   label: string;
 }
 
+interface AppInfo {
+  name: string;
+  version: string | undefined;
+  store: {
+    ios: { url: string };
+    android: { url: string };
+  };
+}
+
 // App Info
-export const appInfo = {
+export const appInfo: AppInfo = {
   name: APP_NAME,
-  tagline: "The ultimate way to quicly create a delightfull landing page for your expo app.",
-  description: "This is a powerful and flexible landing page template for your app. It's easy to customize and it looks great on any device, big or small.",
-  price: "one time purchase",
-  category: "Productivity",
   version: Constants.expoConfig?.version,
   store: {
     ios: {
@@ -36,33 +40,27 @@ export const appInfo = {
 // Features
 export const features: Feature[] = [
   {
-    title: "Smart Integration",
-    description: "Seamlessly connect with your favorite tools and services",
+    id: 'smartIntegration',
     icon: "plug"
   },
   {
-    title: "Cloud Sync",
-    description: "Access your data from anywhere, anytime",
+    id: 'cloudSync',
     icon: "cloud"
   },
   {
-    title: "Advanced Security",
-    description: "Enterprise-grade encryption and privacy features",
+    id: 'security',
     icon: "shield"
   },
   {
-    title: "Dark Mode",
-    description: "Easy on the eyes, day and night",
+    id: 'darkMode',
     icon: "moon-o"
   },
   {
-    title: "Smart Notifications",
-    description: "Stay informed with intelligent alerts",
+    id: 'notifications',
     icon: "bell"
   },
   {
-    title: "Analytics",
-    description: "Powerful insights into your usage patterns",
+    id: 'analytics',
     icon: "bar-chart"
   }
 ];
@@ -75,19 +73,19 @@ export const screenshots = {
     screenshots: [
       {
         image: require("@/assets/images/screenshot.png"),
-        title: "Beautiful Interface"
+        id: 'beautiful'
       },
       {
         image: require("@/assets/images/screenshot.png"),
-        title: "Powerful Features"
+        id: 'features'
       },
       {
         image: require("@/assets/images/screenshot.png"),
-        title: "Smart Integration"
+        id: 'integration'
       },
       {
         image: require("@/assets/images/screenshot.png"),
-        title: "Advanced Analytics"
+        id: 'analytics'
       }
     ]
   }
@@ -127,6 +125,7 @@ export const pressKit = {
   url: "https://yourapp.com/press"
 };
 
+
 export const changelog = {
   enabled: true,
   versions: [
@@ -136,11 +135,11 @@ export const changelog = {
       changes: [
         {
           type: "feature",
-          description: "Added dark mode support across the entire app"
+          id: "darkMode"
         },
         {
           type: "improvement",
-          description: "Enhanced performance for image loading"
+          id: "imageLoading"
         }
       ]
     },
@@ -150,11 +149,11 @@ export const changelog = {
       changes: [
         {
           type: "feature",
-          description: "New dashboard layout with customizable widgets"
+          id: "dashboard"
         },
         {
           type: "fix",
-          description: "Fixed notification sync issues on iOS devices"
+          id: "notificationSync"
         }
       ]
     },
@@ -164,11 +163,11 @@ export const changelog = {
       changes: [
         {
           type: "improvement",
-          description: "Optimized app startup time by 40%"
+          id: "startupTime"
         },
         {
           type: "fix",
-          description: "Resolved authentication token refresh bug"
+          id: "authToken"
         }
       ]
     }
