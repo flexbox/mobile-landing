@@ -2,7 +2,7 @@ import { Text as RNText, TextProps as RNTextProps } from 'react-native';
 import { theme } from '@/constants/theme';
 import { translate } from '@/i18n/translate';
 
-type TextVariant = 'body' | 'title' | 'subtitle' | 'caption' | 'button' | 'label' | 'heading1' | 'heading2';
+type TextVariant = 'body' | 'title' | 'subtitle' | 'caption' | 'button' | 'label' | 'heading1' | 'heading2' | 'heading3' | 'bodyLarge' | 'bodySmall';
 
 interface TextProps extends RNTextProps {
   tx?: string;
@@ -28,6 +28,9 @@ export const Text = ({
     label: 'text-sm font-medium',
     heading1: 'text-2xl md:text-3xl font-bold',
     heading2: 'text-xl md:text-2xl font-bold',
+    heading3: 'text-lg md:text-xl font-bold',
+    bodyLarge: 'text-base font-normal',
+    bodySmall: 'text-sm font-normal',
   };
 
   return (

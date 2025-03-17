@@ -1,4 +1,5 @@
-import { View, Text, Image } from 'react-native';
+import { View, Image } from 'react-native';
+import { Text } from '@/components/Text';
 
 export function BrandHero() {
   return (
@@ -10,12 +11,8 @@ export function BrandHero() {
           style={{ width: 100, height: 100 }}
           resizeMode="contain"
         />
-        <Text className="text-4xl font-bold text-center text-gray-900 tracking-tight">
-          Brand Guidelines
-        </Text>
-        <Text className="mt-4 text-lg text-center text-gray-600 max-w-[600px] leading-7">
-          Our brand represents who we are and what we stand for. Use these guidelines to maintain consistency across all our communications.
-        </Text>
+        <Text tx="brand.hero.title" variant="heading1" className="text-center tracking-tight" />
+        <Text tx="brand.hero.description" variant="bodyLarge" className="mt-4 text-center text-gray-600 max-w-[600px] leading-7" />
       </View>
     </View>
   );

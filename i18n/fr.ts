@@ -90,5 +90,91 @@ export default {
     notificationSync: "Correction des problèmes de synchronisation des notifications sur les appareils iOS",
     startupTime: "Optimisation du temps de démarrage de l'application de 40%",
     authToken: "Résolution du bug de rafraîchissement du jeton d'authentification"
+  },
+
+  // Brand Page
+  brand: {
+    hero: {
+      title: "Notre Identité de Marque",
+      description: "Découvrez notre système de design et nos directives de marque"
+    },
+    colors: {
+      title: "Palette de Couleurs",
+      description: "Notre palette de couleurs principale et ses variations"
+    },
+    typography: {
+      title: "Typographie",
+      description: "Nos polices et styles de texte"
+    },
+    logos: {
+      title: "Logos",
+      description: "Nos logos et leurs utilisations"
+    },
+    guidelines: {
+      title: "Directives de Marque",
+      description: "Règles et principes pour maintenir notre identité visuelle"
+    },
+    components: {
+      colors: {
+        items: {
+          primary: { name: "Primaire", description: "Couleur principale de la marque" },
+          secondary: { name: "Secondaire", description: "Couleur d'accent" },
+          success: { name: "Succès", description: "États de succès" },
+          accent: { name: "Accent", description: "Couleur d'accent" },
+          warning: { name: "Attention", description: "États d'avertissement" },
+          error: { name: "Erreur", description: "États d'erreur" },
+          background: { name: "Arrière-plan", description: "Couleur de fond" },
+          text: { name: "Texte", description: "Couleur principale du texte" },
+          gray: { name: "Gris", description: "Couleur secondaire du texte" },
+          light: { name: "Clair", description: "Couleur de bordure" }
+        }
+      },
+      typography: {
+        items: {
+          heading1: { name: "Titre 1", description: "32px • Bold" },
+          heading2: { name: "Titre 2", description: "24px • Bold" },
+          heading3: { name: "Titre 3", description: "20px • Semi-Bold" },
+          bodyLarge: { name: "Corps Large", description: "18px • Normal" },
+          body: { name: "Corps", description: "16px • Normal" },
+          bodySmall: { name: "Corps Petit", description: "14px • Normal" },
+          caption: { name: "Légende", description: "12px • Normal" }
+        }
+      },
+      logos: {
+        downloadAll: "Télécharger tous les logos",
+        download: "Télécharger",
+        items: {
+          primary: { name: "Logo Principal", description: "Utilisez ce logo comme logo principal dans la plupart des contextes" },
+          icon: { name: "Icône Seule", description: "Utilisez ce logo lorsque l'espace est limité ou comme favicon" },
+          dark: { name: "Mode Sombre", description: "Utilisez cette version sur fond sombre" }
+        }
+      },
+      guidelines: {
+        do: {
+          title: "À Faire",
+          items: [
+            "Utilisez nos couleurs de marque de manière cohérente dans tous les supports",
+            "Maintenez un espacement et un alignement appropriés",
+            "Suivez notre hiérarchie typographique",
+            "Utilisez la bonne version du logo pour chaque contexte",
+            "Gardez les designs propres et minimalistes",
+            "Assurez des ratios de contraste appropriés",
+            "Utilisez un padding et des marges appropriés"
+          ]
+        },
+        dont: {
+          title: "À Ne Pas Faire",
+          items: [
+            "Modifier ou déformer nos logos",
+            "Utiliser des combinaisons de couleurs non autorisées",
+            "Changer les styles de police",
+            "Placer les logos sur des arrière-plans chargés",
+            "Étirer ou compresser les images",
+            "Utiliser des éléments de marque obsolètes",
+            "Mélanger différents styles de design"
+          ]
+        }
+      }
+    }
   }
 }; 
