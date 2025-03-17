@@ -3,8 +3,7 @@ import { View, Image, Animated, Easing, useWindowDimensions } from 'react-native
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { router } from 'expo-router';
 import { Text } from './Text';
-import { appInfo, pressKit, changelog } from '@/constants/landing';
-import { Linking } from 'react-native';
+import { appInfo, changelog } from '@/constants/landing';
 
 interface HeaderProps {
   scrollToSection: (sectionId: string) => void;
@@ -16,12 +15,6 @@ export const Header = ({ scrollToSection }: HeaderProps) => {
   const menuAnimation = React.useRef(new Animated.Value(0)).current;
 
   const isMobile = width < 768;
-
-  const handlePressKit = () => {
-    if (pressKit.enabled) {
-      Linking.openURL(pressKit.url);
-    }
-  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -117,13 +110,11 @@ export const Header = ({ scrollToSection }: HeaderProps) => {
                 <Text tx="changelog" style={{ textAlign: 'left' }} />
               </TouchableOpacity>
             )}
-            {pressKit.enabled && (
-              <TouchableOpacity
-                onPress={() => { handlePressKit(); toggleMenu(); }}
-                className="w-full flex-row justify-start">
-                <Text tx="pressKit" style={{ textAlign: 'left' }} />
-              </TouchableOpacity>
-            )}
+            <TouchableOpacity
+              onPress={() => { router.push('/brand'); toggleMenu(); }}
+              className="w-full flex-row justify-start">
+              <Text tx="pressKit" style={{ textAlign: 'left' }} />
+            </TouchableOpacity>
           </View>
         </Animated.View>
       ) : (
@@ -142,11 +133,9 @@ export const Header = ({ scrollToSection }: HeaderProps) => {
               <Text tx="changelog" />
             </TouchableOpacity>
           )}
-          {pressKit.enabled && (
-            <TouchableOpacity onPress={handlePressKit}>
-              <Text tx="pressKit" />
-            </TouchableOpacity>
-          )}
+          <TouchableOpacity onPress={() => router.push('/brand')}>
+            <Text tx="pressKit" />
+          </TouchableOpacity>
         </View>
       )}
     </View>
