@@ -2,20 +2,18 @@ import React from 'react';
 import { View, Image, Linking, useWindowDimensions } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { appInfo } from '@/constants/landing';
-import { useLanguage } from '@/i18n/translate';
 import { Text } from './Text';
 
 export const Hero = () => {
   const { width } = useWindowDimensions();
-  const { t } = useLanguage();
 
   const isMobile = width < 768;
 
   return (
     <View className="min-h-[500px] bg-white px-4 md:px-8 py-8 md:py-12">
       <View className="flex-col md:flex-row items-center justify-between max-w-6xl mx-auto">
-        <View className={`${isMobile ? 'w-full' : 'flex-1'} items-center mb-8 md:mb-0`}>
-          <View className={`relative ${isMobile ? 'w-[280px] h-[560px]' : 'w-[320px] h-[640px]'}`}>
+        <View className="w-full md:flex-1 items-center mb-8 md:mb-0">
+          <View className="relative w-[280px] h-[560px] md:w-[320px] md:h-[640px]">
             <View
               className="absolute"
               style={{
@@ -41,7 +39,7 @@ export const Hero = () => {
           </View>
         </View>
 
-        <View className={`${isMobile ? 'w-full' : 'flex-1'} ${!isMobile ? 'pl-8 lg:pl-12' : ''} space-y-6 md:space-y-8`}>
+        <View className="w-full md:flex-1 md:pl-8 lg:pl-12 space-y-6 md:space-y-8">
           <View className="flex-row items-center space-x-4 md:space-x-6">
             <View className="bg-gray-50 rounded-2xl shadow-md">
               <Image
@@ -57,16 +55,11 @@ export const Hero = () => {
               <Text variant="heading1" color="text" className="mb-2">
                 {appInfo.name}
               </Text>
-              <Text variant="subtitle" className="text-gray-500">
-                {t('app.price')}
-              </Text>
+              <Text variant="subtitle" className="text-gray-500" tx="app.price" />
             </View>
           </View>
 
-          <Text variant="body" color="text" className="text-base md:text-lg leading-relaxed">
-            {t('app.description')}
-          </Text>
-
+          <Text variant="body" color="text" className="text-base md:text-lg leading-relaxed" tx="app.description" />
           <View className="flex-row flex-wrap gap-4">
             {appInfo.store.ios.url && (
               <TouchableOpacity

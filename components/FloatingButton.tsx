@@ -1,10 +1,9 @@
 import React from 'react';
-import { Text as RNText, Linking, useWindowDimensions } from 'react-native';
+import { Text as RNText, Linking } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FontAwesome } from '@expo/vector-icons';
+import { translate } from '@/i18n/translate';
 import { theme } from '@/constants/theme';
-import { useLanguage } from '@/i18n/translate';
-
 interface FloatingButtonProps {
   url: string;
   icon: keyof typeof FontAwesome.glyphMap;
@@ -16,18 +15,13 @@ export const FloatingButton = ({
   icon = 'github',
   textKey = 'cta.buildYourOwn'
 }: FloatingButtonProps) => {
-  const { width } = useWindowDimensions();
-  const { t } = useLanguage();
-
-  const isMobile = width < 768;
-
   return (
     <TouchableOpacity
       onPress={() => Linking.openURL(url)}
       style={{
-        position: 'fixed',
-        bottom: isMobile ? 16 : 24,
-        left: isMobile ? 16 : 24,
+        position: 'absolute',
+        bottom: 16,
+        left: 16,
         backgroundColor: theme.colors.primary,
         paddingHorizontal: 16,
         paddingVertical: 8,
@@ -46,7 +40,7 @@ export const FloatingButton = ({
       }}>
       <FontAwesome name={icon} size={16} color="white" style={{ marginRight: 6 }} />
       <RNText style={{ color: 'white', fontWeight: '600', fontSize: 14 }}>
-        {t(textKey)}
+        {translate(textKey)}
       </RNText>
     </TouchableOpacity>
   );

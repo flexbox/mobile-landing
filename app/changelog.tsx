@@ -4,7 +4,7 @@ import { theme } from '@/constants/theme';
 import { router } from 'expo-router';
 import { FontAwesome } from '@expo/vector-icons';
 import React from 'react';
-import { useLanguage } from '@/i18n/translate';
+import { translate } from '@/i18n/translate';
 
 type ChangeType = 'feature' | 'improvement' | 'fix';
 
@@ -26,8 +26,6 @@ interface ChangeTypeStyle {
 }
 
 export default function ChangelogScreen() {
-  const { t } = useLanguage();
-
   if (!changelog.enabled) {
     router.replace('/');
     return null;
@@ -39,25 +37,25 @@ export default function ChangelogScreen() {
         return {
           color: theme.colors.primary,
           icon: 'star',
-          label: t('changelog.labels.features')
+          label: translate('changelog.labels.features')
         };
       case 'improvement':
         return {
           color: theme.colors.secondary,
           icon: 'arrow-up',
-          label: t('changelog.labels.improvements')
+          label: translate('changelog.labels.improvements')
         };
       case 'fix':
         return {
           color: theme.colors.text,
           icon: 'wrench',
-          label: t('changelog.labels.fixes')
+          label: translate('changelog.labels.fixes')
         };
       default:
         return {
           color: theme.colors.secondary,
           icon: 'info-circle',
-          label: t('changelog.labels.updates')
+          label: translate('changelog.labels.updates')
         };
     }
   };
@@ -92,7 +90,7 @@ export default function ChangelogScreen() {
                   {appInfo.name}
                 </Text>
                 <Text className="text-sm text-gray-500">
-                  {t('changelog.title')}
+                  {translate('changelog.title')}
                 </Text>
               </View>
             </View>
@@ -111,7 +109,7 @@ export default function ChangelogScreen() {
                     <View className="border-b border-gray-100 pb-4">
                       <View className="flex-row items-baseline justify-between">
                         <Text className="text-xl font-semibold" style={{ color: theme.colors.text }}>
-                          {t('changelog.version', { version: version.version })}
+                          {translate('changelog.version', { version: version.version })}
                         </Text>
                         <Text className="text-sm text-gray-500">
                           {version.date}
@@ -143,7 +141,7 @@ export default function ChangelogScreen() {
                               {groupedChanges[type].map((change, changeIndex) => (
                                 <View key={changeIndex} className="flex-row items-start">
                                   <Text className="text-sm leading-relaxed" style={{ color: theme.colors.text }}>
-                                    • {t(`changelog.${change.id}`)}
+                                    • {translate(`changelog.${change.id}`)}
                                   </Text>
                                 </View>
                               ))}

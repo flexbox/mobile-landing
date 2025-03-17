@@ -1,7 +1,7 @@
 import { ScrollView, View } from 'react-native';
 import Head from 'expo-router/head';
 import React from 'react';
-import { useLanguage } from '@/i18n/translate';
+import { translate } from '@/i18n/translate';
 import { appInfo } from '@/constants/landing';
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
@@ -14,7 +14,6 @@ import '../i18n/i18n';
 
 export default function HomeScreen() {
   const scrollViewRef = React.useRef<ScrollView>(null);
-  const { t } = useLanguage();
 
   const scrollToSection = (sectionId: string) => {
     const yOffset = sectionId === 'features' ? 600 : 1800;
@@ -25,7 +24,7 @@ export default function HomeScreen() {
     <View style={{ flex: 1 }}>
       <Head>
         <title>{appInfo.name}</title>
-        <meta name="description" content={t('app.description')} />
+        <meta name="description" content={translate('app.description')} />
         <meta name="apple-itunes-app" content="app-id=932493382" />
       </Head>
       <ScrollView ref={scrollViewRef} className="flex-1 bg-white" showsVerticalScrollIndicator={false}>

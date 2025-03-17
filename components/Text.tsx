@@ -1,6 +1,6 @@
 import { Text as RNText, TextProps as RNTextProps } from 'react-native';
 import { theme } from '@/constants/theme';
-import { useLanguage } from '@/i18n/translate';
+import { translate } from '@/i18n/translate';
 
 type TextVariant = 'body' | 'title' | 'subtitle' | 'caption' | 'button' | 'label' | 'heading1' | 'heading2';
 
@@ -19,8 +19,6 @@ export const Text = ({
   style,
   ...props
 }: TextProps) => {
-  const { t } = useLanguage();
-
   const variantStyles = {
     body: 'text-sm font-normal',
     title: 'text-xl font-bold',
@@ -38,7 +36,7 @@ export const Text = ({
       style={[{ color: theme.colors[color] }, style]}
       {...props}
     >
-      {tx ? t(`nav.${tx}`) : props.children}
+      {tx ? translate(`nav.${tx}`) : props.children}
     </RNText>
   );
 }; 
