@@ -11,27 +11,7 @@ import { useScroll } from '@/context/ScrollContext';
 import { appInfo } from '@/constants/landing';
 import { translate } from '@/i18n/translate';
 import { APP_STORE_APP_ID } from '@/app.config';
-
-export const metadata = {
-  title: appInfo.name,
-  description: translate('app.description'),
-  openGraph: {
-    title: appInfo.name,
-    description: translate('app.description'),
-    url: appInfo.websiteUrl,
-    type: 'website',
-    images: [`${appInfo.websiteUrl}/@og-image.png`],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: appInfo.name,
-    description: translate('app.description'),
-    images: [`${appInfo.websiteUrl}/@og-image.png`],
-  },
-  other: {
-    'apple-itunes-app': `app-id=${APP_STORE_APP_ID}`,
-  },
-};
+import Head from 'expo-router/head';
 
 export default function HomeScreen() {
   const scrollViewRef = useRef<ScrollView>(null);
@@ -43,6 +23,20 @@ export default function HomeScreen() {
 
   return (
     <View style={{ flex: 1 }}>
+      <Head>
+        <title>{appInfo.name}</title>
+        <meta name="description" content={translate('app.description')} />
+        <meta property="og:title" content={appInfo.name} />
+        <meta property="og:description" content={translate('app.description')} />
+        <meta property="og:url" content={appInfo.websiteUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={`${appInfo.websiteUrl}/@og-image.png`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={appInfo.name} />
+        <meta name="twitter:description" content={translate('app.description')} />
+        <meta name="twitter:image" content={`${appInfo.websiteUrl}/@og-image.png`} />
+        <meta name="apple-itunes-app" content={`app-id=${APP_STORE_APP_ID}`} />
+      </Head>
       <ScrollView ref={scrollViewRef} className="flex-1 bg-white" showsVerticalScrollIndicator={false}>
         <Hero />
         <Features />

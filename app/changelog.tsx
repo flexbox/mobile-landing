@@ -6,6 +6,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import React from 'react';
 import { translate } from '@/i18n/translate';
 import { appInfo } from '@/constants/landing';
+import Head from 'expo-router/head';
 
 export const metadata = {
   title: `${translate('changelog.title')} - ${appInfo.name}`,
@@ -50,6 +51,9 @@ export default function ChangelogScreen() {
     return null;
   }
 
+  const title = `${translate('changelog.title')} - ${appInfo.name}`;
+  const description = translate('changelog.labels.updates');
+
   const getChangeTypeStyle = (type: ChangeType): ChangeTypeStyle => {
     switch (type) {
       case 'feature':
@@ -92,69 +96,84 @@ export default function ChangelogScreen() {
   const versions = changelog.versions as Version[];
 
   return (
-    <ScrollView className="flex-1 bg-gray-50">
-      <View className="flex-1 items-center min-h-screen">
-        <View className="w-full max-w-[50%] py-16">
-          <View className="space-y-6">
-            {versions.map((version, index) => {
-              const groupedChanges = groupChangesByType(version.changes);
-              const changeTypes: ChangeType[] = ['feature', 'improvement', 'fix'];
+    <>
+      <Head>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={`${appInfo.websiteUrl}/changelog`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={`${appInfo.websiteUrl}/@og-image.png`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={`${appInfo.websiteUrl}/@og-image.png`} />
+      </Head>
+      <ScrollView className="flex-1 bg-gray-50">
+        <View className="flex-1 items-center min-h-screen">
+          <View className="w-full max-w-[50%] py-16">
+            <View className="space-y-6">
+              {versions.map((version, index) => {
+                const groupedChanges = groupChangesByType(version.changes);
+                const changeTypes: ChangeType[] = ['feature', 'improvement', 'fix'];
 
-              return (
-                <View key={index} className="bg-white rounded-2xl shadow-sm px-8 py-6">
-                  <View className="space-y-6">
-                    {/* Version Header */}
-                    <View className="border-b border-gray-100 pb-4">
-                      <View className="flex-row items-baseline justify-between">
-                        <Text className="text-xl font-semibold" style={{ color: theme.colors.text }}>
-                          {translate('changelog.version', { version: version.version })}
-                        </Text>
-                        <Text className="text-sm text-gray-500">
-                          {version.date}
-                        </Text>
+                return (
+                  <View key={index} className="bg-white rounded-2xl shadow-sm px-8 py-6">
+                    <View className="space-y-6">
+                      {/* Version Header */}
+                      <View className="border-b border-gray-100 pb-4">
+                        <View className="flex-row items-baseline justify-between">
+                          <Text className="text-xl font-semibold" style={{ color: theme.colors.text }}>
+                            {translate('changelog.version', { version: version.version })}
+                          </Text>
+                          <Text className="text-sm text-gray-500">
+                            {version.date}
+                          </Text>
+                        </View>
+                      </View>
+
+                      {/* Changes by Type */}
+                      <View className="space-y-8">
+                        {changeTypes.map((type) => {
+                          if (!groupedChanges[type]?.length) return null;
+                          const style = getChangeTypeStyle(type);
+
+                          return (
+                            <View key={type} className="space-y-4">
+                              <View className="flex-row items-center space-x-3">
+                                <View
+                                  style={{ backgroundColor: style.color + '10' }}
+                                  className="w-7 h-7 rounded-full items-center justify-center"
+                                >
+                                  <FontAwesome name={style.icon} size={14} color={style.color} />
+                                </View>
+                                <Text className="text-sm font-medium" style={{ color: style.color }}>
+                                  {style.label}
+                                </Text>
+                              </View>
+
+                              <View className="space-y-3 pl-10">
+                                {groupedChanges[type].map((change, changeIndex) => (
+                                  <View key={changeIndex} className="flex-row items-start">
+                                    <Text className="text-sm leading-relaxed" style={{ color: theme.colors.text }}>
+                                      • {translate(`changelog.${change.id}`)}
+                                    </Text>
+                                  </View>
+                                ))}
+                              </View>
+                            </View>
+                          );
+                        })}
                       </View>
                     </View>
-
-                    {/* Changes by Type */}
-                    <View className="space-y-8">
-                      {changeTypes.map((type) => {
-                        if (!groupedChanges[type]?.length) return null;
-                        const style = getChangeTypeStyle(type);
-
-                        return (
-                          <View key={type} className="space-y-4">
-                            <View className="flex-row items-center space-x-3">
-                              <View
-                                style={{ backgroundColor: style.color + '10' }}
-                                className="w-7 h-7 rounded-full items-center justify-center"
-                              >
-                                <FontAwesome name={style.icon} size={14} color={style.color} />
-                              </View>
-                              <Text className="text-sm font-medium" style={{ color: style.color }}>
-                                {style.label}
-                              </Text>
-                            </View>
-
-                            <View className="space-y-3 pl-10">
-                              {groupedChanges[type].map((change, changeIndex) => (
-                                <View key={changeIndex} className="flex-row items-start">
-                                  <Text className="text-sm leading-relaxed" style={{ color: theme.colors.text }}>
-                                    • {translate(`changelog.${change.id}`)}
-                                  </Text>
-                                </View>
-                              ))}
-                            </View>
-                          </View>
-                        );
-                      })}
-                    </View>
                   </View>
-                </View>
-              );
-            })}
+                );
+              })}
+            </View>
           </View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </>
   );
 } 

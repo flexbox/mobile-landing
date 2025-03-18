@@ -8,6 +8,8 @@ import { Header } from '@/components/Header';
 import { View } from 'react-native';
 import { ScrollProvider, useScroll } from '@/context/ScrollContext';
 import { GenerateOgImage } from '@/scripts/generateOgImage';
+import Head from 'expo-router/head';
+import { appInfo } from '@/constants/landing';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -35,12 +37,36 @@ function LayoutContent() {
 
   return (
     <View style={{ flex: 1 }}>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Header scrollToSection={scrollToSection} />
       <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="index" />
-        <Stack.Screen name="changelog" />
-        <Stack.Screen name="brand" />
-        <Stack.Screen name="privacy" />
+        <Stack.Screen
+          name="index"
+          options={{
+            title: appInfo.name
+          }}
+        />
+        <Stack.Screen
+          name="changelog"
+          options={{
+            title: `Changelog - ${appInfo.name}`
+          }}
+        />
+        <Stack.Screen
+          name="brand"
+          options={{
+            title: `Brand - ${appInfo.name}`
+          }}
+        />
+        <Stack.Screen
+          name="privacy"
+          options={{
+            title: `Privacy - ${appInfo.name}`
+          }}
+        />
       </Stack>
     </View>
   );
