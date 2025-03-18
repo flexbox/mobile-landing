@@ -11,8 +11,8 @@ export default function BrandScreen() {
   return (
     <ScreenContainer
       frontMatter={{
-        title: translate('brand.title'),
-        description: translate('brand.description'),
+        title: translate('brand.hero.title'),
+        description: translate('brand.hero.description'),
       }}
     >
       <View className="px-4 py-8">
