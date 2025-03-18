@@ -16,6 +16,7 @@ npm start # or yarn start
 - update your iOS and android configuratino on `app.config.ts`
 - update your theme on `constants/theme.ts`
 - update your landing page content on `constants/landing.ts`
+- run `yarn generate-og` to generate a screenshot of your landing page, then manually move the generated image from your downloads folder to the `assets` directory
 
 ## Release
 
