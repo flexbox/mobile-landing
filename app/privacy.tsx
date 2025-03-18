@@ -1,5 +1,26 @@
 import { ScrollView, View, Linking } from 'react-native';
 import Markdown from 'react-native-markdown-display';
+import { translate } from '@/i18n/translate';
+import { appInfo } from '@/constants/landing';
+
+export const metadata = {
+  title: `${translate('nav.privacy')} - ${appInfo.name}`,
+  description: translate('privacy.description'),
+  openGraph: {
+    title: `${translate('nav.privacy')} - ${appInfo.name}`,
+    description: translate('privacy.description'),
+    url: `${appInfo.websiteUrl}/privacy`,
+    type: 'website',
+    images: [`${appInfo.websiteUrl}/@og-image.png`],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${translate('nav.privacy')} - ${appInfo.name}`,
+    description: translate('privacy.description'),
+    images: [`${appInfo.websiteUrl}/@og-image.png`],
+  },
+};
+
 const privacyPolicyContent = `
 **Terms & Conditions**  
 

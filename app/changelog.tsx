@@ -5,6 +5,25 @@ import { router } from 'expo-router';
 import { FontAwesome } from '@expo/vector-icons';
 import React from 'react';
 import { translate } from '@/i18n/translate';
+import { appInfo } from '@/constants/landing';
+
+export const metadata = {
+  title: `${translate('changelog.title')} - ${appInfo.name}`,
+  description: translate('changelog.hero.description'),
+  openGraph: {
+    title: `${translate('changelog.title')} - ${appInfo.name}`,
+    description: translate('changelog.hero.description'),
+    url: `${appInfo.websiteUrl}/changelog`,
+    type: 'website',
+    images: [`${appInfo.websiteUrl}/@og-image.png`],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${translate('changelog.title')} - ${appInfo.name}`,
+    description: translate('changelog.hero.description'),
+    images: [`${appInfo.websiteUrl}/@og-image.png`],
+  },
+};
 
 type ChangeType = 'feature' | 'improvement' | 'fix';
 
