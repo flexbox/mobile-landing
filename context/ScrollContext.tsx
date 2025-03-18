@@ -14,7 +14,7 @@ const ScrollContext = createContext<ScrollContextType>({
 
 export const useScroll = () => useContext(ScrollContext);
 
-export const ScrollProvider = ({ children }: { children: React.ReactNode }) => {
+export function ScrollProvider({ children }: { children: React.ReactNode }) {
   const scrollViewRef = useRef<ScrollView | null>(null);
   const pathname = usePathname();
   const router = useRouter();

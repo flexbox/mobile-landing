@@ -6,7 +6,7 @@ import 'react-native-reanimated';
 import "../global.css"
 import { Header } from '@/components/Header';
 import { View } from 'react-native';
-import { ScrollProvider, useScroll } from './context/ScrollContext';
+import { ScrollProvider, useScroll } from '@/context/ScrollContext';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();

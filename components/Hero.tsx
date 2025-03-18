@@ -12,10 +12,11 @@ export const Hero = () => {
   useEffect(() => {
     Animated.timing(fadeAnim, {
       toValue: 1,
-      duration: 1500,
+      duration: 350,
       useNativeDriver: true,
+      delay: 750
     }).start();
-  }, []);
+  }, [fadeAnim]);
 
   return (
     <View className="min-h-[500px] bg-white px-4 md:px-8 py-8 md:py-12">

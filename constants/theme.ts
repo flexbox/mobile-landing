@@ -14,15 +14,15 @@ interface ThemeColors {
 
 export const theme = {
   colors: {
-    primary: '#0070F3',    // Modern blue - your brand color
+    primary: '#0070F3',     // Modern blue - your brand color
     secondary: '#171717',   // Near black - for contrast
-    accent: '#FF4081',     // Pink accent - for CTAs
-    text: '#2D3748',       // Dark gray - for better readability
+    accent: '#FF4081',      // Pink accent - for CTAs
+    text: '#2D3748',        // Dark gray - for better readability
     background: '#FFFFFF',  // White - clean background
-    success: '#34C759',    // Green - for success states
-    error: '#FF3B30',      // Red - for error states
-    warning: '#FF9500',    // Orange - for warning states
-    gray: '#8E8E93',       // Gray - for secondary text
+    success: '#34C759',     // Green - for success states
+    error: '#FF3B30',       // Red - for error states
+    warning: '#FF9500',     // Orange - for warning states
+    gray: '#8E8E93',        // Gray - for secondary text
   } as ThemeColors,
   fonts: {
     primary: 'Inter',      // Modern, clean font
