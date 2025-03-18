@@ -61,6 +61,11 @@ export default {
     }
   },
 
+  // Privacy
+  privacy: {
+    title: "Politique de Confidentialité",
+    description: "Cette politique de confidentialité s'applique à l'application."
+  },
   // Social Links
   social: {
     twitter: "Suivez-nous sur Twitter",
