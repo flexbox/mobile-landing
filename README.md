@@ -60,3 +60,10 @@ The changelog page will automatically show your changes with appropriate styling
 - 🟣 Feature: New features
 - 🔵 Improvement: Enhancements to existing features
 - 🔴 Fix: Bug fixes and corrections
+
+## We do it for you
+
+- We specialize in React Native with Expo.
+- Helps startups release mobile apps on productions faster.
+- All-inclusive: a trusted software engineer joins your existing team and shares our expertise in managing releases to store.
+- **Book a call with us: [weshipit.today](https://weshipit.today/)**.

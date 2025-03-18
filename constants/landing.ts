@@ -1,4 +1,5 @@
 import { APP_NAME, APP_STORE_URL, GOOGLE_PLAYSTORE_URL } from '@/app.config';
+import { ChangeType } from '@/app/changelog';
 import { FontAwesome } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 
@@ -97,7 +98,7 @@ export const screenshots = {
 export const socials: SocialLink[] = [
   {
     platform: 'twitter',
-    url: 'https://twitter.com/yourapp',
+    url: 'https://twitter.com/intent/follow?screen_name=flexbox_',
     icon: 'twitter',
     label: 'Follow us on Twitter'
   },
@@ -115,7 +116,7 @@ export const socials: SocialLink[] = [
   },
   {
     platform: 'github',
-    url: 'https://github.com/yourorganization',
+    url: 'https://github.com/flexbox',
     icon: 'github',
     label: 'Check our open source work'
   },
@@ -124,7 +125,6 @@ export const socials: SocialLink[] = [
 // Press Kit
 export const pressKit = {
   enabled: true,
-  url: "https://yourapp.com/press"
 };
 
 
@@ -133,14 +133,14 @@ export const changelog = {
   versions: [
     {
       version: "2.0.0",
-      date: "2024-03-15",
+      date: "2025-03-15",
       changes: [
         {
-          type: "feature",
+          type: "feature" as ChangeType,
           id: "darkMode"
         },
         {
-          type: "improvement",
+          type: "improvement" as ChangeType,
           id: "imageLoading"
         }
       ]
@@ -150,11 +150,11 @@ export const changelog = {
       date: "2024-02-28",
       changes: [
         {
-          type: "feature",
+          type: "feature" as ChangeType,
           id: "dashboard"
         },
         {
-          type: "fix",
+          type: "fix" as ChangeType,
           id: "notificationSync"
         }
       ]
@@ -164,11 +164,11 @@ export const changelog = {
       date: "2024-02-10",
       changes: [
         {
-          type: "improvement",
+          type: "improvement" as ChangeType,
           id: "startupTime"
         },
         {
-          type: "fix",
+          type: "fix" as ChangeType,
           id: "authToken"
         }
       ]

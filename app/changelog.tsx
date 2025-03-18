@@ -6,7 +6,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import React from 'react';
 import { translate } from '@/i18n/translate';
 
-type ChangeType = 'feature' | 'improvement' | 'fix';
+export type ChangeType = 'feature' | 'improvement' | 'fix';
 
 interface Change {
   type: ChangeType;
