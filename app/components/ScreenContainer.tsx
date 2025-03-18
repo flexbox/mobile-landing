@@ -27,7 +27,7 @@ export function ScreenContainer({ children, frontMatter }: ScreenContainerProps)
 
   const title = frontMatter?.title || appInfo.name;
   const description = frontMatter?.description || '';
-  const image = frontMatter?.image || `${appInfo.websiteUrl}/@og-image.png`;
+  const image = frontMatter?.image || '/@og-image.png';
 
   return (
     <View style={{ flex: 1 }}>
