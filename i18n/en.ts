@@ -61,6 +61,10 @@ export default {
     }
   },
 
+  privacy: {
+    title: "Privacy Policy",
+    description: "This is the privacy policy for the app."
+  },
   // Social Links
   social: {
     twitter: "Follow us on Twitter",

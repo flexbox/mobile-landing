@@ -28,13 +28,54 @@ export const theme = {
     primary: 'Inter',      // Modern, clean font
   },
   typography: {
-    body: { fontSize: 16, color: '#000000' },
-    heading1: { fontSize: 24, fontWeight: 'bold', marginVertical: 16 },
-    heading2: { fontSize: 20, fontWeight: 'bold', marginVertical: 12 },
-    paragraph: { marginVertical: 8 },
-    link: { color: '#3B82F6', textDecorationLine: 'underline' },
-    list: { marginVertical: 8 },
-    listItem: { marginLeft: 16 },
-    hr: { marginVertical: 16, borderTopWidth: 1, borderColor: '#E5E7EB' }
+    heading1: {
+      fontSize: 40,
+      fontWeight: '800',
+      marginVertical: 24,
+      letterSpacing: -1,
+      lineHeight: 48
+    },
+    heading2: {
+      fontSize: 32,
+      fontWeight: '700',
+      marginVertical: 20,
+      letterSpacing: -0.5,
+      lineHeight: 40
+    },
+    heading3: {
+      fontSize: 24,
+      fontWeight: '600',
+      marginVertical: 16,
+      letterSpacing: -0.25,
+      lineHeight: 32
+    },
+    bodyLarge: {
+      fontSize: 20,
+      fontWeight: '400',
+      marginVertical: 12,
+      lineHeight: 30,
+      letterSpacing: 0.15
+    },
+    body: {
+      fontSize: 16,
+      fontWeight: '400',
+      marginVertical: 8,
+      lineHeight: 24,
+      letterSpacing: 0.5
+    },
+    bodySmall: {
+      fontSize: 14,
+      fontWeight: '400',
+      marginVertical: 6,
+      lineHeight: 20,
+      letterSpacing: 0.25
+    },
+    caption: {
+      fontSize: 12,
+      fontWeight: '400',
+      marginVertical: 4,
+      lineHeight: 16,
+      letterSpacing: 0.4
+    }
   } as Record<string, TextStyle>
 }
