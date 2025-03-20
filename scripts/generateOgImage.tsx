@@ -6,7 +6,7 @@ import { useAppStore } from '@/context/AppStoreContext';
 
 export const GenerateOgImage = () => {
   const viewShotRef = React.useRef<View>(null);
-  const { appData } = useAppStore();
+  const { appStoreData } = useAppStore();
 
   useEffect(() => {
     const timer = setTimeout(captureHero, 2000);
@@ -67,7 +67,7 @@ export const GenerateOgImage = () => {
   return (
     <View style={{ width: 1200, height: 630, backgroundColor: 'white' }}>
       <View ref={viewShotRef} style={{ flex: 1 }}>
-        <Hero appData={appData} />
+        <Hero appStoreData={appStoreData} />
       </View>
     </View>
   );

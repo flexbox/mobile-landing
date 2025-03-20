@@ -21,7 +21,7 @@ function LayoutContent() {
   });
 
   const { scrollToSection } = useScroll();
-  const { appData } = useAppStore();
+  const { appStoreData } = useAppStore();
 
   useEffect(() => {
     if (loaded) {
@@ -43,30 +43,30 @@ function LayoutContent() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header scrollToSection={scrollToSection} appData={appData} />
+      <Header scrollToSection={scrollToSection} appStoreData={appStoreData} />
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen
           name="index"
           options={{
-            title: appData?.trackName || appInfo.name
+            title: appStoreData?.trackName || appInfo.name
           }}
         />
         <Stack.Screen
           name="changelog"
           options={{
-            title: `Changelog - ${appData?.trackName || appInfo.name}`
+            title: `Changelog - ${appStoreData?.trackName || appInfo.name}`
           }}
         />
         <Stack.Screen
           name="brand"
           options={{
-            title: `Brand - ${appData?.trackName || appInfo.name}`
+            title: `Brand - ${appStoreData?.trackName || appInfo.name}`
           }}
         />
         <Stack.Screen
           name="privacy"
           options={{
-            title: `Privacy - ${appData?.trackName || appInfo.name}`
+            title: `Privacy - ${appStoreData?.trackName || appInfo.name}`
           }}
         />
       </Stack>

@@ -1,5 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { APP_STORE_APP_ID } from '@/app.config';
+import { translate } from '@/i18n/translate';
+import Constants from 'expo-constants';
+import * as FileSystem from 'expo-file-system';
 
 export interface AppStoreData {
   trackName: string;
@@ -14,20 +17,66 @@ export interface AppStoreData {
 }
 
 interface AppStoreContextType {
-  appData: AppStoreData | null;
+  appStoreData: AppStoreData | null;
 }
 
-const AppStoreContext = createContext<AppStoreContextType>({ appData: null });
+const AppStoreContext = createContext<AppStoreContextType>({ appStoreData: null });
+
+const fallbackData: AppStoreData = {
+  trackName: "Expo App Landing Page",
+  price: 0,
+  averageUserRating: 5,
+  formattedPrice: "Free",
+  currency: "USD",
+  screenshotUrls: [],
+  ipadScreenshotUrls: [],
+  artworkUrl512: '',
+  description: translate('app.description'),
+};
+
+const loadStaticAppStoreData = async (): Promise<AppStoreData | null> => {
+  try {
+    if (Constants.appOwnership === 'expo' || Constants.appOwnership === undefined) {
+      try {
+        const staticData = require('@/assets/data/appStore.json');
+        return staticData;
+      } catch (error) {
+        console.warn('Static app store data not found, using fallback data');
+        return fallbackData;
+      }
+    }
+
+    const fileUri = FileSystem.documentDirectory + 'appStore.json';
+    const fileExists = await FileSystem.getInfoAsync(fileUri);
+
+    if (fileExists.exists) {
+      const jsonContent = await FileSystem.readAsStringAsync(fileUri);
+      return JSON.parse(jsonContent);
+    }
+
+    return null;
+  } catch (error) {
+    console.error('Error loading static app store data:', error);
+    return null;
+  }
+};
 
 export function AppStoreProvider({ children }: { children: React.ReactNode }) {
-  const [appData, setAppData] = useState<AppStoreData | null>(null);
+  const [appStoreData, setAppStoreData] = useState<AppStoreData | null>(null);
 
   useEffect(() => {
-    console.log("Fetching App Store data for ID:", APP_STORE_APP_ID);
-    fetch(`https://itunes.apple.com/lookup?id=${APP_STORE_APP_ID}`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Full App Store Response:", data);
+    const loadData = async () => {
+      const staticData = await loadStaticAppStoreData();
+      if (staticData) {
+        console.log("Using static App Store data");
+        setAppStoreData(staticData);
+        return;
+      }
+      console.log("Fetching App Store data for ID:", APP_STORE_APP_ID);
+      try {
+        const response = await fetch(`https://itunes.apple.com/lookup?id=${APP_STORE_APP_ID}`);
+        const data = await response.json();
+
         if (data.results && data.results.length > 0) {
           const result = data.results[0];
           console.log("App Store Data:", {
@@ -37,7 +86,8 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
             price: result.formattedPrice,
             icon: result.artworkUrl512,
           });
-          setAppData({
+
+          setAppStoreData({
             trackName: result.trackName,
             price: result.price,
             averageUserRating: result.averageUserRating,
@@ -50,39 +100,19 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
           });
         } else {
           console.log("No results found in App Store response, using fallback data");
-          // Fallback data when app is not yet published
-          setAppData({
-            trackName: "Expo App Landing Page",
-            price: 0,
-            averageUserRating: 5,
-            formattedPrice: "Free",
-            currency: "USD",
-            screenshotUrls: [],
-            ipadScreenshotUrls: [],
-            artworkUrl512: '',
-            description: "A beautiful landing page for your Expo app. Showcase your app with style and elegance. This template includes App Store data integration, localization support, and a modern design that adapts to all screen sizes.",
-          });
+          setAppStoreData(fallbackData);
         }
-      })
-      .catch((error: Error) => {
+      } catch (error) {
         console.error('Error fetching App Store data:', error);
-        // Same fallback data in case of error
-        setAppData({
-          trackName: "Expo App Landing Page",
-          price: 0,
-          averageUserRating: 5,
-          formattedPrice: "Free",
-          currency: "USD",
-          screenshotUrls: [],
-          ipadScreenshotUrls: [],
-          artworkUrl512: '',
-          description: "A beautiful landing page for your Expo app. Showcase your app with style and elegance. This template includes App Store data integration, localization support, and a modern design that adapts to all screen sizes.",
-        });
-      });
+        setAppStoreData(fallbackData);
+      }
+    };
+
+    loadData();
   }, []);
 
   return (
-    <AppStoreContext.Provider value={{ appData }}>
+    <AppStoreContext.Provider value={{ appStoreData }}>
       {children}
     </AppStoreContext.Provider>
   );

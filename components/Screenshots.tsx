@@ -2,23 +2,15 @@ import React from 'react';
 import { View, Image, ScrollView } from 'react-native';
 import { screenshots } from '@/constants/landing';
 import { Text } from './Text';
+import { AppStoreData } from '@/context/AppStoreContext';
 
-interface AppStoreData {
-  trackName: string;
-  price: number;
-  averageUserRating: number;
-  formattedPrice: string;
-  currency: string;
-  screenshotUrls: string[];
-  ipadScreenshotUrls: string[];
-}
 
 interface ScreenshotsProps {
-  appData: AppStoreData | null;
+  appStoreData: AppStoreData | null;
 }
 
-export const Screenshots = ({ appData }: ScreenshotsProps) => {
-  const screenshotsToShow = appData?.screenshotUrls?.length ? appData.screenshotUrls : [screenshots.assets.screenshots[0]];
+export const Screenshots = ({ appStoreData }: ScreenshotsProps) => {
+  const screenshotsToShow = appStoreData?.screenshotUrls?.length ? appStoreData.screenshotUrls : [screenshots.assets.screenshots[0]];
 
   return (
     <View className="py-12 md:py-16 px-4 bg-white">

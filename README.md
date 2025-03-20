@@ -26,6 +26,24 @@ npm start # or yarn start
 - update your landing page content on `constants/landing.ts`
 - run `yarn generate-og` to generate a screenshot of your landing page, then manually move the generated image from your downloads folder to the `public` directory
 
+## App Store Data
+
+The app can fetch App Store data in two ways:
+
+1. **Dynamic mode (development)**: When running in development, the app will try to fetch data from the App Store API if no static data is available.
+
+2. **Static mode (production)**: For production deployments, the app uses pre-fetched data stored in a local JSON file.
+
+To manually fetch and update the App Store data:
+
+```bash
+yarn fetch-appstore-data
+```
+
+This will create a JSON file at `assets/data/appStore.json` with your app's data.
+
+When you run `yarn deploy`, this command is automatically executed before deployment to ensure you have the latest data.
+
 ## Release
 
 1. Create an account at [expo.dev](https://expo.dev)

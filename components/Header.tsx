@@ -9,10 +9,10 @@ import { AppStoreData } from '@/context/AppStoreContext';
 
 interface HeaderProps {
   scrollToSection: (sectionId: string) => void;
-  appData?: AppStoreData | null;
+  appStoreData?: AppStoreData | null;
 }
 
-export const Header = ({ scrollToSection, appData }: HeaderProps) => {
+export const Header = ({ scrollToSection, appStoreData }: HeaderProps) => {
   const { width } = useWindowDimensions();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuAnimation = useRef(new Animated.Value(0)).current;
@@ -35,15 +35,15 @@ export const Header = ({ scrollToSection, appData }: HeaderProps) => {
         <View className="flex-row items-center space-x-3">
           <View className="shadow-md rounded-lg">
             <Image
-              source={appData?.artworkUrl512
-                ? { uri: appData.artworkUrl512 }
+              source={appStoreData?.artworkUrl512
+                ? { uri: appStoreData.artworkUrl512 }
                 : require('@/assets/images/icon.png')}
               defaultSource={require('@/assets/images/icon.png')}
               style={{ width: 32, height: 32, borderRadius: 8 }}
             />
           </View>
           <Text className="text-lg font-bold" color="text">
-            {appData?.trackName || appInfo.name}
+            {appStoreData?.trackName || appInfo.name}
           </Text>
         </View>
         {isMobile && (

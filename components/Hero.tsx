@@ -5,24 +5,12 @@ import { appInfo } from '@/constants/landing';
 import { Text } from './Text';
 import { FontAwesome } from '@expo/vector-icons';
 import { translate } from '@/i18n/translate';
-
-interface AppStoreData {
-  trackName: string;
-  price: number;
-  averageUserRating: number;
-  formattedPrice: string;
-  currency: string;
-  screenshotUrls: string[];
-  ipadScreenshotUrls: string[];
-  artworkUrl512: string;
-  description: string;
-}
-
+import { AppStoreData } from '@/context/AppStoreContext';
 interface HeroProps {
-  appData: AppStoreData | null;
+  appStoreData: AppStoreData | null;
 }
 
-export const Hero = ({ appData }: HeroProps) => {
+export const Hero = ({ appStoreData }: HeroProps) => {
   const { width } = useWindowDimensions();
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
   const isMobile = width < 768;
@@ -37,8 +25,8 @@ export const Hero = ({ appData }: HeroProps) => {
   }, [fadeAnim]);
 
   const renderRating = () => {
-    if (!appData?.averageUserRating) return null;
-    const rating = Math.round(appData.averageUserRating);
+    if (!appStoreData?.averageUserRating) return null;
+    const rating = Math.round(appStoreData.averageUserRating);
     return (
       <View className="flex-row items-center space-x-1">
         {[1, 2, 3, 4, 5].map((star) => (
@@ -49,7 +37,7 @@ export const Hero = ({ appData }: HeroProps) => {
             color={star <= rating ? "#FFD700" : "#D3D3D3"}
           />
         ))}
-        <Text className="ml-2 text-gray-500">({appData.averageUserRating.toFixed(1)})</Text>
+        <Text className="ml-2 text-gray-500">({appStoreData.averageUserRating.toFixed(1)})</Text>
       </View>
     );
   };
@@ -71,8 +59,8 @@ export const Hero = ({ appData }: HeroProps) => {
                 backgroundColor: '#000',
               }}>
               <Animated.Image
-                source={appData?.screenshotUrls && appData.screenshotUrls.length > 0
-                  ? { uri: appData.screenshotUrls[0] }
+                source={appStoreData?.screenshotUrls && appStoreData.screenshotUrls.length > 0
+                  ? { uri: appStoreData.screenshotUrls[0] }
                   : require('@/assets/images/screenshot.png')}
                 defaultSource={require('@/assets/images/screenshot.png')}
                 style={{
@@ -96,8 +84,8 @@ export const Hero = ({ appData }: HeroProps) => {
           <View className="flex-row items-center space-x-4 md:space-x-6">
             <View className="bg-gray-50 rounded-2xl shadow-md">
               <Image
-                source={appData?.artworkUrl512
-                  ? { uri: appData.artworkUrl512 }
+                source={appStoreData?.artworkUrl512
+                  ? { uri: appStoreData.artworkUrl512 }
                   : require('@/assets/images/icon.png')}
                 defaultSource={require('@/assets/images/icon.png')}
                 style={{
@@ -109,11 +97,11 @@ export const Hero = ({ appData }: HeroProps) => {
             </View>
             <View>
               <Text variant="heading1" color="text" className="mb-2">
-                {appData?.trackName || appInfo.name}
+                {appStoreData?.trackName || appInfo.name}
               </Text>
-              {appData?.price !== undefined && appData?.price > 0 ? (
+              {appStoreData?.price !== undefined && appStoreData?.price > 0 ? (
                 <Text variant="subtitle" className="text-gray-500">
-                  {appData.formattedPrice}
+                  {appStoreData.formattedPrice}
                 </Text>
               ) : (
                 <Text variant="subtitle" className="text-gray-500" tx="app.free" />
@@ -123,7 +111,7 @@ export const Hero = ({ appData }: HeroProps) => {
           </View>
 
           <Text variant="body" color="text" className="text-base md:text-lg leading-relaxed">
-            {(appData?.description || translate('app.description')).split('.')[0] + '.'}
+            {(appStoreData?.description || translate('app.description')).split('.')[0] + '.'}
           </Text>
           <View className="flex-row flex-wrap gap-4">
             {appInfo.store.ios.url && (

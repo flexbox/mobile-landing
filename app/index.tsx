@@ -11,7 +11,7 @@ import { ScreenContainer } from '@/app/components/ScreenContainer';
 import { useAppStore } from '@/context/AppStoreContext';
 
 export default function HomeScreen() {
-  const { appData } = useAppStore();
+  const { appStoreData } = useAppStore();
 
   return (
     <ScreenContainer
@@ -19,11 +19,10 @@ export default function HomeScreen() {
         description: translate('app.description'),
         showGithubButton: true,
       }}
-      appData={appData}
     >
-      <Hero appData={appData} />
+      <Hero appStoreData={appStoreData} />
       <Features />
-      <Screenshots appData={appData} />
+      <Screenshots appStoreData={appStoreData} />
       <View className="py-8 md:py-12 px-4 bg-gray-50">
         <StoreButtons />
       </View>
