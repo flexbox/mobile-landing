@@ -8,8 +8,8 @@ const OWNER = "weshipit";
 
 // App production config
 export const APP_NAME = "expo-app-landing-page";
-const BUNDLE_IDENTIFIER = "today.weshipit.landing"; // use reverse domain name example: com.company.appname
-const PACKAGE_NAME = "today.weshipit.landing"; // use reverse domain name example: com.company.appname
+const BUNDLE_IDENTIFIER = "com.duolingo"; // use reverse domain name example: com.company.appname
+const PACKAGE_NAME = "com.duolingo"; // use reverse domain name example: com.company.appname
 const ICON = "./assets/images/icon.png";
 const ADAPTIVE_ICON = "./assets/images/adaptive-icon.png";
 const FAVICON = "./assets/images/favicon.png";
