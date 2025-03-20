@@ -19,7 +19,9 @@ npm start # or yarn start
 
 ## Configure your app
 
-- update your iOS and android configuratino on `app.config.ts`
+- update your iOS and android configuration in `app.config.ts`
+  - if you provide your App Store ID, the app will automatically fetch your app data (name, description, screenshots)
+  - in case the automatic fetch fails, you can still manually configure all the data
 - update your theme on `constants/theme.ts`
 - update your landing page content on `constants/landing.ts`
 - run `yarn generate-og` to generate a screenshot of your landing page, then manually move the generated image from your downloads folder to the `public` directory
