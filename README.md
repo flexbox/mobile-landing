@@ -4,6 +4,12 @@
 
 Demo: [expo-app-landing-page.expo.app](https://expo-app-landing-page.expo.app/)
 
+## Clone the repository
+
+```bash
+npx create-expo -t https://github.com/flexbox/expo-app-landing-page/
+```
+
 ## Getting Started
 
 ```bash
