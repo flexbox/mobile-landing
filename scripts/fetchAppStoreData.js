@@ -1,7 +1,16 @@
-import fs from 'fs';
-import path from 'path';
-import { APP_STORE_APP_ID } from '../app.config';
+// Script pour récupérer les données App Store et les stocker localement
+const fs = require('fs');
+const path = require('path');
 
+// Lire le contenu du fichier app.config.ts pour extraire APP_STORE_APP_ID
+const appConfigPath = path.join(process.cwd(), 'app.config.ts');
+const appConfigContent = fs.readFileSync(appConfigPath, 'utf8');
+
+// Extraire APP_STORE_APP_ID avec une expression régulière
+const appIdMatch = appConfigContent.match(/APP_STORE_APP_ID\s*=\s*["']([^"']+)["']/);
+const APP_STORE_APP_ID = appIdMatch ? appIdMatch[1] : '570060128'; // Valeur par défaut si non trouvée
+
+// Fallback description quand les données ne sont pas disponibles
 const FALLBACK_DESCRIPTION = "Une application mobile élégante et intuitive développée avec Expo React Native.";
 
 async function fetchAppStoreData() {
@@ -30,6 +39,7 @@ async function fetchAppStoreData() {
       };
     } else {
       console.log('No results found in App Store response, using fallback data');
+      // Fallback data when app is not yet published
       appStoreData = {
         trackName: "Expo App Landing Page",
         price: 0,
@@ -43,10 +53,13 @@ async function fetchAppStoreData() {
       };
     }
 
+    // Ensure directory exists
     const dataDir = path.join(process.cwd(), 'assets', 'data');
     if (!fs.existsSync(dataDir)) {
       fs.mkdirSync(dataDir, { recursive: true });
     }
+
+    // Write data to file
     const dataPath = path.join(dataDir, 'appStore.json');
     fs.writeFileSync(dataPath, JSON.stringify(appStoreData, null, 2));
 
@@ -54,6 +67,7 @@ async function fetchAppStoreData() {
   } catch (error) {
     console.error('Error fetching App Store data:', error);
 
+    // Fallback data in case of error
     const fallbackData = {
       trackName: "Expo App Landing Page",
       price: 0,
@@ -66,11 +80,13 @@ async function fetchAppStoreData() {
       description: FALLBACK_DESCRIPTION,
     };
 
+    // Ensure directory exists
     const dataDir = path.join(process.cwd(), 'assets', 'data');
     if (!fs.existsSync(dataDir)) {
       fs.mkdirSync(dataDir, { recursive: true });
     }
 
+    // Write fallback data to file
     const dataPath = path.join(dataDir, 'appStore.json');
     fs.writeFileSync(dataPath, JSON.stringify(fallbackData, null, 2));
 
@@ -78,4 +94,5 @@ async function fetchAppStoreData() {
   }
 }
 
+// Execute the function
 fetchAppStoreData(); 
