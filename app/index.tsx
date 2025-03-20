@@ -8,17 +8,22 @@ import { SocialLinks } from '@/components/SocialLinks';
 import '@/i18n/i18n';
 import { translate } from '@/i18n/translate';
 import { ScreenContainer } from '@/app/components/ScreenContainer';
+import { useAppStore } from '@/context/AppStoreContext';
+
 export default function HomeScreen() {
+  const { appData } = useAppStore();
+
   return (
     <ScreenContainer
       frontMatter={{
         description: translate('app.description'),
         showGithubButton: true,
       }}
+      appData={appData}
     >
-      <Hero />
+      <Hero appData={appData} />
       <Features />
-      <Screenshots />
+      <Screenshots appData={appData} />
       <View className="py-8 md:py-12 px-4 bg-gray-50">
         <StoreButtons />
       </View>

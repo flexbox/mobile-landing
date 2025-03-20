@@ -10,6 +10,7 @@ import { ScrollProvider, useScroll } from '@/context/ScrollContext';
 import { GenerateOgImage } from '@/scripts/generateOgImage';
 import Head from 'expo-router/head';
 import { appInfo } from '@/constants/landing';
+import { AppStoreProvider, useAppStore } from '@/context/AppStoreContext';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -20,6 +21,7 @@ function LayoutContent() {
   });
 
   const { scrollToSection } = useScroll();
+  const { appData } = useAppStore();
 
   useEffect(() => {
     if (loaded) {
@@ -41,30 +43,30 @@ function LayoutContent() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header scrollToSection={scrollToSection} />
+      <Header scrollToSection={scrollToSection} appData={appData} />
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen
           name="index"
           options={{
-            title: appInfo.name
+            title: appData?.trackName || appInfo.name
           }}
         />
         <Stack.Screen
           name="changelog"
           options={{
-            title: `Changelog - ${appInfo.name}`
+            title: `Changelog - ${appData?.trackName || appInfo.name}`
           }}
         />
         <Stack.Screen
           name="brand"
           options={{
-            title: `Brand - ${appInfo.name}`
+            title: `Brand - ${appData?.trackName || appInfo.name}`
           }}
         />
         <Stack.Screen
           name="privacy"
           options={{
-            title: `Privacy - ${appInfo.name}`
+            title: `Privacy - ${appData?.trackName || appInfo.name}`
           }}
         />
       </Stack>
@@ -74,8 +76,10 @@ function LayoutContent() {
 
 export default function RootLayout() {
   return (
-    <ScrollProvider>
-      <LayoutContent />
-    </ScrollProvider>
+    <AppStoreProvider>
+      <ScrollProvider>
+        <LayoutContent />
+      </ScrollProvider>
+    </AppStoreProvider>
   );
 }

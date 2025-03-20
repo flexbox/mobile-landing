@@ -16,6 +16,7 @@ export default {
     },
     description: "This is a powerful and flexible landing page template for your app. It's easy to customize and it looks great on any device, big or small.",
     price: "one time purchase",
+    free: "Free",
     category: "Productivity"
   },
 

@@ -4,12 +4,15 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { router } from 'expo-router';
 import { Text } from './Text';
 import { appInfo, changelog } from '@/constants/landing';
+import { AppStoreData } from '@/context/AppStoreContext';
+
 
 interface HeaderProps {
   scrollToSection: (sectionId: string) => void;
+  appData?: AppStoreData | null;
 }
 
-export const Header = ({ scrollToSection }: HeaderProps) => {
+export const Header = ({ scrollToSection, appData }: HeaderProps) => {
   const { width } = useWindowDimensions();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuAnimation = useRef(new Animated.Value(0)).current;
@@ -32,12 +35,15 @@ export const Header = ({ scrollToSection }: HeaderProps) => {
         <View className="flex-row items-center space-x-3">
           <View className="shadow-md rounded-lg">
             <Image
-              source={require('@/assets/images/icon.png')}
+              source={appData?.artworkUrl512
+                ? { uri: appData.artworkUrl512 }
+                : require('@/assets/images/icon.png')}
+              defaultSource={require('@/assets/images/icon.png')}
               style={{ width: 32, height: 32, borderRadius: 8 }}
             />
           </View>
           <Text className="text-lg font-bold" color="text">
-            {appInfo.name}
+            {appData?.trackName || appInfo.name}
           </Text>
         </View>
         {isMobile && (

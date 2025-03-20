@@ -16,6 +16,7 @@ export default {
     },
     description: "Un modèle de page de présentation puissant et flexible pour votre application. Facile à personnaliser et superbe sur tous les appareils, grands ou petits.",
     price: "achat unique",
+    free: "Gratuit",
     category: "Productivité"
   },
 
