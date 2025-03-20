@@ -62,10 +62,10 @@ export const Hero = ({ appData }: HeroProps) => {
             <View
               className="absolute"
               style={{
-                top: '1.8%',
-                left: '5.5%',
-                right: '5.5%',
-                bottom: '1.8%',
+                top: '2%',
+                left: '6%',
+                right: '5.8%',
+                bottom: '2%',
                 borderRadius: 38,
                 overflow: 'hidden',
                 backgroundColor: '#000',

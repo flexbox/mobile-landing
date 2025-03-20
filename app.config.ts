@@ -16,7 +16,7 @@ const FAVICON = "./assets/images/favicon.png";
 
 // Replace these with your app store URLs
 // You can find them at https://appstoreconnect.apple.com/apps/[app-id]/distribution/info
-export const APP_STORE_APP_ID = "932493382";
+export const APP_STORE_APP_ID = "570060128";
 export const APP_STORE_URL = `https://apps.apple.com/app/${APP_NAME}/id${APP_STORE_APP_ID}`;
 export const GOOGLE_PLAYSTORE_URL = `https://play.google.com/store/apps/details?id=${PACKAGE_NAME}`;
 
