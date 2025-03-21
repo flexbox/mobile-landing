@@ -1,4 +1,4 @@
-import { Text as RNText, TextProps as RNTextProps } from 'react-native';
+import { Text as RNText, TextProps as RNTextProps, AccessibilityRole } from 'react-native';
 import { theme } from '@/constants/theme';
 import { translate } from '@/i18n/translate';
 
@@ -38,7 +38,7 @@ export const Text = ({
 
   // Map semantic tags to accessibility roles and levels
   const semanticProps = as ? {
-    accessibilityRole: as.startsWith('h') ? 'header' : 'text',
+    accessibilityRole: as.startsWith('h') ? ('header' as AccessibilityRole) : ('text' as AccessibilityRole),
     'aria-level': as.startsWith('h') ? parseInt(as.slice(1)) : undefined,
   } : {};
 
