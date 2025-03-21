@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { changelog } from '@/constants/landing';
 import { theme } from '@/constants/theme';
 import { translate } from '@/i18n/translate';
-import { ScreenContainer } from '@/app/components/ScreenContainer';
+import { ScreenContainer } from '@/components/ScreenContainer';
+import { Text } from '@/components/Text';
 
 export type ChangeType = 'feature' | 'improvement' | 'fix';
 
@@ -80,10 +81,11 @@ export default function ChangelogScreen() {
         description: translate('changelog.description'),
       }}
     >
-      <View className="px-4 py-8">
-        <ScrollView className="flex-1 bg-gray-50">
+      
+        <ScrollView className="flex-1 bg-gray-50 px-4 py-8">
           <View className="flex-1 items-center min-h-screen">
             <View className="w-full max-w-[50%] py-16">
+              <Text as="h1" variant="heading1" className="mb-6">Changelog</Text>
               <View className="space-y-6">
                 {versions.map((version, index) => {
                   const groupedChanges = groupChangesByType(version.changes);
@@ -95,7 +97,7 @@ export default function ChangelogScreen() {
                         {/* Version Header */}
                         <View className="border-b border-gray-100 pb-4">
                           <View className="flex-row items-baseline justify-between">
-                            <Text className="text-xl font-semibold" style={{ color: theme.colors.text }}>
+                            <Text as="h2" variant="heading2" style={{ color: theme.colors.text }}>
                               {translate('changelog.version', { version: version.version })}
                             </Text>
                             <Text className="text-sm text-gray-500">
@@ -145,7 +147,7 @@ export default function ChangelogScreen() {
             </View>
           </View>
         </ScrollView>
-      </View>
+  
     </ScreenContainer>
   );
 } 

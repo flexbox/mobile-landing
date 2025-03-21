@@ -5,7 +5,7 @@ import { BrandColors } from '@/components/brand/BrandColors';
 import { BrandTypography } from '@/components/brand/BrandTypography';
 import { BrandLogos } from '@/components/brand/BrandLogos';
 import { BrandGuidelines } from '@/components/brand/BrandGuidelines';
-import { ScreenContainer } from '@/app/components/ScreenContainer';
+import { ScreenContainer } from '@/components/ScreenContainer';
 
 export default function BrandScreen() {
   return (
