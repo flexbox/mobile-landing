@@ -21,6 +21,10 @@ interface AppStoreContextType {
 
 const AppStoreContext = createContext<AppStoreContextType>({ appStoreData: null });
 
+/**
+ * @deprecated
+ * @todo replace from app.config.ts data
+ */
 const fallbackData: AppStoreData = {
   trackName: "Expo App Landing Page",
   price: 0,

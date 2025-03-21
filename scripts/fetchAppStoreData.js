@@ -1,16 +1,16 @@
-// Script pour récupérer les données App Store et les stocker localement
+// This script fetches data from the App Store using the iTunes API
 const fs = require('fs');
 const path = require('path');
 
-// Lire le contenu du fichier app.config.ts pour extraire APP_STORE_APP_ID
+// Read `app.config.ts` file to get `APP_STORE_APP_ID`
 const appConfigPath = path.join(process.cwd(), 'app.config.ts');
 const appConfigContent = fs.readFileSync(appConfigPath, 'utf8');
 
-// Extraire APP_STORE_APP_ID avec une expression régulière
+// This regex looks for the line that defines `APP_STORE_APP_ID` and captures its value
 const appIdMatch = appConfigContent.match(/APP_STORE_APP_ID\s*=\s*["']([^"']+)["']/);
-const APP_STORE_APP_ID = appIdMatch ? appIdMatch[1] : '570060128'; // Valeur par défaut si non trouvée
+const APP_STORE_APP_ID = appIdMatch ? appIdMatch[1] : '570060128';
 
-// Fallback description quand les données ne sont pas disponibles
+// Fallback description when data is not available
 const FALLBACK_DESCRIPTION = "Une application mobile élégante et intuitive développée avec Expo React Native.";
 
 async function fetchAppStoreData() {
@@ -67,7 +67,10 @@ async function fetchAppStoreData() {
   } catch (error) {
     console.error('Error fetching App Store data:', error);
 
-    // Fallback data in case of error
+    /**
+    * @deprecated
+    * @todo replace from app.config.ts data
+    */
     const fallbackData = {
       trackName: "Expo App Landing Page",
       price: 0,

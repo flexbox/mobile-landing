@@ -2,6 +2,8 @@
 
 > Customizable landing page for your Expo application, built with Expo and React Native Web.
 
+![Expo App Langin page OG](./public/@og-image.png)
+
 Demo: [expo-app-landing-page.expo.app](https://expo-app-landing-page.expo.app/)
 
 ## Clone the repository
@@ -19,12 +21,12 @@ npm start # or yarn start
 
 ## Configure your app
 
-- update your iOS and android configuration in `app.config.ts`
-  - if you provide your App Store ID, the app will automatically fetch your app data (name, description, screenshots)
-  - in case the automatic fetch fails, you can still manually configure all the data
-- update your theme on `constants/theme.ts`
-- update your landing page content on `constants/landing.ts`
-- run `yarn generate-og` to generate a screenshot of your landing page, then manually move the generated image from your downloads folder to the `public` directory
+- Update your iOS and android configuration in `app.config.ts`.
+  - If you provide your App Store ID, the app will automatically fetch your app data (name, description, screenshots).
+  - In case the automatic fetch fails, you can still manually configure all the data.
+- Update your theme on `constants/theme.ts`.
+- Update your landing page content on `constants/landing.ts`.
+- Run `yarn generate-og` to generate a screenshot of your landing page, then manually move the generated image from your downloads folder to the `public` directory.
 
 ## App Store Data
 
