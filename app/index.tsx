@@ -7,7 +7,7 @@ import { StoreButtons } from '@/components/StoreButtons';
 import { SocialLinks } from '@/components/SocialLinks';
 import '@/i18n/i18n';
 import { translate } from '@/i18n/translate';
-import { ScreenContainer } from '@/app/components/ScreenContainer';
+import { ScreenContainer } from '@/components/ScreenContainer';
 import { useAppStore } from '@/context/AppStoreContext';
 
 export default function HomeScreen() {
