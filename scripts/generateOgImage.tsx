@@ -2,9 +2,11 @@ import React, { useEffect } from 'react';
 import { View, Platform } from 'react-native';
 import { captureRef } from 'react-native-view-shot';
 import { Hero } from '@/components/Hero';
+import { useAppStore } from '@/context/AppStoreContext';
 
 export const GenerateOgImage = () => {
   const viewShotRef = React.useRef<View>(null);
+  const { appStoreData } = useAppStore();
 
   useEffect(() => {
     const timer = setTimeout(captureHero, 2000);
@@ -65,7 +67,7 @@ export const GenerateOgImage = () => {
   return (
     <View style={{ width: 1200, height: 630, backgroundColor: 'white' }}>
       <View ref={viewShotRef} style={{ flex: 1 }}>
-        <Hero />
+        <Hero appStoreData={appStoreData} />
       </View>
     </View>
   );

@@ -8,7 +8,11 @@ import { SocialLinks } from '@/components/SocialLinks';
 import '@/i18n/i18n';
 import { translate } from '@/i18n/translate';
 import { ScreenContainer } from '@/app/components/ScreenContainer';
+import { useAppStore } from '@/context/AppStoreContext';
+
 export default function HomeScreen() {
+  const { appStoreData } = useAppStore();
+
   return (
     <ScreenContainer
       frontMatter={{
@@ -16,9 +20,9 @@ export default function HomeScreen() {
         showGithubButton: true,
       }}
     >
-      <Hero />
+      <Hero appStoreData={appStoreData} />
       <Features />
-      <Screenshots />
+      <Screenshots appStoreData={appStoreData} />
       <View className="py-8 md:py-12 px-4 bg-gray-50">
         <StoreButtons />
       </View>

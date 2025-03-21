@@ -3,8 +3,14 @@ import { View, Image, Linking, useWindowDimensions, Animated } from 'react-nativ
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { appInfo } from '@/constants/landing';
 import { Text } from './Text';
+import { FontAwesome } from '@expo/vector-icons';
+import { translate } from '@/i18n/translate';
+import { AppStoreData } from '@/context/AppStoreContext';
+interface HeroProps {
+  appStoreData: AppStoreData | null;
+}
 
-export const Hero = () => {
+export const Hero = ({ appStoreData }: HeroProps) => {
   const { width } = useWindowDimensions();
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
   const isMobile = width < 768;
@@ -18,6 +24,24 @@ export const Hero = () => {
     }).start();
   }, [fadeAnim]);
 
+  const renderRating = () => {
+    if (!appStoreData?.averageUserRating) return null;
+    const rating = Math.round(appStoreData.averageUserRating);
+    return (
+      <View className="flex-row items-center space-x-1">
+        {[1, 2, 3, 4, 5].map((star) => (
+          <FontAwesome
+            key={star}
+            name={star <= rating ? "star" : "star-o"}
+            size={16}
+            color={star <= rating ? "#FFD700" : "#D3D3D3"}
+          />
+        ))}
+        <Text className="ml-2 text-gray-500">({appStoreData.averageUserRating.toFixed(1)})</Text>
+      </View>
+    );
+  };
+
   return (
     <View className="min-h-[500px] bg-white px-4 md:px-8 py-8 md:py-12">
       <View className="flex-col md:flex-row items-center justify-between max-w-6xl mx-auto">
@@ -26,16 +50,19 @@ export const Hero = () => {
             <View
               className="absolute"
               style={{
-                top: '1.8%',
-                left: '5.5%',
-                right: '5.5%',
-                bottom: '1.8%',
+                top: '2%',
+                left: '6%',
+                right: '5.8%',
+                bottom: '2%',
                 borderRadius: 38,
                 overflow: 'hidden',
                 backgroundColor: '#000',
               }}>
               <Animated.Image
-                source={require('@/assets/images/screenshot.png')}
+                source={appStoreData?.screenshotUrls && appStoreData.screenshotUrls.length > 0
+                  ? { uri: appStoreData.screenshotUrls[0] }
+                  : require('@/assets/images/screenshot.png')}
+                defaultSource={require('@/assets/images/screenshot.png')}
                 style={{
                   width: '100%',
                   height: '100%',
@@ -57,7 +84,10 @@ export const Hero = () => {
           <View className="flex-row items-center space-x-4 md:space-x-6">
             <View className="bg-gray-50 rounded-2xl shadow-md">
               <Image
-                source={require('@/assets/images/icon.png')}
+                source={appStoreData?.artworkUrl512
+                  ? { uri: appStoreData.artworkUrl512 }
+                  : require('@/assets/images/icon.png')}
+                defaultSource={require('@/assets/images/icon.png')}
                 style={{
                   width: isMobile ? 64 : 90,
                   height: isMobile ? 64 : 90,
@@ -67,13 +97,22 @@ export const Hero = () => {
             </View>
             <View>
               <Text variant="heading1" color="text" className="mb-2">
-                {appInfo.name}
+                {appStoreData?.trackName || appInfo.name}
               </Text>
-              <Text variant="subtitle" className="text-gray-500" tx="app.price" />
+              {appStoreData?.price !== undefined && appStoreData?.price > 0 ? (
+                <Text variant="subtitle" className="text-gray-500">
+                  {appStoreData.formattedPrice}
+                </Text>
+              ) : (
+                <Text variant="subtitle" className="text-gray-500" tx="app.free" />
+              )}
+              {renderRating()}
             </View>
           </View>
 
-          <Text variant="body" color="text" className="text-base md:text-lg leading-relaxed" tx="app.description" />
+          <Text variant="body" color="text" className="text-base md:text-lg leading-relaxed">
+            {(appStoreData?.description || translate('app.description')).split('.')[0] + '.'}
+          </Text>
           <View className="flex-row flex-wrap gap-4">
             {appInfo.store.ios.url && (
               <TouchableOpacity

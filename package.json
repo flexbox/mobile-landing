@@ -10,7 +10,8 @@
     "test": "jest --watchAll",
     "lint": "expo lint",
     "preview": "expo export --platform web && eas deploy",
-    "deploy": "expo export --platform web && eas deploy --prod",
+    "fetch-appstore-data": "node scripts/fetchAppStoreData.js",
+    "deploy": "yarn fetch-appstore-data && expo export --platform web && eas deploy --prod",
     "og": "ts-node scripts/generateOgImage.ts && cp $(cat .og-image-path) assets/og-image.png",
     "predeploy": "yarn og",
     "generate-og": "EXPO_PUBLIC_GENERATE_OG=true expo start --web"
