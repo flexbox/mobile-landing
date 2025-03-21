@@ -1,4 +1,4 @@
-import { ExpoConfig } from 'expo/config';
+import { ExpoConfig } from "expo/config";
 
 // Replace these with your EAS project ID and project slug.
 // You can find them at https://expo.dev/accounts/[account]/projects/[project].
@@ -16,7 +16,7 @@ const FAVICON = "./assets/images/favicon.png";
 
 // Replace these with your app store URLs
 // You can find them at https://appstoreconnect.apple.com/apps/[app-id]/distribution/info
-export const APP_STORE_APP_ID = "570060128"; 
+export const APP_STORE_APP_ID = "570060128";
 export const APP_STORE_URL = `https://apps.apple.com/app/${APP_NAME}/id${APP_STORE_APP_ID}`;
 export const GOOGLE_PLAYSTORE_URL = `https://play.google.com/store/apps/details?id=${PACKAGE_NAME}`;
 
@@ -37,7 +37,7 @@ const config: ExpoConfig = {
   android: {
     adaptiveIcon: {
       foregroundImage: ADAPTIVE_ICON,
-      backgroundColor: "#ffffff"
+      backgroundColor: "#ffffff",
     },
     package: PACKAGE_NAME,
     playStoreUrl: GOOGLE_PLAYSTORE_URL,
@@ -49,9 +49,9 @@ const config: ExpoConfig = {
     meta: [
       {
         name: "apple-itunes-app",
-        content: `app-id=${APP_STORE_APP_ID}}`
-      }
-    ]
+        content: `app-id=${APP_STORE_APP_ID}}`,
+      },
+    ],
   },
   plugins: [
     "expo-router",
@@ -61,18 +61,18 @@ const config: ExpoConfig = {
         image: "./assets/images/splash-icon.png",
         imageWidth: 200,
         resizeMode: "contain",
-        backgroundColor: "#ffffff"
-      }
+        backgroundColor: "#ffffff",
+      },
     ],
-    "expo-localization"
+    "expo-localization",
   ],
   experiments: {
     typedRoutes: true,
-    tsconfigPaths: true
+    tsconfigPaths: true,
   },
   extra: {
     router: {
-      origin: false
+      origin: false,
     },
     eas: {
       projectId: EAS_PROJECT_ID,

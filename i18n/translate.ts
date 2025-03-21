@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
-import type { Language } from "./i18n";
 import type { TOptions } from "i18next";
+
+import type { Language } from "./i18n";
 import i18n from "./i18n";
 
 export function translate(key: string, options?: TOptions): string {
@@ -19,6 +20,6 @@ export function useLanguage() {
     t,
     i18n,
     currentLanguage,
-    changeLanguage
+    changeLanguage,
   };
-} 
+}

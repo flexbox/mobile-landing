@@ -1,7 +1,8 @@
-import React from 'react';
-import { View, Linking, useWindowDimensions, Pressable } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
-import { socials } from '@/constants/landing';
+import React from "react";
+import { Linking, Pressable, useWindowDimensions, View } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
+
+import { socials } from "@/constants/landing";
 
 export const SocialLinks = () => {
   const { width } = useWindowDimensions();
@@ -18,7 +19,8 @@ export const SocialLinks = () => {
           <Pressable
             key={index}
             onPress={() => Linking.openURL(social.url)}
-            className="items-center">
+            className="items-center"
+          >
             <FontAwesome
               name={social.icon}
               size={isMobile ? 24 : 28}
@@ -29,4 +31,4 @@ export const SocialLinks = () => {
       </View>
     </View>
   );
-}; 
+};

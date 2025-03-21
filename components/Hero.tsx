@@ -1,11 +1,19 @@
-import React, { useEffect } from 'react';
-import { View, Image, Linking, useWindowDimensions, Animated } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { appInfo } from '@/constants/landing';
-import { Text } from './Text';
-import { FontAwesome } from '@expo/vector-icons';
-import { translate } from '@/i18n/translate';
-import { AppStoreData } from '@/context/AppStoreContext';
+import React, { useEffect } from "react";
+import {
+  Animated,
+  Image,
+  Linking,
+  useWindowDimensions,
+  View,
+} from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { FontAwesome } from "@expo/vector-icons";
+
+import { Text } from "./Text";
+
+import { appInfo } from "@/constants/landing";
+import { AppStoreData } from "@/context/AppStoreContext";
+import { translate } from "@/i18n/translate";
 interface HeroProps {
   appStoreData: AppStoreData | null;
 }
@@ -20,7 +28,7 @@ export const Hero = ({ appStoreData }: HeroProps) => {
       toValue: 1,
       duration: 350,
       useNativeDriver: true,
-      delay: 750
+      delay: 750,
     }).start();
   }, [fadeAnim]);
 
@@ -37,7 +45,9 @@ export const Hero = ({ appStoreData }: HeroProps) => {
             color={star <= rating ? "#FFD700" : "#D3D3D3"}
           />
         ))}
-        <Text className="ml-2 text-gray-500">({appStoreData.averageUserRating.toFixed(1)})</Text>
+        <Text className="ml-2 text-gray-500">
+          ({appStoreData.averageUserRating.toFixed(1)})
+        </Text>
       </View>
     );
   };
@@ -50,31 +60,35 @@ export const Hero = ({ appStoreData }: HeroProps) => {
             <View
               className="absolute"
               style={{
-                top: '2%',
-                left: '6%',
-                right: '5.8%',
-                bottom: '2%',
+                top: "2%",
+                left: "6%",
+                right: "5.8%",
+                bottom: "2%",
                 borderRadius: 38,
-                overflow: 'hidden',
-                backgroundColor: '#000',
-              }}>
+                overflow: "hidden",
+                backgroundColor: "#000",
+              }}
+            >
               <Animated.Image
-                source={appStoreData?.screenshotUrls && appStoreData.screenshotUrls.length > 0
-                  ? { uri: appStoreData.screenshotUrls[0] }
-                  : require('@/assets/images/screenshot.png')}
-                defaultSource={require('@/assets/images/screenshot.png')}
+                source={
+                  appStoreData?.screenshotUrls &&
+                  appStoreData.screenshotUrls.length > 0
+                    ? { uri: appStoreData.screenshotUrls[0] }
+                    : require("@/assets/images/screenshot.png")
+                }
+                defaultSource={require("@/assets/images/screenshot.png")}
                 style={{
-                  width: '100%',
-                  height: '100%',
-                  opacity: fadeAnim
+                  width: "100%",
+                  height: "100%",
+                  opacity: fadeAnim,
                 }}
                 resizeMode="cover"
               />
             </View>
             <Image
-              source={require('@/assets/images/landing/iPhone.png')}
-              defaultSource={require('@/assets/images/landing/iPhone.png')}
-              style={{ width: '100%', height: '100%', position: 'absolute' }}
+              source={require("@/assets/images/landing/iPhone.png")}
+              defaultSource={require("@/assets/images/landing/iPhone.png")}
+              style={{ width: "100%", height: "100%", position: "absolute" }}
               resizeMode="contain"
             />
           </View>
@@ -84,43 +98,63 @@ export const Hero = ({ appStoreData }: HeroProps) => {
           <View className="flex-row items-center space-x-4 md:space-x-6">
             <View className="bg-gray-50 rounded-2xl shadow-md">
               <Image
-                source={appStoreData?.artworkUrl512
-                  ? { uri: appStoreData.artworkUrl512 }
-                  : require('@/assets/images/icon.png')}
-                defaultSource={require('@/assets/images/icon.png')}
+                source={
+                  appStoreData?.artworkUrl512
+                    ? { uri: appStoreData.artworkUrl512 }
+                    : require("@/assets/images/icon.png")
+                }
+                defaultSource={require("@/assets/images/icon.png")}
                 style={{
                   width: isMobile ? 64 : 90,
                   height: isMobile ? 64 : 90,
-                  borderRadius: 16
+                  borderRadius: 16,
                 }}
               />
             </View>
             <View>
-              <Text variant="heading1" color="text" className="mb-2">
+              <Text
+                variant="heading1"
+                color="text"
+                className="mb-2"
+              >
                 {appStoreData?.trackName || appInfo.name}
               </Text>
               {appStoreData?.price !== undefined && appStoreData?.price > 0 ? (
-                <Text variant="subtitle" className="text-gray-500">
+                <Text
+                  variant="subtitle"
+                  className="text-gray-500"
+                >
                   {appStoreData.formattedPrice}
                 </Text>
               ) : (
-                <Text variant="subtitle" className="text-gray-500" tx="app.free" />
+                <Text
+                  variant="subtitle"
+                  className="text-gray-500"
+                  tx="app.free"
+                />
               )}
               {renderRating()}
             </View>
           </View>
 
-          <Text variant="body" color="text" className="text-base md:text-lg leading-relaxed">
-            {(appStoreData?.description || translate('app.description')).split('.')[0] + '.'}
+          <Text
+            variant="body"
+            color="text"
+            className="text-base md:text-lg leading-relaxed"
+          >
+            {(appStoreData?.description || translate("app.description")).split(
+              ".",
+            )[0] + "."}
           </Text>
           <View className="flex-row flex-wrap gap-4">
             {appInfo.store.ios.url && (
               <TouchableOpacity
                 onPress={() => Linking.openURL(appInfo.store.ios.url)}
-                style={{ width: 160 }}>
+                style={{ width: 160 }}
+              >
                 <Image
-                  source={require('@/assets/images/landing/app-store.png')}
-                  style={{ width: '100%', height: isMobile ? 48 : 60 }}
+                  source={require("@/assets/images/landing/app-store.png")}
+                  style={{ width: "100%", height: isMobile ? 48 : 60 }}
                   resizeMode="contain"
                 />
               </TouchableOpacity>
@@ -128,10 +162,11 @@ export const Hero = ({ appStoreData }: HeroProps) => {
             {appInfo.store.android.url && (
               <TouchableOpacity
                 onPress={() => Linking.openURL(appInfo.store.android.url)}
-                style={{ width: 160 }}>
+                style={{ width: 160 }}
+              >
                 <Image
-                  source={require('@/assets/images/landing/google-play.png')}
-                  style={{ width: '100%', height: isMobile ? 48 : 60 }}
+                  source={require("@/assets/images/landing/google-play.png")}
+                  style={{ width: "100%", height: isMobile ? 48 : 60 }}
                   resizeMode="contain"
                 />
               </TouchableOpacity>
@@ -141,4 +176,4 @@ export const Hero = ({ appStoreData }: HeroProps) => {
       </View>
     </View>
   );
-}; 
+};

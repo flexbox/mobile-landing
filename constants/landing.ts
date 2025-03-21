@@ -1,7 +1,8 @@
-import { APP_NAME, APP_STORE_URL, GOOGLE_PLAYSTORE_URL } from '@/app.config';
-import { ChangeType } from '@/app/changelog';
-import { FontAwesome } from '@expo/vector-icons';
-import Constants from 'expo-constants';
+import { FontAwesome } from "@expo/vector-icons";
+import Constants from "expo-constants";
+
+import { APP_NAME, APP_STORE_URL, GOOGLE_PLAYSTORE_URL } from "@/app.config";
+import { ChangeType } from "@/app/changelog";
 
 interface Feature {
   id: string;
@@ -9,7 +10,7 @@ interface Feature {
 }
 
 interface SocialLink {
-  platform: 'twitter' | 'facebook' | 'instagram' | 'github' | 'email';
+  platform: "twitter" | "facebook" | "instagram" | "github" | "email";
   url: string;
   icon: keyof typeof FontAwesome.glyphMap;
   label: string;
@@ -35,37 +36,37 @@ export const appInfo: AppInfo = {
     },
     android: {
       url: GOOGLE_PLAYSTORE_URL,
-    }
+    },
   },
-  websiteUrl: 'https://expo-app-landing-page.expo.app',
+  websiteUrl: "https://expo-app-landing-page.expo.app",
 };
 
 // Features
 export const features: Feature[] = [
   {
-    id: 'smartIntegration',
-    icon: "plug"
+    id: "smartIntegration",
+    icon: "plug",
   },
   {
-    id: 'cloudSync',
-    icon: "cloud"
+    id: "cloudSync",
+    icon: "cloud",
   },
   {
-    id: 'security',
-    icon: "shield"
+    id: "security",
+    icon: "shield",
   },
   {
-    id: 'darkMode',
-    icon: "moon-o"
+    id: "darkMode",
+    icon: "moon-o",
   },
   {
-    id: 'notifications',
-    icon: "bell"
+    id: "notifications",
+    icon: "bell",
   },
   {
-    id: 'analytics',
-    icon: "bar-chart"
-  }
+    id: "analytics",
+    icon: "bar-chart",
+  },
 ];
 
 // Screenshots
@@ -76,49 +77,49 @@ export const screenshots = {
     screenshots: [
       {
         image: require("@/assets/images/screenshot.png"),
-        id: 'beautiful'
+        id: "beautiful",
       },
       {
         image: require("@/assets/images/screenshot.png"),
-        id: 'features'
+        id: "features",
       },
       {
         image: require("@/assets/images/screenshot.png"),
-        id: 'integration'
+        id: "integration",
       },
       {
         image: require("@/assets/images/screenshot.png"),
-        id: 'analytics'
-      }
-    ]
-  }
+        id: "analytics",
+      },
+    ],
+  },
 };
 
 // Social Links
 export const socials: SocialLink[] = [
   {
-    platform: 'twitter',
-    url: 'https://twitter.com/intent/follow?screen_name=flexbox_',
-    icon: 'twitter',
-    label: 'Follow us on Twitter'
+    platform: "twitter",
+    url: "https://twitter.com/intent/follow?screen_name=flexbox_",
+    icon: "twitter",
+    label: "Follow us on Twitter",
   },
   {
-    platform: 'instagram',
-    url: 'https://instagram.com/yourapp',
-    icon: 'instagram',
-    label: 'Discover our exclusive stories'
+    platform: "instagram",
+    url: "https://instagram.com/yourapp",
+    icon: "instagram",
+    label: "Discover our exclusive stories",
   },
   {
-    platform: 'facebook',
-    url: 'https://facebook.com/yourapp',
-    icon: 'facebook',
-    label: 'Join our community'
+    platform: "facebook",
+    url: "https://facebook.com/yourapp",
+    icon: "facebook",
+    label: "Join our community",
   },
   {
-    platform: 'github',
-    url: 'https://github.com/flexbox',
-    icon: 'github',
-    label: 'Check our open source work'
+    platform: "github",
+    url: "https://github.com/flexbox",
+    icon: "github",
+    label: "Check our open source work",
   },
 ];
 
@@ -126,7 +127,6 @@ export const socials: SocialLink[] = [
 export const pressKit = {
   enabled: true,
 };
-
 
 export const changelog = {
   enabled: true,
@@ -137,13 +137,13 @@ export const changelog = {
       changes: [
         {
           type: "feature" as ChangeType,
-          id: "darkMode"
+          id: "darkMode",
         },
         {
           type: "improvement" as ChangeType,
-          id: "imageLoading"
-        }
-      ]
+          id: "imageLoading",
+        },
+      ],
     },
     {
       version: "1.9.0",
@@ -151,13 +151,13 @@ export const changelog = {
       changes: [
         {
           type: "feature" as ChangeType,
-          id: "dashboard"
+          id: "dashboard",
         },
         {
           type: "fix" as ChangeType,
-          id: "notificationSync"
-        }
-      ]
+          id: "notificationSync",
+        },
+      ],
     },
     {
       version: "1.8.5",
@@ -165,13 +165,13 @@ export const changelog = {
       changes: [
         {
           type: "improvement" as ChangeType,
-          id: "startupTime"
+          id: "startupTime",
         },
         {
           type: "fix" as ChangeType,
-          id: "authToken"
-        }
-      ]
-    }
-  ]
+          id: "authToken",
+        },
+      ],
+    },
+  ],
 };

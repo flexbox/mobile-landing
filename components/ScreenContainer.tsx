@@ -1,9 +1,10 @@
-import { ScrollView, View } from 'react-native';
-import React, { useEffect, useRef } from 'react';
-import Head from 'expo-router/head';
-import { useScroll } from '@/context/ScrollContext';
-import { FloatingButton } from '@/components/FloatingButton';
-import { appInfo } from '@/constants/landing';
+import React, { useEffect, useRef } from "react";
+import { ScrollView, View } from "react-native";
+import Head from "expo-router/head";
+
+import { FloatingButton } from "@/components/FloatingButton";
+import { appInfo } from "@/constants/landing";
+import { useScroll } from "@/context/ScrollContext";
 
 interface FrontMatter {
   title?: string;
@@ -17,7 +18,10 @@ interface ScreenContainerProps {
   frontMatter?: FrontMatter;
 }
 
-export function ScreenContainer({ children, frontMatter }: ScreenContainerProps) {
+export function ScreenContainer({
+  children,
+  frontMatter,
+}: ScreenContainerProps) {
   const scrollViewRef = useRef<ScrollView>(null);
   const { setScrollViewRef } = useScroll();
 
@@ -26,25 +30,59 @@ export function ScreenContainer({ children, frontMatter }: ScreenContainerProps)
   }, [setScrollViewRef]);
 
   const title = frontMatter?.title || appInfo.name;
-  const description = frontMatter?.description || '';
-  const image = frontMatter?.image || '/@og-image.png';
+  const description = frontMatter?.description || "";
+  const image = frontMatter?.image || "/@og-image.png";
 
   return (
     <View style={{ flex: 1 }}>
       <Head>
         <title>{title}</title>
-        <meta name="description" content={description} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:url" content={appInfo.websiteUrl} />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content={image} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={image} />
+        <meta
+          name="description"
+          content={description}
+        />
+        <meta
+          property="og:title"
+          content={title}
+        />
+        <meta
+          property="og:description"
+          content={description}
+        />
+        <meta
+          property="og:url"
+          content={appInfo.websiteUrl}
+        />
+        <meta
+          property="og:type"
+          content="website"
+        />
+        <meta
+          property="og:image"
+          content={image}
+        />
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
+        />
+        <meta
+          name="twitter:title"
+          content={title}
+        />
+        <meta
+          name="twitter:description"
+          content={description}
+        />
+        <meta
+          name="twitter:image"
+          content={image}
+        />
       </Head>
-      <ScrollView ref={scrollViewRef} className="flex-1 bg-white" showsVerticalScrollIndicator={false}>
+      <ScrollView
+        ref={scrollViewRef}
+        className="flex-1 bg-white"
+        showsVerticalScrollIndicator={false}
+      >
         {children}
       </ScrollView>
       <FloatingButton
@@ -54,4 +92,4 @@ export function ScreenContainer({ children, frontMatter }: ScreenContainerProps)
       />
     </View>
   );
-} 
+}

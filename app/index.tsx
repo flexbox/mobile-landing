@@ -1,14 +1,16 @@
-import { View } from 'react-native';
-import React from 'react';
-import { Hero } from '@/components/Hero';
-import { Features } from '@/components/Features';
-import { Screenshots } from '@/components/Screenshots';
-import { StoreButtons } from '@/components/StoreButtons';
-import { SocialLinks } from '@/components/SocialLinks';
-import '@/i18n/i18n';
-import { translate } from '@/i18n/translate';
-import { ScreenContainer } from '@/components/ScreenContainer';
-import { useAppStore } from '@/context/AppStoreContext';
+import "@/i18n/i18n";
+
+import React from "react";
+import { View } from "react-native";
+
+import { Features } from "@/components/Features";
+import { Hero } from "@/components/Hero";
+import { ScreenContainer } from "@/components/ScreenContainer";
+import { Screenshots } from "@/components/Screenshots";
+import { SocialLinks } from "@/components/SocialLinks";
+import { StoreButtons } from "@/components/StoreButtons";
+import { useAppStore } from "@/context/AppStoreContext";
+import { translate } from "@/i18n/translate";
 
 export default function HomeScreen() {
   const { appStoreData } = useAppStore();
@@ -16,7 +18,7 @@ export default function HomeScreen() {
   return (
     <ScreenContainer
       frontMatter={{
-        description: translate('app.description'),
+        description: translate("app.description"),
         showGithubButton: true,
       }}
     >
@@ -30,4 +32,4 @@ export default function HomeScreen() {
       <View className="h-16 md:h-0" />
     </ScreenContainer>
   );
-} 
+}

@@ -2,7 +2,7 @@
 
 module.exports = {
   env: {
-    node: true
+    node: true,
   },
   parser: "@typescript-eslint/parser",
   root: true,
@@ -13,7 +13,13 @@ module.exports = {
     "plugin:react/jsx-runtime",
     "plugin:prettier/recommended",
   ],
-  plugins: ["react", "prettier", "@typescript-eslint", "react-native", "simple-import-sort"],
+  plugins: [
+    "react",
+    "prettier",
+    "@typescript-eslint",
+    "react-native",
+    "simple-import-sort",
+  ],
   rules: {
     camelcase: "off", // disable camelcase rule
     "@typescript-eslint/no-explicit-any": "warn", // detect usage of `any` type
@@ -43,9 +49,9 @@ module.exports = {
           ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
           // Other relative imports. Put same-folder imports and `.` last.
           ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
-        ]
-      }
+        ],
+      },
     ],
   },
   ignorePatterns: ["/dist/*"],
-}
+};

@@ -1,33 +1,34 @@
-import { View, Text, Image, Pressable } from 'react-native';
+import { Image, Pressable, Text, View } from "react-native";
 
 const logos = [
   {
-    name: 'Primary Logo',
-    description: 'Use this as the main logo in most contexts',
-    image: require('@/assets/images/icon.png'),
-    downloadUrl: '/logos/primary-logo.png'
+    name: "Primary Logo",
+    description: "Use this as the main logo in most contexts",
+    image: require("@/assets/images/icon.png"),
+    downloadUrl: "/logos/primary-logo.png",
   },
   {
-    name: 'Icon Only',
-    description: 'Use this when space is limited or for favicon',
-    image: require('@/assets/images/favicon.png'),
-    downloadUrl: '/logos/icon-only.png'
+    name: "Icon Only",
+    description: "Use this when space is limited or for favicon",
+    image: require("@/assets/images/favicon.png"),
+    downloadUrl: "/logos/icon-only.png",
   },
   {
-    name: 'Dark Mode',
-    description: 'Use this version on dark backgrounds',
-    image: require('@/assets/images/adaptive-icon.png'),
-    downloadUrl: '/logos/dark-mode.png'
+    name: "Dark Mode",
+    description: "Use this version on dark backgrounds",
+    image: require("@/assets/images/adaptive-icon.png"),
+    downloadUrl: "/logos/dark-mode.png",
   },
 ];
 
 export function BrandLogos() {
   const handleDownload = (url: string) => {
-    const baseUrl = process.env.NEXT_PUBLIC_WEBSITE_URL || window.location.origin;
+    const baseUrl =
+      process.env.NEXT_PUBLIC_WEBSITE_URL || window.location.origin;
     const fullUrl = `${baseUrl}${url}`;
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = fullUrl;
-    link.download = url.split('/').pop() || 'logo.png';
+    link.download = url.split("/").pop() || "logo.png";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -54,7 +55,10 @@ export function BrandLogos() {
       </View>
       <View className="flex-row justify-center gap-8">
         {logos.map((logo) => (
-          <View key={logo.name} className="w-[180px] items-center">
+          <View
+            key={logo.name}
+            className="w-[180px] items-center"
+          >
             <View className="w-32 h-32 bg-gray-100 rounded-xl justify-center items-center mb-3">
               <Image
                 source={logo.image}
@@ -63,8 +67,12 @@ export function BrandLogos() {
                 style={{ maxWidth: 112, maxHeight: 112 }}
               />
             </View>
-            <Text className="text-base font-semibold text-gray-900 mb-1">{logo.name}</Text>
-            <Text className="text-sm text-gray-500 text-center mb-2">{logo.description}</Text>
+            <Text className="text-base font-semibold text-gray-900 mb-1">
+              {logo.name}
+            </Text>
+            <Text className="text-sm text-gray-500 text-center mb-2">
+              {logo.description}
+            </Text>
             <Pressable
               onPress={() => handleDownload(logo.downloadUrl)}
               className="bg-blue-500 px-4 py-2 rounded-lg active:bg-blue-600"
@@ -76,4 +84,4 @@ export function BrandLogos() {
       </View>
     </View>
   );
-} 
+}

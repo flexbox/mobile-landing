@@ -1,7 +1,8 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { APP_STORE_APP_ID } from '@/app.config';
-import { translate } from '@/i18n/translate';
-import * as FileSystem from 'expo-file-system';
+import React, { createContext, useContext, useEffect, useState } from "react";
+import * as FileSystem from "expo-file-system";
+
+import { APP_STORE_APP_ID } from "@/app.config";
+import { translate } from "@/i18n/translate";
 
 export interface AppStoreData {
   trackName: string;
@@ -19,7 +20,9 @@ interface AppStoreContextType {
   appStoreData: AppStoreData | null;
 }
 
-const AppStoreContext = createContext<AppStoreContextType>({ appStoreData: null });
+const AppStoreContext = createContext<AppStoreContextType>({
+  appStoreData: null,
+});
 
 /**
  * @deprecated
@@ -33,19 +36,19 @@ const fallbackData: AppStoreData = {
   currency: "USD",
   screenshotUrls: [],
   ipadScreenshotUrls: [],
-  artworkUrl512: '',
-  description: translate('app.description'),
+  artworkUrl512: "",
+  description: translate("app.description"),
 };
 
 const loadStaticAppStoreData = async (): Promise<AppStoreData | null> => {
   try {
     try {
-      const staticData = require('@/assets/data/appStore.json');
+      const staticData = require("@/assets/data/appStore.json");
       console.log("Static App Store data loaded from assets");
       return staticData;
     } catch (error) {
       if (FileSystem.documentDirectory) {
-        const fileUri = FileSystem.documentDirectory + 'appStore.json';
+        const fileUri = FileSystem.documentDirectory + "appStore.json";
         const fileExists = await FileSystem.getInfoAsync(fileUri);
 
         if (fileExists.exists) {
@@ -55,11 +58,11 @@ const loadStaticAppStoreData = async (): Promise<AppStoreData | null> => {
         }
       }
 
-      console.warn('Static app store data not found, using fallback data');
+      console.warn("Static app store data not found, using fallback data");
       return fallbackData;
     }
   } catch (error) {
-    console.error('Error loading static app store data:', error);
+    console.error("Error loading static app store data:", error);
     return fallbackData;
   }
 };
@@ -78,7 +81,9 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
 
       console.log("Fetching App Store data for ID:", APP_STORE_APP_ID);
       try {
-        const response = await fetch(`https://itunes.apple.com/lookup?id=${APP_STORE_APP_ID}`);
+        const response = await fetch(
+          `https://itunes.apple.com/lookup?id=${APP_STORE_APP_ID}`,
+        );
         const data = await response.json();
 
         if (data.results && data.results.length > 0) {
@@ -99,15 +104,17 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
             currency: result.currency,
             screenshotUrls: result.screenshotUrls || [],
             ipadScreenshotUrls: result.ipadScreenshotUrls || [],
-            artworkUrl512: result.artworkUrl512 || '',
-            description: result.description || '',
+            artworkUrl512: result.artworkUrl512 || "",
+            description: result.description || "",
           });
         } else {
-          console.log("No results found in App Store response, using fallback data");
+          console.log(
+            "No results found in App Store response, using fallback data",
+          );
           setAppStoreData(fallbackData);
         }
       } catch (error) {
-        console.error('Error fetching App Store data:', error);
+        console.error("Error fetching App Store data:", error);
         setAppStoreData(fallbackData);
       }
     };
@@ -124,4 +131,4 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
 
 export function useAppStore() {
   return useContext(AppStoreContext);
-} 
+}
