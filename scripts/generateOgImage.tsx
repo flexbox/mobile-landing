@@ -69,10 +69,7 @@ export const GenerateOgImage = () => {
 
   return (
     <View style={{ width: 1200, height: 630, backgroundColor: "white" }}>
-      <View
-        ref={viewShotRef}
-        style={{ flex: 1 }}
-      >
+      <View ref={viewShotRef} style={{ flex: 1 }}>
         <Hero appStoreData={appStoreData} />
       </View>
     </View>

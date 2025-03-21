@@ -55,10 +55,7 @@ export function BrandLogos() {
       </View>
       <View className="flex-row justify-center gap-8">
         {logos.map((logo) => (
-          <View
-            key={logo.name}
-            className="w-[180px] items-center"
-          >
+          <View key={logo.name} className="w-[180px] items-center">
             <View className="w-32 h-32 bg-gray-100 rounded-xl justify-center items-center mb-3">
               <Image
                 source={logo.image}

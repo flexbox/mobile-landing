@@ -12,11 +12,7 @@ export function BrandColors() {
 
   return (
     <View className="my-8">
-      <Text
-        tx="brand.colors.title"
-        variant="heading2"
-        className="mb-6"
-      />
+      <Text tx="brand.colors.title" variant="heading2" className="mb-6" />
       <View className="grid grid-cols-3 gap-4">
         {Object.entries(theme.colors).map(([key, hex]) => (
           <Pressable
@@ -30,11 +26,7 @@ export function BrandColors() {
                 style={{ backgroundColor: hex }}
               />
               <View className="absolute top-1 right-1 bg-black/50 rounded-full p-1.5 opacity-0 scale-90">
-                <Ionicons
-                  name="copy-outline"
-                  size={16}
-                  color="#ffffff"
-                />
+                <Ionicons name="copy-outline" size={16} color="#ffffff" />
               </View>
             </View>
             <View className="items-center w-full">

@@ -52,19 +52,13 @@ export const Header = ({ scrollToSection, appStoreData }: HeaderProps) => {
                 style={{ width: 32, height: 32, borderRadius: 8 }}
               />
             </View>
-            <Text
-              className="text-lg font-bold"
-              color="text"
-            >
+            <Text className="text-lg font-bold" color="text">
               {appStoreData?.trackName || appInfo.name}
             </Text>
           </View>
         </TouchableOpacity>
         {isMobile && (
-          <TouchableOpacity
-            onPress={toggleMenu}
-            className="p-2"
-          >
+          <TouchableOpacity onPress={toggleMenu} className="p-2">
             <Animated.View
               style={{
                 transform: [
@@ -134,10 +128,7 @@ export const Header = ({ scrollToSection, appStoreData }: HeaderProps) => {
               }}
               className="w-full flex-row justify-start"
             >
-              <Text
-                tx="nav.features"
-                style={{ textAlign: "left" }}
-              />
+              <Text tx="nav.features" style={{ textAlign: "left" }} />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
@@ -146,10 +137,7 @@ export const Header = ({ scrollToSection, appStoreData }: HeaderProps) => {
               }}
               className="w-full flex-row justify-start"
             >
-              <Text
-                tx="nav.screenshots"
-                style={{ textAlign: "left" }}
-              />
+              <Text tx="nav.screenshots" style={{ textAlign: "left" }} />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
@@ -158,10 +146,7 @@ export const Header = ({ scrollToSection, appStoreData }: HeaderProps) => {
               }}
               className="w-full flex-row justify-start"
             >
-              <Text
-                tx="nav.privacy"
-                style={{ textAlign: "left" }}
-              />
+              <Text tx="nav.privacy" style={{ textAlign: "left" }} />
             </TouchableOpacity>
             {changelog.enabled && (
               <TouchableOpacity
@@ -171,10 +156,7 @@ export const Header = ({ scrollToSection, appStoreData }: HeaderProps) => {
                 }}
                 className="w-full flex-row justify-start"
               >
-                <Text
-                  tx="nav.changelog"
-                  style={{ textAlign: "left" }}
-                />
+                <Text tx="nav.changelog" style={{ textAlign: "left" }} />
               </TouchableOpacity>
             )}
             <TouchableOpacity
@@ -184,10 +166,7 @@ export const Header = ({ scrollToSection, appStoreData }: HeaderProps) => {
               }}
               className="w-full flex-row justify-start"
             >
-              <Text
-                tx="nav.pressKit"
-                style={{ textAlign: "left" }}
-              />
+              <Text tx="nav.pressKit" style={{ textAlign: "left" }} />
             </TouchableOpacity>
           </View>
         </Animated.View>

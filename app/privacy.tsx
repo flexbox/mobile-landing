@@ -47,40 +47,32 @@ If you have any questions or suggestions about the Terms and Conditions, please 
 
 `;
 
+// Define proper interfaces for the Markdown components
+interface MarkdownNode {
+  key: string;
+  content?: string;
+  type?: string;
+  children?: React.ReactNode;
+}
+
 const rules = {
-  heading1: (node: any, children: any) => (
-    <Text
-      key={node.key}
-      as="h1"
-      variant="heading1"
-    >
+  heading1: (node: MarkdownNode, children: React.ReactNode) => (
+    <Text key={node.key} as="h1" variant="heading1">
       {children}
     </Text>
   ),
-  heading2: (node: any, children: any) => (
-    <Text
-      key={node.key}
-      as="h2"
-      variant="heading2"
-    >
+  heading2: (node: MarkdownNode, children: React.ReactNode) => (
+    <Text key={node.key} as="h2" variant="heading2">
       {children}
     </Text>
   ),
-  heading3: (node: any, children: any) => (
-    <Text
-      key={node.key}
-      as="h3"
-      variant="heading3"
-    >
+  heading3: (node: MarkdownNode, children: React.ReactNode) => (
+    <Text key={node.key} as="h3" variant="heading3">
       {children}
     </Text>
   ),
-  body: (node: any, children: any) => (
-    <Text
-      key={node.key}
-      as="p"
-      variant="body"
-    >
+  body: (node: MarkdownNode, children: React.ReactNode) => (
+    <Text key={node.key} as="p" variant="body">
       {children}
     </Text>
   ),
@@ -97,10 +89,7 @@ export default function PrivacyScreen() {
       <ScrollView className="flex-1 bg-gray-50 px-4 py-8">
         <View className="items-center">
           <View className="w-full max-w-3xl">
-            <Text
-              as="h1"
-              variant="heading1"
-            >
+            <Text as="h1" variant="heading1">
               {translate("privacy.title")}
             </Text>
             <Markdown

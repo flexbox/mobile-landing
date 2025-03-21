@@ -23,6 +23,7 @@ module.exports = {
   rules: {
     camelcase: "off", // disable camelcase rule
     "@typescript-eslint/no-explicit-any": "warn", // detect usage of `any` type
+    "@typescript-eslint/no-require-imports": "off", // disable require style imports error
     "prettier/prettier": [
       "warn",
       {
@@ -30,7 +31,6 @@ module.exports = {
       },
     ],
     "@typescript-eslint/no-unused-vars": "warn",
-    "react-native/no-color-literals": 2,
     "react-native/no-unused-styles": 2,
     "react-native/no-raw-text": 0,
     "react-native/sort-styles": 2,

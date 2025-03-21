@@ -38,11 +38,7 @@ const guidelines = [
 export function BrandGuidelines() {
   return (
     <View className="my-8">
-      <Text
-        tx="brand.guidelines.title"
-        variant="heading2"
-        className="mb-6"
-      />
+      <Text tx="brand.guidelines.title" variant="heading2" className="mb-6" />
       <View className="flex-row flex-wrap gap-6">
         {guidelines.map((section) => (
           <View
@@ -63,10 +59,7 @@ export function BrandGuidelines() {
             </View>
             <View className="gap-3">
               {section.items.map((item, index) => (
-                <View
-                  key={index}
-                  className="flex-row items-start gap-3"
-                >
+                <View key={index} className="flex-row items-start gap-3">
                   <Ionicons
                     name={
                       section.key === "do" ? "checkmark-circle" : "close-circle"
@@ -75,11 +68,7 @@ export function BrandGuidelines() {
                     color={section.color}
                     className="mt-0.5"
                   />
-                  <Text
-                    tx={item}
-                    variant="body"
-                    className="flex-1 leading-6"
-                  />
+                  <Text tx={item} variant="body" className="flex-1 leading-6" />
                 </View>
               ))}
             </View>

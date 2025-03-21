@@ -42,19 +42,10 @@ function LayoutContent() {
   return (
     <View style={{ flex: 1 }}>
       <Head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1"
-        />
-        <link
-          rel="icon"
-          href="/favicon.ico"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header
-        scrollToSection={scrollToSection}
-        appStoreData={appStoreData}
-      />
+      <Header scrollToSection={scrollToSection} appStoreData={appStoreData} />
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen
           name="index"

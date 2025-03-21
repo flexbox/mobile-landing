@@ -112,18 +112,11 @@ export const Hero = ({ appStoreData }: HeroProps) => {
               />
             </View>
             <View>
-              <Text
-                variant="heading1"
-                color="text"
-                className="mb-2"
-              >
+              <Text variant="heading1" color="text" className="mb-2">
                 {appStoreData?.trackName || appInfo.name}
               </Text>
               {appStoreData?.price !== undefined && appStoreData?.price > 0 ? (
-                <Text
-                  variant="subtitle"
-                  className="text-gray-500"
-                >
+                <Text variant="subtitle" className="text-gray-500">
                   {appStoreData.formattedPrice}
                 </Text>
               ) : (

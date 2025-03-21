@@ -88,11 +88,7 @@ export default function ChangelogScreen() {
       <ScrollView className="flex-1 bg-gray-50 px-4 py-8">
         <View className="flex-1 items-center min-h-screen">
           <View className="w-full max-w-[50%]">
-            <Text
-              as="h1"
-              variant="heading1"
-              className="mb-6"
-            >
+            <Text as="h1" variant="heading1" className="mb-6">
               Changelog
             </Text>
             <View className="space-y-6">
@@ -135,10 +131,7 @@ export default function ChangelogScreen() {
                           const style = getChangeTypeStyle(type);
 
                           return (
-                            <View
-                              key={type}
-                              className="space-y-4"
-                            >
+                            <View key={type} className="space-y-4">
                               <View className="flex-row items-center space-x-3">
                                 <View
                                   style={{
