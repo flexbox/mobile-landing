@@ -32,20 +32,22 @@ export const Header = ({ scrollToSection, appStoreData }: HeaderProps) => {
   return (
     <View className="w-full bg-white border-b border-gray-100 px-4 md:px-8 py-4 flex-col md:flex-row justify-between items-center relative">
       <View className="flex-row items-center justify-between w-full md:w-auto">
-        <View className="flex-row items-center space-x-3">
-          <View className="shadow-md rounded-lg">
-            <Image
-              source={appStoreData?.artworkUrl512
-                ? { uri: appStoreData.artworkUrl512 }
-                : require('@/assets/images/icon.png')}
-              defaultSource={require('@/assets/images/icon.png')}
-              style={{ width: 32, height: 32, borderRadius: 8 }}
-            />
+        <TouchableOpacity onPress={() => router.push('/')}>
+          <View className="flex-row items-center space-x-3">
+            <View className="shadow-md rounded-lg">
+              <Image
+                source={appStoreData?.artworkUrl512
+                  ? { uri: appStoreData.artworkUrl512 }
+                  : require('@/assets/images/icon.png')}
+                defaultSource={require('@/assets/images/icon.png')}
+                style={{ width: 32, height: 32, borderRadius: 8 }}
+              />
+            </View>
+            <Text className="text-lg font-bold" color="text">
+              {appStoreData?.trackName || appInfo.name}
+            </Text>
           </View>
-          <Text className="text-lg font-bold" color="text">
-            {appStoreData?.trackName || appInfo.name}
-          </Text>
-        </View>
+        </TouchableOpacity>
         {isMobile && (
           <TouchableOpacity onPress={toggleMenu} className="p-2">
             <Animated.View

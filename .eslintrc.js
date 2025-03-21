@@ -1,5 +1,51 @@
-// https://docs.expo.dev/guides/using-eslint/
+// .eslintrc.js
+
 module.exports = {
-  extends: 'expo',
-  ignorePatterns: ['/dist/*'],
-};
+  env: {
+    node: true
+  },
+  parser: "@typescript-eslint/parser",
+  root: true,
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:prettier/recommended",
+  ],
+  plugins: ["react", "prettier", "@typescript-eslint", "react-native", "simple-import-sort"],
+  rules: {
+    camelcase: "off", // disable camelcase rule
+    "@typescript-eslint/no-explicit-any": "warn", // detect usage of `any` type
+    "prettier/prettier": [
+      "warn",
+      {
+        usePrettierrc: true,
+      },
+    ],
+    "@typescript-eslint/no-unused-vars": "warn",
+    "react-native/no-color-literals": 2,
+    "react-native/no-unused-styles": 2,
+    "react-native/no-raw-text": 0,
+    "react-native/sort-styles": 2,
+    "simple-import-sort/exports": "warn",
+    "simple-import-sort/imports": [
+      "warn",
+      {
+        groups: [
+          // Side effect imports.
+          ["^\\u0000"],
+          // Packages `react` related packages come first.
+          ["^react", "^@?\\w"],
+          // Environment variables
+          ["^(@env)(/.*|$)"],
+          // Parent imports. Put `..` last.
+          ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+          // Other relative imports. Put same-folder imports and `.` last.
+          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+        ]
+      }
+    ],
+  },
+  ignorePatterns: ["/dist/*"],
+}

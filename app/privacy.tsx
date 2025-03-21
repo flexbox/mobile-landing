@@ -47,14 +47,14 @@ If you have any questions or suggestions about the Terms and Conditions, please 
 `;
 
 const rules = {
-  heading1: (node, children) =>
+  heading1: (node: any, children: any) =>
     <Text key={node.key} as="h1" variant='heading1'>{children}
     </Text>,
-  heading2: (node, children) =>
+  heading2: (node: any, children: any) =>
     <Text key={node.key} as="h2" variant='heading2'>{children}</Text>,
-  heading3: (node, children) =>
+  heading3: (node: any, children: any) =>
     <Text key={node.key} as="h3" variant='heading3'>{children}</Text>,
-  body: (node, children) =>
+  body: (node: any, children: any) =>
     <Text key={node.key} as="p" variant='body'>{children}</Text>,
 };
 
@@ -66,31 +66,31 @@ export default function PrivacyScreen() {
         description: translate('privacy.description'),
       }}
     >
-      
+
       <ScrollView className="flex-1 bg-gray-50 px-4 py-8">
-          <View className="items-center px-4 py-8">
-            <View className="w-full max-w-3xl">
+        <View className="items-center">
+          <View className="w-full max-w-3xl">
             <Text as="h1" variant='heading1'>{translate('privacy.title')}</Text>
-              <Markdown
-               rules={rules}
-                style={{
-                  body: { fontSize: 16, color: '#000000' },
-                  link: { color: '#3B82F6', textDecorationLine: 'underline' },
-                  list: { marginVertical: 8 },
-                  listItem: { marginLeft: 16 },
-                  hr: { marginVertical: 16, borderTopWidth: 1, borderColor: '#E5E7EB' }
-                }}
-                onLinkPress={(url: string): boolean => {
-                  Linking.openURL(url);
-                  return false;
-                }}
-              >
-                {privacyPolicyContent}
-              </Markdown>
-            </View>
+            <Markdown
+              rules={rules}
+              style={{
+                body: { fontSize: 16, color: '#000000' },
+                link: { color: '#3B82F6', textDecorationLine: 'underline' },
+                list: { marginVertical: 8 },
+                listItem: { marginLeft: 16 },
+                hr: { marginVertical: 16, borderTopWidth: 1, borderColor: '#E5E7EB' }
+              }}
+              onLinkPress={(url: string): boolean => {
+                Linking.openURL(url);
+                return false;
+              }}
+            >
+              {privacyPolicyContent}
+            </Markdown>
           </View>
-        </ScrollView>
-  
+        </View>
+      </ScrollView>
+
     </ScreenContainer>
   );
 } 
