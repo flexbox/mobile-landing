@@ -112,7 +112,7 @@ export function Hero({ appStoreData }: HeroProps) {
               />
             </View>
             <View>
-              <Text variant="heading1" color="text" className="mb-2">
+              <Text variant="heading1" as="h1" color="text" className="mb-2">
                 {appStoreData?.trackName || APP_NAME}
               </Text>
               {appStoreData?.price !== undefined && appStoreData?.price > 0 ? (
@@ -126,14 +126,16 @@ export function Hero({ appStoreData }: HeroProps) {
                   tx="app.free"
                 />
               )}
-              <Ratings />
+              <View className="min-h-[24px]">
+                <Ratings />
+              </View>
             </View>
           </View>
 
           <Text
             variant="body"
             color="text"
-            className="text-base md:text-lg leading-relaxed"
+            className="text-base md:text-lg leading-relaxed min-h-24"
           >
             {(appStoreData?.description || translate("app.description")).split(
               ".",

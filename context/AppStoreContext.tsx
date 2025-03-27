@@ -24,11 +24,7 @@ const AppStoreContext = createContext<AppStoreContextType>({
   appStoreData: null,
 });
 
-/**
- * @deprecated
- * @todo replace from app.config.ts data
- */
-const fallbackData: AppStoreData = {
+const initialStoreData: AppStoreData = {
   trackName: APP_NAME,
   description: translate("app.description"),
   price: 0,
@@ -58,16 +54,17 @@ async function loadStaticAppStoreData(): Promise<AppStoreData | null> {
       }
 
       console.warn("Static app store data not found, using fallback data");
-      return fallbackData;
+      return initialStoreData;
     }
   } catch (error) {
-    console.error("Error loading static app store data:", error);
-    return fallbackData;
+    console.error("❌ Error loading static app store data:", error);
+    return initialStoreData;
   }
 }
 
 export function AppStoreProvider({ children }: { children: React.ReactNode }) {
-  const [appStoreData, setAppStoreData] = useState<AppStoreData | null>(null);
+  const [appStoreData, setAppStoreData] =
+    useState<AppStoreData>(initialStoreData);
 
   useEffect(() => {
     async function loadData() {
@@ -104,11 +101,9 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
           console.log(
             "No results found in App Store response, using fallback data",
           );
-          setAppStoreData(fallbackData);
         }
       } catch (error) {
-        console.error("Error fetching App Store data:", error);
-        setAppStoreData(fallbackData);
+        console.error("❌ Error fetching App Store data:", error);
       }
     }
 
