@@ -85,7 +85,7 @@ export default function ChangelogScreen() {
         description: translate("changelog.description"),
       }}
     >
-      <ScrollView className="flex-1 bg-gray-50 px-4 py-8">
+      <ScrollView className="flex-1 bg-slate-50 px-4 py-8">
         <View className="flex-1 items-center min-h-screen">
           <View className="w-full max-w-[50%]">
             <Text as="h1" variant="heading1" className="mb-6">
@@ -107,7 +107,7 @@ export default function ChangelogScreen() {
                   >
                     <View className="space-y-6">
                       {/* Version Header */}
-                      <View className="border-b border-gray-100 pb-4">
+                      <View className="border-b border-slate-100 pb-4">
                         <View className="flex-row items-baseline justify-between">
                           <Text
                             as="h2"
@@ -118,7 +118,7 @@ export default function ChangelogScreen() {
                               version: version.version,
                             })}
                           </Text>
-                          <Text className="text-sm text-gray-500">
+                          <Text className="text-sm text-slate-500">
                             {version.date}
                           </Text>
                         </View>

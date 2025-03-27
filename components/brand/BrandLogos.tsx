@@ -45,7 +45,7 @@ export function BrandLogos() {
   return (
     <View className="my-6">
       <View className="flex-row justify-between items-center mb-6">
-        <Text className="text-2xl font-bold text-gray-900">Logos</Text>
+        <Text className="text-2xl font-bold text-slate-900">Logos</Text>
         <Pressable
           onPress={handleDownloadAll}
           className="bg-blue-500 px-4 py-2 rounded-lg active:bg-blue-600"
@@ -56,7 +56,7 @@ export function BrandLogos() {
       <View className="flex-row justify-center gap-8">
         {logos.map((logo) => (
           <View key={logo.name} className="w-[180px] items-center">
-            <View className="w-32 h-32 bg-gray-100 rounded-xl justify-center items-center mb-3">
+            <View className="w-32 h-32 bg-slate-100 rounded-xl justify-center items-center mb-3">
               <Image
                 source={logo.image}
                 className="w-28 h-28"
@@ -64,10 +64,10 @@ export function BrandLogos() {
                 style={{ maxWidth: 112, maxHeight: 112 }}
               />
             </View>
-            <Text className="text-base font-semibold text-gray-900 mb-1">
+            <Text className="text-base font-semibold text-slate-900 mb-1">
               {logo.name}
             </Text>
-            <Text className="text-sm text-gray-500 text-center mb-2">
+            <Text className="text-sm text-slate-500 text-center mb-2">
               {logo.description}
             </Text>
             <Pressable

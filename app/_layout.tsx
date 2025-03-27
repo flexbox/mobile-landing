@@ -24,6 +24,7 @@ function LayoutContent() {
 
   const { scrollToSection } = useScroll();
   const { appStoreData } = useAppStore();
+  console.log("🚀 ~ LayoutContent ~ appStoreData:", appStoreData);
 
   useEffect(() => {
     if (loaded) {

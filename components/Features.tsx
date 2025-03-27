@@ -9,7 +9,7 @@ import { theme } from "@/constants/theme";
 
 export const Features = () => {
   return (
-    <View className="py-8 md:py-32 px-4 bg-gray-50">
+    <View className="py-8 md:py-32 px-4 bg-slate-50">
       <Text
         variant="heading2"
         color="text"
@@ -39,8 +39,8 @@ export const Features = () => {
               tx={`sections.features.items.${feature.id}.title`}
             />
             <Text
-              variant="caption"
-              className="text-gray-600"
+              variant="body"
+              className="text-slate-400"
               tx={`sections.features.items.${feature.id}.description`}
             />
           </View>

@@ -11,7 +11,7 @@ export function BrandTypography() {
         {Object.entries(theme.typography).map(([key, style]) => (
           <View key={key} className="mb-6">
             <Text
-              className="text-gray-900 my-2"
+              className="text-slate-900 my-2"
               style={{ fontSize: style.fontSize, fontWeight: style.fontWeight }}
               tx={`brand.components.typography.items.${key}.name`}
             />

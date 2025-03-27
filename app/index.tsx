@@ -1,6 +1,6 @@
 import "@/i18n/i18n";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { View } from "react-native";
 
 import { Features } from "@/components/Features";
@@ -25,7 +25,7 @@ export default function HomeScreen() {
       <Hero appStoreData={appStoreData} />
       <Features />
       <Screenshots appStoreData={appStoreData} />
-      <View className="py-8 md:py-12 px-4 bg-gray-50">
+      <View className="py-8 md:py-12 px-4 bg-slate-50">
         <StoreButtons />
       </View>
       <SocialLinks />

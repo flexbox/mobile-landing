@@ -23,7 +23,6 @@ interface AppInfo {
     ios: { url: string };
     android: { url: string };
   };
-  websiteUrl: string;
 }
 
 // App Info
@@ -38,7 +37,6 @@ export const appInfo: AppInfo = {
       url: GOOGLE_PLAYSTORE_URL,
     },
   },
-  websiteUrl: "https://expo-app-landing-page.expo.app",
 };
 
 // Features

@@ -1,19 +1,19 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import * as FileSystem from "expo-file-system";
 
-import { APP_STORE_APP_ID } from "@/app.config";
+import { APP_NAME, APP_STORE_APP_ID } from "@/app.config";
 import { translate } from "@/i18n/translate";
 
 export interface AppStoreData {
   trackName: string;
+  description: string;
+  averageUserRating?: number;
   price: number;
-  averageUserRating: number;
   formattedPrice: string;
   currency: string;
   screenshotUrls: string[];
   ipadScreenshotUrls: string[];
   artworkUrl512: string;
-  description: string;
 }
 
 interface AppStoreContextType {
@@ -29,18 +29,17 @@ const AppStoreContext = createContext<AppStoreContextType>({
  * @todo replace from app.config.ts data
  */
 const fallbackData: AppStoreData = {
-  trackName: "Expo App Landing Page",
+  trackName: APP_NAME,
+  description: translate("app.description"),
   price: 0,
-  averageUserRating: 5,
   formattedPrice: "Free",
   currency: "USD",
   screenshotUrls: [],
   ipadScreenshotUrls: [],
   artworkUrl512: "",
-  description: translate("app.description"),
 };
 
-const loadStaticAppStoreData = async (): Promise<AppStoreData | null> => {
+async function loadStaticAppStoreData(): Promise<AppStoreData | null> {
   try {
     try {
       const staticData = require("@/assets/data/appStore.json");
@@ -65,7 +64,7 @@ const loadStaticAppStoreData = async (): Promise<AppStoreData | null> => {
     console.error("Error loading static app store data:", error);
     return fallbackData;
   }
-};
+}
 
 export function AppStoreProvider({ children }: { children: React.ReactNode }) {
   const [appStoreData, setAppStoreData] = useState<AppStoreData | null>(null);
@@ -88,13 +87,7 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
 
         if (data.results && data.results.length > 0) {
           const result = data.results[0];
-          console.log("App Store Data:", {
-            name: result.trackName,
-            rating: result.averageUserRating,
-            description: result.description.substring(0, 100) + "...",
-            price: result.formattedPrice,
-            icon: result.artworkUrl512,
-          });
+          console.log("App Store Data:", result);
 
           setAppStoreData({
             trackName: result.trackName,

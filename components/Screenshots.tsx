@@ -68,7 +68,7 @@ export const Screenshots = ({ appStoreData }: ScreenshotsProps) => {
             {typeof screenshot !== "string" && (
               <Text
                 variant="caption"
-                className="text-center text-gray-600 mt-4 font-medium absolute -bottom-8 left-0 right-0"
+                className="text-center text-slate-600 mt-4 font-medium absolute -bottom-8 left-0 right-0"
                 tx={`sections.screenshots.items.${screenshot.id}`}
               />
             )}

@@ -6,27 +6,31 @@
 
 Demo: [expo-app-landing-page.expo.app](https://expo-app-landing-page.expo.app/)
 
-## Clone the repository
-
-```bash
-npx create-expo -t https://github.com/flexbox/expo-app-landing-page/
-```
-
 ## Getting Started
 
+Create a new Expo app using the template:
+
 ```bash
-npm install # or yarn install
-npm start # or yarn start
+npx create-expo -t https://github.com/flexbox/expo-app-landing-page/ <project-landing-page>
 ```
 
-## Configure your app
+Install dependencies:
 
-- Update your iOS and android configuration in `app.config.ts`.
-  - If you provide your App Store ID, the app will automatically fetch your app data (name, description, screenshots).
-  - In case the automatic fetch fails, you can still manually configure all the data.
-- Update your theme on `constants/theme.ts`.
-- Update your landing page content on `constants/landing.ts`.
-- Run `yarn generate-og` to generate a screenshot of your landing page, then manually move the generated image from your downloads folder to the `public` directory.
+```bash
+yarn       # or npm install
+yarn start # or npm start
+```
+
+## Configure your landing page
+
+1. Update your iOS and android configuration in `app.config.ts`.
+
+- If you provide your App Store ID, the app will automatically fetch your app data (name, description, screenshots).
+- In case the automatic fetch fails, you can still manually configure all the data.
+
+2. Update your theme on `constants/theme.ts`.
+3. Update your landing page content on `constants/landing.ts`.
+4. Run `yarn generate-og` to generate a screenshot of your landing page, then manually move the generated image from your downloads folder to the `public` directory.
 
 ## App Store Data
 
@@ -53,13 +57,13 @@ When you run `yarn deploy`, this command is automatically executed before deploy
 3. Login to your account `eas login`
 
 ```bash
-npm run preview # or yarn preview
+yarn preview # or npm run preview
 ```
 
 Release to production
 
 ```bash
-npm run deploy # or yarn deploy
+yarn deploy # or npm run deploy
 ```
 
 ## Changelog
@@ -92,7 +96,10 @@ The changelog page will automatically show your changes with appropriate styling
 
 ## We do it for you
 
+You don't have time to learn all the details of mobile app development? You want to focus on your business and not on the technical details?
+
 - We specialize in React Native with Expo.
 - Helps startups release mobile apps on productions faster.
 - All-inclusive: a trusted software engineer joins your existing team and shares our expertise in managing releases to store.
-- **Book a call with us: [weshipit.today](https://weshipit.today/)**.
+
+**Book a call with us: [weshipit.today](https://weshipit.today/)**.

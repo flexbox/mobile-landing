@@ -86,7 +86,7 @@ export default function PrivacyScreen() {
         description: translate("privacy.description"),
       }}
     >
-      <ScrollView className="flex-1 bg-gray-50 px-4 py-8">
+      <ScrollView className="flex-1 bg-slate-50 px-4 py-8">
         <View className="items-center">
           <View className="w-full max-w-3xl">
             <Text as="h1" variant="heading1">

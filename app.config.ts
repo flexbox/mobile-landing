@@ -20,6 +20,8 @@ export const APP_STORE_APP_ID = "570060128";
 export const APP_STORE_URL = `https://apps.apple.com/app/${APP_NAME}/id${APP_STORE_APP_ID}`;
 export const GOOGLE_PLAYSTORE_URL = `https://play.google.com/store/apps/details?id=${PACKAGE_NAME}`;
 
+export const LANDING_PAGE_URL = "https://expo-app-landing-page.expo.dev"; // URL of your landing page
+
 const config: ExpoConfig = {
   name: APP_NAME,
   slug: PROJECT_SLUG,

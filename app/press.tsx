@@ -1,7 +1,5 @@
-import React from "react";
 import { ScrollView, View } from "react-native";
 
-import { BrandColors } from "@/components/brand/BrandColors";
 import { BrandGuidelines } from "@/components/brand/BrandGuidelines";
 import { BrandLogos } from "@/components/brand/BrandLogos";
 import { BrandTypography } from "@/components/brand/BrandTypography";
@@ -25,7 +23,6 @@ export default function BrandScreen() {
             <View className="p-6 max-w-[1200px] w-full md:w-1/2">
               <BrandLogos />
               <BrandGuidelines />
-              <BrandColors />
               <BrandTypography />
             </View>
           </View>

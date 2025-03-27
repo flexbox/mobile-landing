@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { ScrollView, View } from "react-native";
 import Head from "expo-router/head";
 
+import { LANDING_PAGE_URL } from "@/app.config";
 import { FloatingButton } from "@/components/FloatingButton";
 import { appInfo } from "@/constants/landing";
 import { useScroll } from "@/context/ScrollContext";
@@ -40,7 +41,7 @@ export function ScreenContainer({
         <meta name="description" content={description} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:url" content={appInfo.websiteUrl} />
+        <meta property="og:url" content={LANDING_PAGE_URL} />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={image} />
         <meta name="twitter:card" content="summary_large_image" />

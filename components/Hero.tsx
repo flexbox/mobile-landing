@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import {
   Animated,
   Image,
@@ -20,7 +20,7 @@ interface HeroProps {
 
 export const Hero = ({ appStoreData }: HeroProps) => {
   const { width } = useWindowDimensions();
-  const fadeAnim = React.useRef(new Animated.Value(0)).current;
+  const fadeAnim = useRef(new Animated.Value(0)).current;
   const isMobile = width < 768;
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export const Hero = ({ appStoreData }: HeroProps) => {
     }).start();
   }, [fadeAnim]);
 
-  const renderRating = () => {
+  function Ratings() {
     if (!appStoreData?.averageUserRating) return null;
     const rating = Math.round(appStoreData.averageUserRating);
     return (
@@ -45,12 +45,12 @@ export const Hero = ({ appStoreData }: HeroProps) => {
             color={star <= rating ? "#FFD700" : "#D3D3D3"}
           />
         ))}
-        <Text className="ml-2 text-gray-500">
+        <Text className="ml-2 text-slate-500">
           ({appStoreData.averageUserRating.toFixed(1)})
         </Text>
       </View>
     );
-  };
+  }
 
   return (
     <View className="min-h-[500px] bg-white px-4 md:px-8 py-8 md:py-12">
@@ -66,17 +66,17 @@ export const Hero = ({ appStoreData }: HeroProps) => {
                 bottom: "2%",
                 borderRadius: 38,
                 overflow: "hidden",
-                backgroundColor: "#000",
+                backgroundColor: "#000000",
               }}
             >
               <Animated.Image
+                defaultSource={require("@/assets/images/screenshot.png")}
                 source={
                   appStoreData?.screenshotUrls &&
                   appStoreData.screenshotUrls.length > 0
                     ? { uri: appStoreData.screenshotUrls[0] }
                     : require("@/assets/images/screenshot.png")
                 }
-                defaultSource={require("@/assets/images/screenshot.png")}
                 style={{
                   width: "100%",
                   height: "100%",
@@ -96,17 +96,17 @@ export const Hero = ({ appStoreData }: HeroProps) => {
 
         <View className="w-full md:flex-1 md:pl-8 lg:pl-12 space-y-6 md:space-y-8">
           <View className="flex-row items-center space-x-4 md:space-x-6">
-            <View className="bg-gray-50 rounded-2xl shadow-md">
+            <View className="bg-slate-50 rounded-2xl shadow-md">
               <Image
+                defaultSource={require("@/assets/images/icon.png")}
                 source={
                   appStoreData?.artworkUrl512
                     ? { uri: appStoreData.artworkUrl512 }
                     : require("@/assets/images/icon.png")
                 }
-                defaultSource={require("@/assets/images/icon.png")}
                 style={{
-                  width: isMobile ? 64 : 90,
-                  height: isMobile ? 64 : 90,
+                  width: 90,
+                  height: 90,
                   borderRadius: 16,
                 }}
               />
@@ -116,17 +116,17 @@ export const Hero = ({ appStoreData }: HeroProps) => {
                 {appStoreData?.trackName || appInfo.name}
               </Text>
               {appStoreData?.price !== undefined && appStoreData?.price > 0 ? (
-                <Text variant="subtitle" className="text-gray-500">
+                <Text variant="subtitle" className="text-slate-500">
                   {appStoreData.formattedPrice}
                 </Text>
               ) : (
                 <Text
                   variant="subtitle"
-                  className="text-gray-500"
+                  className="text-slate-500"
                   tx="app.free"
                 />
               )}
-              {renderRating()}
+              <Ratings />
             </View>
           </View>
 

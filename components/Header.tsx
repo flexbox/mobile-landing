@@ -37,7 +37,7 @@ export const Header = ({ scrollToSection, appStoreData }: HeaderProps) => {
   };
 
   return (
-    <View className="w-full bg-white border-b border-gray-100 px-4 md:px-8 py-4 flex-col md:flex-row justify-between items-center relative">
+    <View className="w-full bg-white border-b border-slate-100 px-4 md:px-8 py-4 flex-col md:flex-row justify-between items-center relative">
       <View className="flex-row items-center justify-between w-full md:w-auto">
         <TouchableOpacity onPress={() => router.push("/")}>
           <View className="flex-row items-center space-x-3">
@@ -52,7 +52,7 @@ export const Header = ({ scrollToSection, appStoreData }: HeaderProps) => {
                 style={{ width: 32, height: 32, borderRadius: 8 }}
               />
             </View>
-            <Text className="text-lg font-bold" color="text">
+            <Text className="text-lg font-bold">
               {appStoreData?.trackName || appInfo.name}
             </Text>
           </View>
@@ -72,7 +72,7 @@ export const Header = ({ scrollToSection, appStoreData }: HeaderProps) => {
               }}
             >
               <View
-                className="w-6 h-0.5 bg-gray-800 mb-1.5"
+                className="w-6 h-0.5 bg-slate-800 mb-1.5"
                 style={{
                   transform: [
                     {
@@ -82,13 +82,13 @@ export const Header = ({ scrollToSection, appStoreData }: HeaderProps) => {
                 }}
               />
               <View
-                className="w-6 h-0.5 bg-gray-800 mb-1.5"
+                className="w-6 h-0.5 bg-slate-800 mb-1.5"
                 style={{
                   opacity: isMenuOpen ? 0 : 1,
                 }}
               />
               <View
-                className="w-6 h-0.5 bg-gray-800"
+                className="w-6 h-0.5 bg-slate-800"
                 style={{
                   transform: [
                     {
@@ -107,7 +107,7 @@ export const Header = ({ scrollToSection, appStoreData }: HeaderProps) => {
 
       {isMobile ? (
         <Animated.View
-          className="w-full bg-white absolute top-full left-0 border-b border-gray-100 z-50"
+          className="w-full bg-white absolute top-full left-0 border-b border-slate-100 z-50"
           style={{
             maxHeight: menuAnimation.interpolate({
               inputRange: [0, 1],
@@ -161,7 +161,7 @@ export const Header = ({ scrollToSection, appStoreData }: HeaderProps) => {
             )}
             <TouchableOpacity
               onPress={() => {
-                router.push("/brand");
+                router.push("/press");
                 toggleMenu();
               }}
               className="w-full flex-row justify-start"
