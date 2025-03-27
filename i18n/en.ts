@@ -26,30 +26,36 @@ const en = {
     features: {
       title: "Features",
       items: {
-        smartIntegration: {
+        feature1: {
           title: "Smart Integration",
           description:
             "Seamlessly connect with your favorite tools and services",
+          icon: "plug",
         },
-        cloudSync: {
+        feature2: {
           title: "Cloud Sync",
           description: "Access your data from anywhere, anytime",
+          icon: "cloud",
         },
-        security: {
+        feature3: {
           title: "Advanced Security",
           description: "Enterprise-grade encryption and privacy features",
+          icon: "shield",
         },
-        darkMode: {
+        feature4: {
           title: "Dark Mode",
           description: "Easy on the eyes, day and night",
+          icon: "moon-o",
         },
-        notifications: {
+        feature5: {
           title: "Smart Notifications",
           description: "Stay informed with intelligent alerts",
+          icon: "bell",
         },
-        analytics: {
+        feature6: {
           title: "Analytics",
           description: "Powerful insights into your usage patterns",
+          icon: "bar-chart",
         },
       },
     },

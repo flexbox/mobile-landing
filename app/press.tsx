@@ -1,8 +1,8 @@
 import { ScrollView, View } from "react-native";
 
-import { BrandGuidelines } from "@/components/brand/BrandGuidelines";
-import { BrandLogos } from "@/components/brand/BrandLogos";
-import { BrandTypography } from "@/components/brand/BrandTypography";
+import { BrandGuidelines } from "@/components/BrandGuidelines";
+import { BrandLogos } from "@/components/BrandLogos";
+import { BrandTypography } from "@/components/BrandTypography";
 import { ScreenContainer } from "@/components/ScreenContainer";
 import { translate } from "@/i18n/translate";
 

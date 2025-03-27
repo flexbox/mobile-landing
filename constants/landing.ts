@@ -2,45 +2,12 @@ import { FontAwesome } from "@expo/vector-icons";
 
 import { ChangeType } from "@/app/changelog";
 
-interface Feature {
-  id: string;
-  icon: keyof typeof FontAwesome.glyphMap;
-}
-
 interface SocialLink {
   platform: "twitter" | "facebook" | "instagram" | "github" | "email";
   url: string;
   icon: keyof typeof FontAwesome.glyphMap;
   label: string;
 }
-
-// Features
-export const features: Feature[] = [
-  {
-    id: "smartIntegration",
-    icon: "plug",
-  },
-  {
-    id: "cloudSync",
-    icon: "cloud",
-  },
-  {
-    id: "security",
-    icon: "shield",
-  },
-  {
-    id: "darkMode",
-    icon: "moon-o",
-  },
-  {
-    id: "notifications",
-    icon: "bell",
-  },
-  {
-    id: "analytics",
-    icon: "bar-chart",
-  },
-];
 
 // Screenshots
 export const screenshots = {

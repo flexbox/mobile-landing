@@ -18,6 +18,7 @@ export function Screenshots({ appStoreData }: ScreenshotsProps) {
     <View className="py-12 md:py-16 px-4 bg-white">
       <Text
         variant="heading2"
+        as="h2"
         color="text"
         className="mb-8 md:mb-12 text-center"
         tx="sections.screenshots.title"
@@ -51,7 +52,7 @@ export function Screenshots({ appStoreData }: ScreenshotsProps) {
                 bottom: "1.8%",
                 borderRadius: 38,
                 overflow: "hidden",
-                backgroundColor: "#000",
+                backgroundColor: "#000000",
               }}
             >
               <Image

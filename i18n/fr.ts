@@ -28,31 +28,37 @@ const fr: Translations = {
     features: {
       title: "Fonctionnalités",
       items: {
-        smartIntegration: {
+        feature1: {
           title: "Intégration Intelligente",
           description:
             "Connectez-vous facilement à vos outils et services préférés",
+          icon: "plug",
         },
-        cloudSync: {
+        feature2: {
           title: "Synchronisation Cloud",
           description: "Accédez à vos données n'importe où, n'importe quand",
+          icon: "cloud",
         },
-        security: {
+        feature3: {
           title: "Sécurité Avancée",
           description:
             "Fonctionnalités de cryptage et de confidentialité de niveau entreprise",
+          icon: "shield",
         },
-        darkMode: {
+        feature4: {
           title: "Mode Sombre",
           description: "Agréable pour les yeux, de jour comme de nuit",
+          icon: "moon-o",
         },
-        notifications: {
+        feature5: {
           title: "Notifications Intelligentes",
           description: "Restez informé avec des alertes intelligentes",
+          icon: "bell",
         },
-        analytics: {
+        feature6: {
           title: "Analytique",
           description: "Analyses puissantes de vos habitudes d'utilisation",
+          icon: "bar-chart",
         },
       },
     },
