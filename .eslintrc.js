@@ -22,6 +22,7 @@ module.exports = {
   ],
   rules: {
     camelcase: "off", // disable camelcase rule
+    "func-style": ["error", "declaration"], // enforce function declarations over expressions
     "@typescript-eslint/no-explicit-any": "warn", // detect usage of `any` type
     "@typescript-eslint/no-require-imports": "off", // disable require style imports error
     "prettier/prettier": [

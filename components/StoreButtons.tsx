@@ -1,14 +1,13 @@
-import React from "react";
 import { Image, Linking, useWindowDimensions, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-import { appInfo } from "@/constants/landing";
+import { APP_STORE_URL, GOOGLE_PLAYSTORE_URL } from "@/app.config";
 
 interface StoreButtonsProps {
   className?: string;
 }
 
-export const StoreButtons = ({ className = "" }: StoreButtonsProps) => {
+export function StoreButtons({ className = "" }: StoreButtonsProps) {
   const { width } = useWindowDimensions();
   const isMobile = width < 768;
 
@@ -16,9 +15,9 @@ export const StoreButtons = ({ className = "" }: StoreButtonsProps) => {
     <View
       className={`flex-row flex-wrap justify-center gap-4 md:gap-6 ${className}`}
     >
-      {appInfo.store.ios.url && (
+      {APP_STORE_URL && (
         <TouchableOpacity
-          onPress={() => Linking.openURL(appInfo.store.ios.url)}
+          onPress={() => Linking.openURL(APP_STORE_URL)}
           style={{ width: 160 }}
         >
           <Image
@@ -28,9 +27,9 @@ export const StoreButtons = ({ className = "" }: StoreButtonsProps) => {
           />
         </TouchableOpacity>
       )}
-      {appInfo.store.android.url && (
+      {GOOGLE_PLAYSTORE_URL && (
         <TouchableOpacity
-          onPress={() => Linking.openURL(appInfo.store.android.url)}
+          onPress={() => Linking.openURL(GOOGLE_PLAYSTORE_URL)}
           style={{ width: 160 }}
         >
           <Image
@@ -42,4 +41,4 @@ export const StoreButtons = ({ className = "" }: StoreButtonsProps) => {
       )}
     </View>
   );
-};
+}

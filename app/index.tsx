@@ -1,6 +1,5 @@
 import "@/i18n/i18n";
 
-import React, { useEffect } from "react";
 import { View } from "react-native";
 
 import { Features } from "@/components/Features";

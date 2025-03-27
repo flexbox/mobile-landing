@@ -5,7 +5,7 @@ import { captureRef } from "react-native-view-shot";
 import { Hero } from "@/components/Hero";
 import { useAppStore } from "@/context/AppStoreContext";
 
-export const GenerateOgImage = () => {
+export function GenerateOgImage() {
   const viewShotRef = React.useRef<View>(null);
   const { appStoreData } = useAppStore();
 
@@ -14,7 +14,7 @@ export const GenerateOgImage = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const downloadFile = async (base64Data: string, filename: string) => {
+  async function downloadFile(base64Data: string, filename: string) {
     try {
       const byteCharacters = atob(base64Data);
       const byteNumbers = new Array(byteCharacters.length);
@@ -35,15 +35,15 @@ export const GenerateOgImage = () => {
       URL.revokeObjectURL(url);
 
       console.log(
-        "Image téléchargée avec succès. Veuillez la déplacer dans le dossier assets/",
+        "✅ Image downloaded successfully! Put it on the `./assets` folder.",
       );
     } catch (error) {
-      console.error("Erreur lors du téléchargement:", error);
+      console.error("❌ Error downloading the image:", error);
       throw error;
     }
-  };
+  }
 
-  const captureHero = async () => {
+  async function captureHero() {
     try {
       if (viewShotRef.current) {
         const uri = await captureRef(viewShotRef, {
@@ -62,10 +62,10 @@ export const GenerateOgImage = () => {
     } catch (error) {
       console.error("Erreur lors de la capture:", error);
       if (Platform.OS === "web") {
-        window.document.title = "Error Generating OG Image";
+        window.document.title = "❌ Error Generating OG Image";
       }
     }
-  };
+  }
 
   return (
     <View style={{ width: 1200, height: 630, backgroundColor: "white" }}>
@@ -74,4 +74,4 @@ export const GenerateOgImage = () => {
       </View>
     </View>
   );
-};
+}

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import {
   Animated,
   Easing,
@@ -11,7 +11,8 @@ import { router } from "expo-router";
 
 import { Text } from "./Text";
 
-import { appInfo, changelog } from "@/constants/landing";
+import { APP_NAME } from "@/app.config";
+import { changelog } from "@/constants/landing";
 import { AppStoreData } from "@/context/AppStoreContext";
 
 interface HeaderProps {
@@ -19,14 +20,14 @@ interface HeaderProps {
   appStoreData?: AppStoreData | null;
 }
 
-export const Header = ({ scrollToSection, appStoreData }: HeaderProps) => {
+export function Header({ scrollToSection, appStoreData }: HeaderProps) {
   const { width } = useWindowDimensions();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuAnimation = useRef(new Animated.Value(0)).current;
 
   const isMobile = width < 768;
 
-  const toggleMenu = () => {
+  function toggleMenu() {
     setIsMenuOpen(!isMenuOpen);
     Animated.timing(menuAnimation, {
       toValue: isMenuOpen ? 0 : 1,
@@ -34,7 +35,7 @@ export const Header = ({ scrollToSection, appStoreData }: HeaderProps) => {
       easing: Easing.bezier(0.4, 0, 0.2, 1),
       useNativeDriver: false,
     }).start();
-  };
+  }
 
   return (
     <View className="w-full bg-white border-b border-slate-100 px-4 md:px-8 py-4 flex-col md:flex-row justify-between items-center relative">
@@ -53,7 +54,7 @@ export const Header = ({ scrollToSection, appStoreData }: HeaderProps) => {
               />
             </View>
             <Text className="text-lg font-bold">
-              {appStoreData?.trackName || appInfo.name}
+              {appStoreData?.trackName || APP_NAME}
             </Text>
           </View>
         </TouchableOpacity>
@@ -186,11 +187,11 @@ export const Header = ({ scrollToSection, appStoreData }: HeaderProps) => {
               <Text tx="nav.changelog" />
             </TouchableOpacity>
           )}
-          <TouchableOpacity onPress={() => router.push("/brand")}>
+          <TouchableOpacity onPress={() => router.push("/press")}>
             <Text tx="nav.pressKit" />
           </TouchableOpacity>
         </View>
       )}
     </View>
   );
-};
+}

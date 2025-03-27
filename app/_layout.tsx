@@ -5,11 +5,9 @@ import { useEffect } from "react";
 import { View } from "react-native";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
-import Head from "expo-router/head";
 import * as SplashScreen from "expo-splash-screen";
 
 import { Header } from "@/components/Header";
-import { appInfo } from "@/constants/landing";
 import { AppStoreProvider, useAppStore } from "@/context/AppStoreContext";
 import { ScrollProvider, useScroll } from "@/context/ScrollContext";
 import { GenerateOgImage } from "@/scripts/generateOgImage";
@@ -24,7 +22,6 @@ function LayoutContent() {
 
   const { scrollToSection } = useScroll();
   const { appStoreData } = useAppStore();
-  console.log("🚀 ~ LayoutContent ~ appStoreData:", appStoreData);
 
   useEffect(() => {
     if (loaded) {
@@ -42,34 +39,30 @@ function LayoutContent() {
 
   return (
     <View style={{ flex: 1 }}>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <Header scrollToSection={scrollToSection} appStoreData={appStoreData} />
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen
           name="index"
           options={{
-            title: appStoreData?.trackName || appInfo.name,
+            title: appStoreData?.trackName,
           }}
         />
         <Stack.Screen
           name="changelog"
           options={{
-            title: `Changelog - ${appStoreData?.trackName || appInfo.name}`,
+            title: `Changelog - ${appStoreData?.trackName}`,
           }}
         />
         <Stack.Screen
-          name="brand"
+          name="press"
           options={{
-            title: `Brand - ${appStoreData?.trackName || appInfo.name}`,
+            title: `Press Kit - ${appStoreData?.trackName}`,
           }}
         />
         <Stack.Screen
           name="privacy"
           options={{
-            title: `Privacy - ${appStoreData?.trackName || appInfo.name}`,
+            title: `Privacy - ${appStoreData?.trackName}`,
           }}
         />
       </Stack>

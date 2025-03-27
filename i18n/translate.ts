@@ -12,9 +12,9 @@ export function useLanguage() {
   const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language as Language;
 
-  const changeLanguage = (language: Language) => {
+  function changeLanguage(language: Language) {
     i18n.changeLanguage(language);
-  };
+  }
 
   return {
     t,

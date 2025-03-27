@@ -1,4 +1,6 @@
-export default {
+import { Translations } from "./en";
+
+const fr: Translations = {
   // Navigation
   nav: {
     features: "Fonctionnalités",
@@ -129,23 +131,6 @@ export default {
       description: "Règles et principes pour maintenir notre identité visuelle",
     },
     components: {
-      colors: {
-        items: {
-          primary: {
-            name: "Primaire",
-            description: "Couleur principale de la marque",
-          },
-          secondary: { name: "Secondaire", description: "Couleur d'accent" },
-          success: { name: "Succès", description: "États de succès" },
-          accent: { name: "Accent", description: "Couleur d'accent" },
-          warning: { name: "Attention", description: "États d'avertissement" },
-          error: { name: "Erreur", description: "États d'erreur" },
-          background: { name: "Arrière-plan", description: "Couleur de fond" },
-          text: { name: "Texte", description: "Couleur principale du texte" },
-          gray: { name: "Gris", description: "Couleur secondaire du texte" },
-          light: { name: "Clair", description: "Couleur de bordure" },
-        },
-      },
       typography: {
         items: {
           heading1: { name: "Titre 1", description: "32px • Bold" },
@@ -206,3 +191,5 @@ export default {
     },
   },
 };
+
+export default fr;

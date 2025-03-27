@@ -1,4 +1,3 @@
-import React from "react";
 import { View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
@@ -7,7 +6,7 @@ import { Text } from "./Text";
 import { features } from "@/constants/landing";
 import { theme } from "@/constants/theme";
 
-export const Features = () => {
+export function Features() {
   return (
     <View className="py-8 md:py-32 px-4 bg-slate-50">
       <Text
@@ -48,4 +47,4 @@ export const Features = () => {
       </View>
     </View>
   );
-};
+}

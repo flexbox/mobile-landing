@@ -29,7 +29,7 @@ interface TextProps extends RNTextProps {
   as?: SemanticTag;
 }
 
-export const Text = ({
+export function Text({
   tx,
   className = "",
   color = "secondary",
@@ -37,7 +37,7 @@ export const Text = ({
   as,
   style,
   ...props
-}: TextProps) => {
+}: TextProps) {
   const variantStyles = {
     body: "text-sm font-normal",
     title: "text-xl font-bold",
@@ -72,4 +72,4 @@ export const Text = ({
       {tx ? translate(`${tx}`) : props.children}
     </RNText>
   );
-};
+}

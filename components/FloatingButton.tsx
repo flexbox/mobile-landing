@@ -1,21 +1,21 @@
-import React from "react";
 import { Linking, Text as RNText } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { FontAwesome } from "@expo/vector-icons";
 
 import { theme } from "@/constants/theme";
 import { translate } from "@/i18n/translate";
+
 interface FloatingButtonProps {
   url: string;
   icon: keyof typeof FontAwesome.glyphMap;
   textKey: string;
 }
 
-export const FloatingButton = ({
+export function FloatingButton({
   url = "https://github.com/flexbox/expo-app-landing-page",
   icon = "github",
   textKey = "cta.buildYourOwn",
-}: FloatingButtonProps) => {
+}: FloatingButtonProps) {
   return (
     <TouchableOpacity
       onPress={() => Linking.openURL(url)}
@@ -29,7 +29,7 @@ export const FloatingButton = ({
         borderRadius: 25,
         flexDirection: "row",
         alignItems: "center",
-        shadowColor: "#000",
+        shadowColor: "#000000",
         shadowOffset: {
           width: 0,
           height: 2,
@@ -51,4 +51,4 @@ export const FloatingButton = ({
       </RNText>
     </TouchableOpacity>
   );
-};
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import {
   Animated,
   Image,
@@ -11,14 +11,14 @@ import { FontAwesome } from "@expo/vector-icons";
 
 import { Text } from "./Text";
 
-import { appInfo } from "@/constants/landing";
+import { APP_NAME, APP_STORE_URL, GOOGLE_PLAYSTORE_URL } from "@/app.config";
 import { AppStoreData } from "@/context/AppStoreContext";
 import { translate } from "@/i18n/translate";
 interface HeroProps {
   appStoreData: AppStoreData | null;
 }
 
-export const Hero = ({ appStoreData }: HeroProps) => {
+export function Hero({ appStoreData }: HeroProps) {
   const { width } = useWindowDimensions();
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const isMobile = width < 768;
@@ -53,7 +53,7 @@ export const Hero = ({ appStoreData }: HeroProps) => {
   }
 
   return (
-    <View className="min-h-[500px] bg-white px-4 md:px-8 py-8 md:py-12">
+    <View className="min-h-[500px] px-4 md:px-8 py-8 md:py-12">
       <View className="flex-col md:flex-row items-center justify-between max-w-6xl mx-auto">
         <View className="w-full md:flex-1 items-center mb-8 md:mb-0">
           <View className="relative w-[280px] h-[560px] md:w-[320px] md:h-[640px]">
@@ -113,7 +113,7 @@ export const Hero = ({ appStoreData }: HeroProps) => {
             </View>
             <View>
               <Text variant="heading1" color="text" className="mb-2">
-                {appStoreData?.trackName || appInfo.name}
+                {appStoreData?.trackName || APP_NAME}
               </Text>
               {appStoreData?.price !== undefined && appStoreData?.price > 0 ? (
                 <Text variant="subtitle" className="text-slate-500">
@@ -140,9 +140,9 @@ export const Hero = ({ appStoreData }: HeroProps) => {
             )[0] + "."}
           </Text>
           <View className="flex-row flex-wrap gap-4">
-            {appInfo.store.ios.url && (
+            {APP_STORE_URL && (
               <TouchableOpacity
-                onPress={() => Linking.openURL(appInfo.store.ios.url)}
+                onPress={() => Linking.openURL(APP_STORE_URL)}
                 style={{ width: 160 }}
               >
                 <Image
@@ -152,9 +152,9 @@ export const Hero = ({ appStoreData }: HeroProps) => {
                 />
               </TouchableOpacity>
             )}
-            {appInfo.store.android.url && (
+            {GOOGLE_PLAYSTORE_URL && (
               <TouchableOpacity
-                onPress={() => Linking.openURL(appInfo.store.android.url)}
+                onPress={() => Linking.openURL(GOOGLE_PLAYSTORE_URL)}
                 style={{ width: 160 }}
               >
                 <Image
@@ -169,4 +169,4 @@ export const Hero = ({ appStoreData }: HeroProps) => {
       </View>
     </View>
   );
-};
+}

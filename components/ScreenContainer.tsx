@@ -2,9 +2,8 @@ import React, { useEffect, useRef } from "react";
 import { ScrollView, View } from "react-native";
 import Head from "expo-router/head";
 
-import { LANDING_PAGE_URL } from "@/app.config";
+import { APP_NAME, LANDING_PAGE_URL } from "@/app.config";
 import { FloatingButton } from "@/components/FloatingButton";
-import { appInfo } from "@/constants/landing";
 import { useScroll } from "@/context/ScrollContext";
 
 interface FrontMatter {
@@ -30,7 +29,7 @@ export function ScreenContainer({
     setScrollViewRef(scrollViewRef.current);
   }, [setScrollViewRef]);
 
-  const title = frontMatter?.title || appInfo.name;
+  const title = frontMatter?.title || APP_NAME;
   const description = frontMatter?.description || "";
   const image = frontMatter?.image || "/@og-image.png";
 
@@ -48,6 +47,9 @@ export function ScreenContainer({
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={image} />
+        <link rel="icon" href="/favicon.png" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <ScrollView
         ref={scrollViewRef}

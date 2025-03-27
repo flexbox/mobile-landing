@@ -22,7 +22,7 @@ const logos = [
 ];
 
 export function BrandLogos() {
-  const handleDownload = (url: string) => {
+  function handleDownload(url: string) {
     const baseUrl =
       process.env.NEXT_PUBLIC_WEBSITE_URL || window.location.origin;
     const fullUrl = `${baseUrl}${url}`;
@@ -32,15 +32,15 @@ export function BrandLogos() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-  };
+  }
 
-  const handleDownloadAll = () => {
+  function handleDownloadAll() {
     logos.forEach((logo, index) => {
       setTimeout(() => {
         handleDownload(logo.downloadUrl);
       }, index * 500);
     });
-  };
+  }
 
   return (
     <View className="my-6">

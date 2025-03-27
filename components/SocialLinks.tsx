@@ -1,10 +1,9 @@
-import React from "react";
 import { Linking, Pressable, useWindowDimensions, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
 import { socials } from "@/constants/landing";
 
-export const SocialLinks = () => {
+export function SocialLinks() {
   const { width } = useWindowDimensions();
   const isMobile = width < 768;
 
@@ -31,4 +30,4 @@ export const SocialLinks = () => {
       </View>
     </View>
   );
-};
+}

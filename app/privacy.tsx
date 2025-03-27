@@ -48,11 +48,10 @@ If you have any questions or suggestions about the Terms and Conditions, please 
 `;
 
 // Define proper interfaces for the Markdown components
-interface MarkdownNode {
+import type { ASTNode } from "react-native-markdown-display";
+
+interface MarkdownNode extends ASTNode {
   key: string;
-  content?: string;
-  type?: string;
-  children?: React.ReactNode;
 }
 
 const rules = {

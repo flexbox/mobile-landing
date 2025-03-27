@@ -12,14 +12,16 @@ const ScrollContext = createContext<ScrollContextType>({
   setScrollViewRef: () => {},
 });
 
-export const useScroll = () => useContext(ScrollContext);
+export function useScroll() {
+  useContext(ScrollContext);
+}
 
 export function ScrollProvider({ children }: { children: React.ReactNode }) {
   const scrollViewRef = useRef<ScrollView | null>(null);
   const pathname = usePathname();
   const router = useRouter();
 
-  const scrollToSection = (sectionId: string) => {
+  function scrollToSection(sectionId: string) {
     if (pathname !== "/") {
       router.push("/");
       setTimeout(() => {
@@ -30,7 +32,7 @@ export function ScrollProvider({ children }: { children: React.ReactNode }) {
       const yOffset = sectionId === "features" ? 600 : 1800;
       scrollViewRef.current?.scrollTo({ y: yOffset, animated: true });
     }
-  };
+  }
 
   return (
     <ScrollContext.Provider

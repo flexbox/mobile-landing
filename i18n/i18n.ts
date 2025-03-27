@@ -7,7 +7,7 @@ import fr from "./fr";
 
 export type Language = "en" | "fr";
 
-const getPreferredLanguage = (): Language => {
+function getPreferredLanguage(): Language {
   try {
     const locales = Localization.getLocales();
     if (!locales || locales.length === 0) return "en";
@@ -22,7 +22,7 @@ const getPreferredLanguage = (): Language => {
     console.warn("Error getting device locale:", error);
     return "en";
   }
-};
+}
 
 const resources = {
   en: { translation: en },

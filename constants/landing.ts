@@ -1,7 +1,5 @@
 import { FontAwesome } from "@expo/vector-icons";
-import Constants from "expo-constants";
 
-import { APP_NAME, APP_STORE_URL, GOOGLE_PLAYSTORE_URL } from "@/app.config";
 import { ChangeType } from "@/app/changelog";
 
 interface Feature {
@@ -15,29 +13,6 @@ interface SocialLink {
   icon: keyof typeof FontAwesome.glyphMap;
   label: string;
 }
-
-interface AppInfo {
-  name: string;
-  version: string | undefined;
-  store: {
-    ios: { url: string };
-    android: { url: string };
-  };
-}
-
-// App Info
-export const appInfo: AppInfo = {
-  name: APP_NAME,
-  version: Constants.expoConfig?.version,
-  store: {
-    ios: {
-      url: APP_STORE_URL,
-    },
-    android: {
-      url: GOOGLE_PLAYSTORE_URL,
-    },
-  },
-};
 
 // Features
 export const features: Feature[] = [

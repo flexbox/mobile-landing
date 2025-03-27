@@ -1,4 +1,3 @@
-import React from "react";
 import { ScrollView, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { router } from "expo-router";
@@ -34,7 +33,7 @@ export default function ChangelogScreen() {
     return null;
   }
 
-  const getChangeTypeStyle = (type: ChangeType): ChangeTypeStyle => {
+  function getChangeTypeStyle(type: ChangeType): ChangeTypeStyle {
     switch (type) {
       case "feature":
         return {
@@ -61,9 +60,9 @@ export default function ChangelogScreen() {
           label: translate("changelog.labels.updates"),
         };
     }
-  };
+  }
 
-  const groupChangesByType = (changes: Change[]) => {
+  function groupChangesByType(changes: Change[]) {
     return changes.reduce(
       (acc: Record<ChangeType, Change[]>, change) => {
         if (!acc[change.type]) {
@@ -74,7 +73,7 @@ export default function ChangelogScreen() {
       },
       {} as Record<ChangeType, Change[]>,
     );
-  };
+  }
 
   const versions = changelog.versions as Version[];
 

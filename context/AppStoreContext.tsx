@@ -70,7 +70,7 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
   const [appStoreData, setAppStoreData] = useState<AppStoreData | null>(null);
 
   useEffect(() => {
-    const loadData = async () => {
+    async function loadData() {
       const staticData = await loadStaticAppStoreData();
       if (staticData) {
         console.log("Using static App Store data");
@@ -110,7 +110,7 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
         console.error("Error fetching App Store data:", error);
         setAppStoreData(fallbackData);
       }
-    };
+    }
 
     loadData();
   }, []);

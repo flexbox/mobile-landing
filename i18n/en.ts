@@ -1,4 +1,4 @@
-export default {
+const en = {
   // Navigation
   nav: {
     features: "Features",
@@ -122,20 +122,6 @@ export default {
       description: "Rules and principles to maintain our visual identity",
     },
     components: {
-      colors: {
-        items: {
-          primary: { name: "Primary", description: "Main brand color" },
-          secondary: { name: "Secondary", description: "Accent color" },
-          success: { name: "Success", description: "Success states" },
-          accent: { name: "Accent", description: "Accent color" },
-          warning: { name: "Warning", description: "Warning states" },
-          error: { name: "Error", description: "Error states" },
-          background: { name: "Background", description: "Background color" },
-          text: { name: "Text", description: "Primary text color" },
-          gray: { name: "Gray", description: "Secondary text color" },
-          light: { name: "Light", description: "Border color" },
-        },
-      },
       typography: {
         items: {
           heading1: { name: "Heading 1", description: "32px • Bold" },
@@ -194,3 +180,6 @@ export default {
     },
   },
 };
+
+export default en;
+export type Translations = typeof en;

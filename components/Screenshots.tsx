@@ -1,4 +1,3 @@
-import React from "react";
 import { Image, ScrollView, View } from "react-native";
 
 import { Text } from "./Text";
@@ -10,7 +9,7 @@ interface ScreenshotsProps {
   appStoreData: AppStoreData | null;
 }
 
-export const Screenshots = ({ appStoreData }: ScreenshotsProps) => {
+export function Screenshots({ appStoreData }: ScreenshotsProps) {
   const screenshotsToShow = appStoreData?.screenshotUrls?.length
     ? appStoreData.screenshotUrls
     : [screenshots.assets.screenshots[0]];
@@ -77,4 +76,4 @@ export const Screenshots = ({ appStoreData }: ScreenshotsProps) => {
       </ScrollView>
     </View>
   );
-};
+}
