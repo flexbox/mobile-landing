@@ -13,7 +13,12 @@ const ScrollContext = createContext<ScrollContextType>({
 });
 
 export function useScroll() {
-  useContext(ScrollContext);
+  const value = useContext(ScrollContext);
+  if (!value) {
+    throw new Error("useScroll must be wrapped in `<ScrollProvider />`");
+  }
+
+  return value;
 }
 
 export function ScrollProvider({ children }: { children: React.ReactNode }) {
