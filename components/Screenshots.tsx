@@ -3,12 +3,10 @@ import { Image, ScrollView, View } from "react-native";
 import { Text } from "./Text";
 
 import { iPadScreenshots, screenshots } from "@/constants/landing";
+import { AppStoreData } from "@/context/AppStoreContext";
 
 interface ScreenshotsProps {
-  appStoreData?: {
-    screenshotUrls?: string[];
-    ipadScreenshotUrls?: string[];
-  } | null;
+  appStoreData?: AppStoreData | null;
 }
 
 export function Screenshots({ appStoreData }: ScreenshotsProps) {
