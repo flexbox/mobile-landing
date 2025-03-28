@@ -1,5 +1,5 @@
 {
-  "name": "expo-app-landing-page",
+  "name": "mobile-landing",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {

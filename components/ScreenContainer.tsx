@@ -59,7 +59,7 @@ export function ScreenContainer({
         {children}
       </ScrollView>
       <FloatingButton
-        url="https://github.com/flexbox/expo-app-landing-page"
+        url="https://github.com/flexbox/mobile-landing"
         icon="github"
         textKey="cta.buildYourOwn"
       />

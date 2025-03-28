@@ -5432,9 +5432,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-app-landing-page@workspace:.":
+"mobile-landing@workspace:.":
   version: 0.0.0-use.local
-  resolution: "expo-app-landing-page@workspace:."
+  resolution: "mobile-landing@workspace:."
   dependencies:
     "@babel/core": "npm:^7.25.2"
     "@expo/vector-icons": "npm:^14.0.2"

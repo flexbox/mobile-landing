@@ -4,14 +4,22 @@
 
 ![Expo App Langin page OG](./public/@og-image.png)
 
-Demo: [expo-app-landing-page.expo.app](https://expo-app-landing-page.expo.app/)
+## About
+
+weshipit.today is a French-based React Native engineering and consulting company. We partner with the world’s top companies and are recommended by Expo. You don’t have time to learn all the details of mobile app development? Let’s build together and **book a call with us: [weshipit.today](https://weshipit.today/)**.
+
+### Why this project?
+
+This project is designed to help you create a landing page for your Expo application. It provides a simple and customizable solution for showcasing your app, including features like:
+
+Demo: [mobile-landing.expo.app](https://mobile-landing.expo.app/)
 
 ## Getting Started
 
 Create a new Expo app using the template:
 
 ```bash
-npx create-expo -t https://github.com/flexbox/expo-app-landing-page/ <project-landing-page>
+npx create-expo -t https://github.com/flexbox/mobile-landing/ <project-mobile-landing>
 ```
 
 Install dependencies:
@@ -96,10 +104,8 @@ The changelog page will automatically show your changes with appropriate styling
 
 ## We do it for you
 
-You don't have time to learn all the details of mobile app development? You want to focus on your business and not on the technical details?
+You want to focus on your business and not on the technical details?
 
 - We specialize in React Native with Expo.
 - Helps startups release mobile apps on productions faster.
 - All-inclusive: a trusted software engineer joins your existing team and shares our expertise in managing releases to store.
-
-**Book a call with us: [weshipit.today](https://weshipit.today/)**.

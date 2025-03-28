@@ -12,7 +12,7 @@ interface FloatingButtonProps {
 }
 
 export function FloatingButton({
-  url = "https://github.com/flexbox/expo-app-landing-page",
+  url = "https://github.com/flexbox/mobile-landing",
   icon = "github",
   textKey = "cta.buildYourOwn",
 }: FloatingButtonProps) {

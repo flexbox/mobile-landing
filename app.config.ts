@@ -2,14 +2,17 @@ import { ExpoConfig } from "expo/config";
 
 // Replace these with your EAS project ID and project slug.
 // You can find them at https://expo.dev/accounts/[account]/projects/[project].
-const EAS_PROJECT_ID = "8ca124dd-2321-47cd-bc07-7f3c36796c0f";
-const PROJECT_SLUG = "expo-app-landing-page";
+const EAS_PROJECT_ID = "bbcdb568-c1d1-4186-b0c3-454715c2314b";
+const PROJECT_SLUG = "mobile-landing-page";
 const OWNER = "weshipit";
 
 // App production config
-export const APP_NAME = "expo-app-landing-page";
-const BUNDLE_IDENTIFIER = "com.duolingo"; // use reverse domain name example: com.company.appname
-const PACKAGE_NAME = "com.duolingo"; // use reverse domain name example: com.company.appname
+export const APP_NAME = "Mobile Landing";
+
+// use reverse domain name example: com.company.appname
+const BUNDLE_IDENTIFIER = "com.mobile-landing";
+const PACKAGE_NAME = "com.mobile-landing";
+
 const ICON = "./assets/images/icon.png";
 const ADAPTIVE_ICON = "./assets/images/adaptive-icon.png";
 const FAVICON = "./assets/images/favicon.png";
@@ -20,7 +23,7 @@ export const APP_STORE_APP_ID = "570060128";
 export const APP_STORE_URL = `https://apps.apple.com/app/${APP_NAME}/id${APP_STORE_APP_ID}`;
 export const GOOGLE_PLAYSTORE_URL = `https://play.google.com/store/apps/details?id=${PACKAGE_NAME}`;
 
-export const LANDING_PAGE_URL = "https://expo-app-landing-page.expo.dev"; // URL of your landing page
+export const LANDING_PAGE_URL = "https://mobile-landing.expo.dev"; // URL of your landing page
 
 const config: ExpoConfig = {
   name: APP_NAME,
