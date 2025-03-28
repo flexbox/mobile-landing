@@ -6,11 +6,11 @@
 
 ## About
 
-weshipit.today is a French-based React Native engineering and consulting company. We partner with the world’s top companies and are recommended by Expo. You don’t have time to learn all the details of mobile app development? Let’s build together and **book a call with us: [weshipit.today](https://weshipit.today/)**.
+weshipit.today is a French-based React Native engineering and consulting company. You don’t have time to learn all the details of mobile app development? Let’s build together and **book a call with us: [weshipit.today](https://weshipit.today/)**.
 
 ### Why this project?
 
-This project is designed to help you create a landing page for your Expo application. It provides a simple and customizable solution for showcasing your app, including features like:
+This project is designed to help you create a landing page for your Expo application. It provides a simple and customizable solution for showcasing your app.
 
 Demo: [mobile-landing.expo.app](https://mobile-landing.expo.app/)
 

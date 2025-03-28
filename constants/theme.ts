@@ -22,7 +22,7 @@ export const theme = {
     success: "#34C759", // Green - for success states
     error: "#FF3B30", // Red - for error states
     warning: "#FF9500", // Orange - for warning states
-    gray: "#8E8E93", // Gray - for secondary text
+    gray: "#64748b", // Gray - for secondary text
   } as ThemeColors,
   fonts: {
     primary: "Inter", // Modern, clean font
