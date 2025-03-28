@@ -35,6 +35,22 @@ export const screenshots = {
   },
 };
 
+export const iPadScreenshots = [
+  // uncomment this with your ipad screenshots
+  // {
+  //   image: require("@/assets/images/screenshot.png"),
+  //   id: "ipad-dashboard",
+  // },
+  // {
+  //   image: require("@/assets/images/screenshot.png"),
+  //   id: "ipad-analytics",
+  // },
+  // {
+  //   image: require("@/assets/images/screenshot.png"),
+  //   id: "ipad-settings",
+  // },
+];
+
 // Social Links
 export const socials: SocialLink[] = [
   {

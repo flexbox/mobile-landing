@@ -2,17 +2,23 @@ import { Image, ScrollView, View } from "react-native";
 
 import { Text } from "./Text";
 
-import { screenshots } from "@/constants/landing";
-import { AppStoreData } from "@/context/AppStoreContext";
+import { iPadScreenshots, screenshots } from "@/constants/landing";
 
 interface ScreenshotsProps {
-  appStoreData: AppStoreData | null;
+  appStoreData?: {
+    screenshotUrls?: string[];
+    ipadScreenshotUrls?: string[];
+  } | null;
 }
 
 export function Screenshots({ appStoreData }: ScreenshotsProps) {
   const screenshotsToShow = appStoreData?.screenshotUrls?.length
     ? appStoreData.screenshotUrls
-    : [screenshots.assets.screenshots[0]];
+    : [screenshots.assets.screenshots];
+
+  const ipadScreenshotsToShow = appStoreData?.ipadScreenshotUrls?.length
+    ? appStoreData.ipadScreenshotUrls
+    : [iPadScreenshots];
 
   return (
     <View className="py-12 md:py-16 px-4 bg-white">
@@ -23,10 +29,12 @@ export function Screenshots({ appStoreData }: ScreenshotsProps) {
         className="mb-8 md:mb-12 text-center"
         tx="sections.screenshots.title"
       />
+
+      {/* iPhone Screenshots */}
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        className="flex-row w-full gap-6 md:gap-8"
+        className="flex-row w-full gap-6 md:gap-8 mb-12"
         contentContainerStyle={{
           flexGrow: 1,
           paddingHorizontal: 16,
@@ -75,6 +83,60 @@ export function Screenshots({ appStoreData }: ScreenshotsProps) {
           </View>
         ))}
       </ScrollView>
+
+      {/* iPad Screenshots */}
+      {ipadScreenshotsToShow.length > 0 && (
+        <>
+          <Text variant="heading3" color="text" className="mb-8 text-center">
+            iPad Screenshots
+          </Text>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            className="flex-row w-full gap-6 md:gap-8"
+            contentContainerStyle={{
+              flexGrow: 1,
+              paddingHorizontal: 16,
+              justifyContent: "center",
+            }}
+          >
+            {ipadScreenshotsToShow.map((screenshot, index) => (
+              <View
+                key={index}
+                className="relative w-[320px] h-[420px] md:w-[400px] md:h-[520px]"
+              >
+                <Image
+                  source={require("@/assets/images/landing/iPad.png")}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    position: "absolute",
+                  }}
+                  resizeMode="contain"
+                />
+                <View
+                  className="absolute"
+                  style={{
+                    top: "2%",
+                    left: "5%",
+                    right: "5%",
+                    bottom: "2%",
+                    borderRadius: 18,
+                    overflow: "hidden",
+                    backgroundColor: "#000",
+                  }}
+                >
+                  <Image
+                    source={{ uri: screenshot }}
+                    style={{ width: "100%", height: "100%" }}
+                    resizeMode="cover"
+                  />
+                </View>
+              </View>
+            ))}
+          </ScrollView>
+        </>
+      )}
     </View>
   );
 }
