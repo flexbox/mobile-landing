@@ -1,12 +1,9 @@
-# Expo App Landing Page
-
-> Customizable landing page for your Expo application, built with Expo and React Native Web.
-
 ![Expo App Langin page OG](./public/@og-image.png)
 
 ## About
 
-weshipit.today is a French-based React Native engineering and consulting company. You don’t have time to learn all the details of mobile app development? Let’s build together and **book a call with us: [weshipit.today](https://weshipit.today/)**.
+weshipit.today is a French-based React Native engineering and consulting company. You don’t have time to learn all the details of mobile app development?  
+Let’s build together and **book a call with us [weshipit.today](https://weshipit.today/)**.
 
 ### Why this project?
 
@@ -31,14 +28,13 @@ yarn start # or npm start
 
 ## Configure your landing page
 
-1. Update your iOS and android configuration in `app.config.ts`.
+1. Update your iOS and android configuration in [`app.config.ts`](./app.config.ts).
 
 - If you provide your App Store ID, the app will automatically fetch your app data (name, description, screenshots).
 - In case the automatic fetch fails, you can still manually configure all the data.
 
-2. Update your theme on `constants/theme.ts`.
-3. Update your landing page content on `constants/landing.ts`.
-4. Run `yarn generate-og` to generate a screenshot of your landing page, then manually move the generated image from your downloads folder to the `public` directory.
+2. Update landing page content on `constants/landing.ts`.
+3. Run `yarn generate-og` to generate a screenshot of your landing page, then manually move the generated image from your downloads folder to the `public` directory.
 
 ## App Store Data
 
@@ -101,11 +97,3 @@ The changelog page will automatically show your changes with appropriate styling
 - 🟣 Feature: New features
 - 🔵 Improvement: Enhancements to existing features
 - 🔴 Fix: Bug fixes and corrections
-
-## We do it for you
-
-You want to focus on your business and not on the technical details?
-
-- We specialize in React Native with Expo.
-- Helps startups release mobile apps on productions faster.
-- All-inclusive: a trusted software engineer joins your existing team and shares our expertise in managing releases to store.
