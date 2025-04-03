@@ -29,7 +29,7 @@ export function FloatingButton({
         borderRadius: 25,
         flexDirection: "row",
         alignItems: "center",
-        shadowColor: "#000000",
+        shadowColor: theme.colors.white,
         shadowOffset: {
           width: 0,
           height: 2,
@@ -43,10 +43,12 @@ export function FloatingButton({
       <FontAwesome
         name={icon}
         size={16}
-        color="white"
+        color={theme.colors.white}
         style={{ marginRight: 6 }}
       />
-      <RNText style={{ color: "white", fontWeight: "600", fontSize: 14 }}>
+      <RNText
+        style={{ color: theme.colors.white, fontWeight: "600", fontSize: 14 }}
+      >
         {translate(textKey)}
       </RNText>
     </TouchableOpacity>

@@ -39,15 +39,15 @@ export function BrandGuidelines() {
   return (
     <View className="my-8">
       <Text tx="brand.guidelines.title" variant="heading2" className="mb-6" />
-      <View className="flex-row flex-wrap gap-6">
+      <View className="flex-row flex-wrap gap-6 mx-2">
         {guidelines.map((section) => (
           <View
             key={section.key}
-            className="bg-white rounded-2xl p-6 shadow-sm w-full md:w-[calc(50%-12px)]"
+            className="bg-white rounded-2xl p-6 shadow-md w-full md:w-[calc(50%-12px)]"
           >
             <View className="flex-row items-center mb-5 gap-2">
               <Ionicons
-                name={section.icon as any}
+                name={section.icon as keyof typeof Ionicons.glyphMap}
                 size={24}
                 color={section.color}
               />

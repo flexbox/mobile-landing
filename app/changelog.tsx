@@ -86,7 +86,7 @@ export default function ChangelogScreen() {
     >
       <ScrollView className="flex-1 bg-slate-50 px-4 py-8">
         <View className="flex-1 items-center min-h-screen">
-          <View className="w-full max-w-[50%]">
+          <View className="w-full md:w-3/4 lg:w-1/2 xl:w-2/5">
             <Text as="h1" variant="heading1" className="mb-6">
               Changelog
             </Text>
@@ -102,57 +102,57 @@ export default function ChangelogScreen() {
                 return (
                   <View
                     key={index}
-                    className="bg-white rounded-2xl shadow-sm px-8 py-6"
+                    className="bg-white rounded-2xl shadow-sm px-4 sm:px-6 md:px-8 py-4 sm:py-6"
                   >
-                    <View className="space-y-6">
+                    <View className="space-y-4 sm:space-y-6">
                       {/* Version Header */}
-                      <View className="border-b border-slate-100 pb-4">
-                        <View className="flex-row items-baseline justify-between">
+                      <View className="border-b border-slate-100 pb-3 sm:pb-4">
+                        <View className="flex-row items-baseline justify-between flex-wrap">
                           <Text
                             as="h2"
                             variant="heading2"
-                            style={{ color: theme.colors.text }}
+                            className="text-base sm:text-lg"
                           >
                             {translate("changelog.version", {
                               version: version.version,
                             })}
                           </Text>
-                          <Text className="text-sm text-slate-500">
+                          <Text className="text-xs sm:text-sm text-slate-500">
                             {version.date}
                           </Text>
                         </View>
                       </View>
 
                       {/* Changes by Type */}
-                      <View className="space-y-8">
+                      <View className="space-y-6 sm:space-y-8">
                         {changeTypes.map((type) => {
                           if (!groupedChanges[type]?.length) return null;
                           const style = getChangeTypeStyle(type);
 
                           return (
-                            <View key={type} className="space-y-4">
+                            <View key={type} className="space-y-3 sm:space-y-4">
                               <View className="flex-row items-center space-x-3">
                                 <View
                                   style={{
                                     backgroundColor: style.color + "10",
                                   }}
-                                  className="w-7 h-7 rounded-full items-center justify-center"
+                                  className="w-6 h-6 sm:w-7 sm:h-7 rounded-full items-center justify-center"
                                 >
                                   <FontAwesome
                                     name={style.icon}
-                                    size={14}
+                                    size={12}
                                     color={style.color}
                                   />
                                 </View>
                                 <Text
-                                  className="text-sm font-medium"
+                                  className="text-xs sm:text-sm font-medium"
                                   style={{ color: style.color }}
                                 >
                                   {style.label}
                                 </Text>
                               </View>
 
-                              <View className="space-y-3 pl-10">
+                              <View className="space-y-2 sm:space-y-3 pl-8 sm:pl-10">
                                 {groupedChanges[type].map(
                                   (change, changeIndex) => (
                                     <View
@@ -160,7 +160,7 @@ export default function ChangelogScreen() {
                                       className="flex-row items-start"
                                     >
                                       <Text
-                                        className="text-sm leading-relaxed"
+                                        className="text-xs sm:text-sm leading-relaxed"
                                         style={{ color: theme.colors.text }}
                                       >
                                         • {translate(`changelog.${change.id}`)}

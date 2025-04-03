@@ -3,6 +3,7 @@ import { Platform, View } from "react-native";
 import { captureRef } from "react-native-view-shot";
 
 import { Hero } from "@/components/Hero";
+import { theme } from "@/constants/theme";
 import { useAppStore } from "@/context/AppStoreContext";
 
 export function GenerateOgImage() {
@@ -68,7 +69,9 @@ export function GenerateOgImage() {
   }
 
   return (
-    <View style={{ width: 1200, height: 630, backgroundColor: "white" }}>
+    <View
+      style={{ width: 1200, height: 630, backgroundColor: theme.colors.white }}
+    >
       <View ref={viewShotRef} style={{ flex: 1 }}>
         <Hero appStoreData={appStoreData} />
       </View>

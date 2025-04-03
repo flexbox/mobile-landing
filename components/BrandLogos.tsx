@@ -53,9 +53,12 @@ export function BrandLogos() {
           <Text className="text-white font-medium">Download All Logos</Text>
         </Pressable>
       </View>
-      <View className="flex-row justify-center gap-8">
+      <View className="flex-col md:flex-row justify-center gap-8">
         {logos.map((logo) => (
-          <View key={logo.name} className="w-[180px] items-center">
+          <View
+            key={logo.name}
+            className="w-full md:w-[180px] items-center mb-8 md:mb-0"
+          >
             <View className="w-32 h-32 bg-slate-100 rounded-xl justify-center items-center mb-3">
               <Image
                 source={logo.image}

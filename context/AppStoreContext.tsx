@@ -54,6 +54,7 @@ async function loadStaticAppStoreData(): Promise<AppStoreData | null> {
       }
 
       console.warn("Static app store data not found, using fallback data");
+      console.log("error", error);
       return initialStoreData;
     }
   } catch (error) {

@@ -1,6 +1,7 @@
 import { TextStyle } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 
 interface ThemeColors {
+  white: string;
   primary: string;
   secondary: string;
   accent: string;
@@ -14,6 +15,7 @@ interface ThemeColors {
 
 export const theme = {
   colors: {
+    white: "#FFFFFF",
     primary: "#0070F3", // Modern blue - your brand color
     secondary: "#171717", // Near black - for contrast
     accent: "#FF4081", // Pink accent - for CTAs

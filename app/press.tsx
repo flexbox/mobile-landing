@@ -14,16 +14,23 @@ export default function BrandScreen() {
         description: translate("brand.hero.description"),
       }}
     >
-      <View className="px-4 py-8">
+      <View className="flex-1 px-2 sm:px-4 py-4 sm:py-8">
         <ScrollView
           className="flex-1 bg-white"
           showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ flexGrow: 1 }}
         >
           <View className="items-center w-full">
-            <View className="p-6 max-w-[1200px] w-full md:w-1/2">
-              <BrandLogos />
-              <BrandGuidelines />
-              <BrandTypography />
+            <View className="p-3 sm:p-4 md:p-6 w-full max-w-[1200px] md:w-3/4 lg:w-2/3 xl:w-1/2 overflow-hidden">
+              <View className="w-full overflow-hidden">
+                <BrandLogos />
+              </View>
+              <View className="w-full overflow-hidden">
+                <BrandGuidelines />
+              </View>
+              <View className="w-full overflow-hidden">
+                <BrandTypography />
+              </View>
             </View>
           </View>
         </ScrollView>

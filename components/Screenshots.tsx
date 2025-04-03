@@ -3,6 +3,7 @@ import { Image, ScrollView, View } from "react-native";
 import { Text } from "./Text";
 
 import { iPadScreenshots, screenshots } from "@/constants/landing";
+import { theme } from "@/constants/theme";
 import { AppStoreData } from "@/context/AppStoreContext";
 
 interface ScreenshotsProps {
@@ -58,7 +59,7 @@ export function Screenshots({ appStoreData }: ScreenshotsProps) {
                 bottom: "1.8%",
                 borderRadius: 38,
                 overflow: "hidden",
-                backgroundColor: "#000000",
+                backgroundColor: theme.colors.white,
               }}
             >
               <Image
@@ -121,7 +122,7 @@ export function Screenshots({ appStoreData }: ScreenshotsProps) {
                     bottom: "2%",
                     borderRadius: 18,
                     overflow: "hidden",
-                    backgroundColor: "#000",
+                    backgroundColor: theme.colors.white,
                   }}
                 >
                   <Image

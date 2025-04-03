@@ -12,6 +12,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { Text } from "./Text";
 
 import { APP_NAME, APP_STORE_URL, GOOGLE_PLAYSTORE_URL } from "@/app.config";
+import { theme } from "@/constants/theme";
 import { AppStoreData } from "@/context/AppStoreContext";
 import { translate } from "@/i18n/translate";
 interface HeroProps {
@@ -66,14 +67,14 @@ export function Hero({ appStoreData }: HeroProps) {
                 bottom: "2%",
                 borderRadius: 38,
                 overflow: "hidden",
-                backgroundColor: "#000000",
+                backgroundColor: theme.colors.white,
               }}
             >
               <Animated.Image
                 defaultSource={require("@/assets/images/screenshot.png")}
                 source={
                   appStoreData?.screenshotUrls &&
-                  appStoreData.screenshotUrls.length > 0
+                    appStoreData.screenshotUrls.length > 0
                     ? { uri: appStoreData.screenshotUrls[0] }
                     : require("@/assets/images/screenshot.png")
                 }

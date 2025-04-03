@@ -35,6 +35,7 @@ module.exports = {
     "react-native/no-unused-styles": 2,
     "react-native/no-raw-text": 0,
     "react-native/sort-styles": 2,
+    "react-native/no-color-literals": 2,
     "simple-import-sort/exports": "warn",
     "simple-import-sort/imports": [
       "warn",
