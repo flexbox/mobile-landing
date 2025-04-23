@@ -11,6 +11,7 @@ interface ThemeColors {
   error: string;
   warning: string;
   gray: string;
+  black: string;
 }
 
 export const theme = {
@@ -25,6 +26,7 @@ export const theme = {
     error: "#FF3B30", // Red - for error states
     warning: "#FF9500", // Orange - for warning states
     gray: "#64748b", // Gray - for secondary text
+    black: "#000000",
   } as ThemeColors,
   fonts: {
     primary: "Inter", // Modern, clean font

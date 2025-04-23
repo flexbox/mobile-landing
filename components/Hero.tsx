@@ -67,7 +67,7 @@ export function Hero({ appStoreData }: HeroProps) {
                 bottom: "2%",
                 borderRadius: 38,
                 overflow: "hidden",
-                backgroundColor: theme.colors.white,
+                backgroundColor: theme.colors.black,
               }}
             >
               <Animated.Image

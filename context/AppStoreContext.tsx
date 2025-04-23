@@ -18,10 +18,14 @@ export interface AppStoreData {
 
 interface AppStoreContextType {
   appStoreData: AppStoreData | null;
+  isLoading: boolean;
+  dataSource: "static" | "api" | "fallback" | null;
 }
 
 const AppStoreContext = createContext<AppStoreContextType>({
   appStoreData: null,
+  isLoading: true,
+  dataSource: null,
 });
 
 const initialStoreData: AppStoreData = {
@@ -37,11 +41,13 @@ const initialStoreData: AppStoreData = {
 
 async function loadStaticAppStoreData(): Promise<AppStoreData | null> {
   try {
+    // Try to load from assets
+    const staticData = require("@/assets/data/appStore.json");
+    console.log("Static App Store data loaded from assets");
+    return staticData;
+  } catch (assetError) {
     try {
-      const staticData = require("@/assets/data/appStore.json");
-      console.log("Static App Store data loaded from assets");
-      return staticData;
-    } catch (error) {
+      // Try to load from file system
       if (FileSystem.documentDirectory) {
         const fileUri = FileSystem.documentDirectory + "appStore.json";
         const fileExists = await FileSystem.getInfoAsync(fileUri);
@@ -53,31 +59,46 @@ async function loadStaticAppStoreData(): Promise<AppStoreData | null> {
         }
       }
 
-      console.warn("Static app store data not found, using fallback data");
-      console.log("error", error);
-      return initialStoreData;
+      console.log("Static app store data not found in file system");
+      return null;
+    } catch (fsError) {
+      console.error(
+        "❌ Error loading static app store data from file system:",
+        fsError,
+      );
+      return null;
     }
-  } catch (error) {
-    console.error("❌ Error loading static app store data:", error);
-    return initialStoreData;
   }
 }
 
 export function AppStoreProvider({ children }: { children: React.ReactNode }) {
-  const [appStoreData, setAppStoreData] =
-    useState<AppStoreData>(initialStoreData);
+  const [appStoreData, setAppStoreData] = useState<AppStoreData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [dataSource, setDataSource] = useState<
+    "static" | "api" | "fallback" | null
+  >(null);
 
   useEffect(() => {
     async function loadData() {
-      const staticData = await loadStaticAppStoreData();
-      if (staticData) {
-        console.log("Using static App Store data");
-        setAppStoreData(staticData);
-        return;
+      setIsLoading(true);
+
+      // Step 1: Try to load static data
+      try {
+        const staticData = await loadStaticAppStoreData();
+        if (staticData) {
+          console.log("Using static App Store data");
+          setAppStoreData(staticData);
+          setDataSource("static");
+          setIsLoading(false);
+          return;
+        }
+      } catch (error) {
+        console.error("Failed to load static data:", error);
       }
 
-      console.log("Fetching App Store data for ID:", APP_STORE_APP_ID);
+      // Step 2: If no static data, try App Store API
       try {
+        console.log("Fetching App Store data for ID:", APP_STORE_APP_ID);
         const response = await fetch(
           `https://itunes.apple.com/lookup?id=${APP_STORE_APP_ID}`,
         );
@@ -98,13 +119,20 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
             artworkUrl512: result.artworkUrl512 || "",
             description: result.description || "",
           });
+          setDataSource("api");
         } else {
           console.log(
             "No results found in App Store response, using fallback data",
           );
+          setAppStoreData(initialStoreData);
+          setDataSource("fallback");
         }
       } catch (error) {
         console.error("❌ Error fetching App Store data:", error);
+        setAppStoreData(initialStoreData);
+        setDataSource("fallback");
+      } finally {
+        setIsLoading(false);
       }
     }
 
@@ -112,8 +140,8 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <AppStoreContext.Provider value={{ appStoreData }}>
-      {children}
+    <AppStoreContext.Provider value={{ appStoreData, isLoading, dataSource }}>
+      {isLoading ? null : children}
     </AppStoreContext.Provider>
   );
 }
